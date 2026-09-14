@@ -3,221 +3,156 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Shin-chan Edition)</title>
+  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Patrick+Hand&family=Montserrat:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       min-height: 100%;
-      background: #fffdf5;
-      background-image: radial-gradient(#ecdcc2 2px, transparent 2px);
-      background-size: 24px 24px;
-      color: #1e1e1e;
-      font-family: 'Baloo 2', cursive, sans-serif;
-      font-weight: 500;
+      background: #eaf2f1;
+      color: #333333;
+      font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     /* ══════════════════════════════════════════
-       CRAYON SHIN-CHAN MANGA INTRO SCREEN
+       VINTAGE PASTEL INTRO SCREEN
     ══════════════════════════════════════════ */
-    #shin-intro-screen {
+    #vintage-intro-screen {
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: #4fc3f7;
-      background-image: 
-        radial-gradient(circle at 50% 30%, #81d4fa 0%, #29b6f6 100%),
-        radial-gradient(#ffffff 2px, transparent 2px);
-      background-size: 100% 100%, 28px 28px;
+      background: #eaf2f1;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.9s ease;
     }
-    #shin-intro-screen.hidden-screen {
+    #vintage-intro-screen.hidden-screen {
       opacity: 0;
+      transform: translateY(-30px);
       pointer-events: none;
     }
 
-    /* Shin-chan Cartoon Floating Clouds */
-    .comic-cloud {
+    /* Subtle texture */
+    .screen-ambient-glow {
       position: absolute;
-      background: #ffffff;
-      border: 3.5px solid #1e1e1e;
-      box-shadow: 5px 5px 0 #1e1e1e;
-      border-radius: 50px;
+      inset: 0;
+      background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.65) 0%, rgba(234, 242, 241, 0.9) 100%);
       pointer-events: none;
-      transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 1.2s ease;
-    }
-    .cloud-top-left {
-      width: 190px; height: 75px;
-      top: 8%; left: -30px;
-      animation: cloudFloatLeft 8s ease-in-out infinite alternate;
-    }
-    .cloud-top-right {
-      width: 220px; height: 85px;
-      top: 12%; right: -40px;
-      animation: cloudFloatRight 10s ease-in-out infinite alternate;
-    }
-    .cloud-bottom-left {
-      width: 240px; height: 90px;
-      bottom: 6%; left: -50px;
-      animation: cloudFloatLeft 9s ease-in-out infinite alternate;
-    }
-    .cloud-bottom-right {
-      width: 200px; height: 80px;
-      bottom: 8%; right: -30px;
-      animation: cloudFloatRight 8s ease-in-out infinite alternate;
     }
 
-    @keyframes cloudFloatLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(35px); }
-    }
-    @keyframes cloudFloatRight {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-35px); }
-    }
-
-    /* Comic Intro Card (Cover Edition) */
-    #comic-card {
+    /* Intro Card Container */
+    .vintage-intro-card {
       position: relative;
       z-index: 10;
       width: min(440px, 88vw);
-      padding: 2.2rem 1.8rem;
-      background: #fffdf5;
-      border: 4px solid #1e1e1e;
-      border-radius: 28px;
-      box-shadow: 8px 8px 0 #1e1e1e;
+      padding: 2.8rem 2.2rem;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 16px 40px rgba(80, 105, 100, 0.12);
+      border: 1px solid #dce8e6;
       text-align: center;
-      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
-      animation: comicPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-    @keyframes comicPop {
-      0% { transform: scale(0.85); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      transition: transform 0.4s ease;
     }
 
-    /* Parting on Click */
-    #shin-intro-screen.parting #comic-card {
-      transform: scale(1.15) rotate(4deg);
-      opacity: 0;
+    /* Vertical Watercolor Name Stamp (như ảnh mẫu) */
+    .stamp-box-wrap {
+      display: inline-flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
     }
-    #shin-intro-screen.parting .cloud-top-left,
-    #shin-intro-screen.parting .cloud-bottom-left {
-      transform: translateX(-160%) rotate(-15deg);
-      opacity: 0;
-    }
-    #shin-intro-screen.parting .cloud-top-right,
-    #shin-intro-screen.parting .cloud-bottom-right {
-      transform: translateX(160%) rotate(15deg);
-      opacity: 0;
-    }
-
-    /* Comic Seal Stamp (Chocobi / Action Kamen Star) */
-    .comic-star-seal {
-      width: 64px;
-      height: 64px;
-      margin: -3.8rem auto 1rem;
-      background: #ff4757;
-      border: 3.5px solid #1e1e1e;
-      border-radius: 50%;
-      box-shadow: 3px 3px 0 #1e1e1e;
+    .stamp-vertical-block {
+      background: #e29b8f;
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      box-shadow: 0 4px 12px rgba(226, 155, 143, 0.35);
       display: flex;
       align-items: center;
-      justify-content: center;
-      transform: rotate(-6deg);
-      animation: sealWiggle 3s ease-in-out infinite;
+      gap: 0.6rem;
     }
-    @keyframes sealWiggle {
-      0%, 100% { transform: rotate(-6deg); }
-      50% { transform: rotate(6deg); }
-    }
-    .comic-star-seal span {
+    .stamp-col-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       color: #ffffff;
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      line-height: 1;
+    }
+    .stamp-v-divider {
+      width: 1px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.5);
     }
 
-    /* Speech Bubble Callout */
-    .comic-speech-bubble {
-      display: inline-block;
-      background: #ffd166;
-      border: 3px solid #1e1e1e;
-      box-shadow: 3px 3px 0 #1e1e1e;
-      padding: 0.35rem 1.1rem;
-      border-radius: 18px 18px 18px 0;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
+    .intro-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: #1e1e1e;
+      color: #8c736e;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .intro-guest {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-style: italic;
+      font-weight: 600;
+      color: #2b2b2b;
+      line-height: 1.25;
       margin-bottom: 0.8rem;
     }
 
-    .comic-card-title {
-      font-size: clamp(1.45rem, 5vw, 2rem);
-      font-weight: 800;
-      color: #ff4757;
-      text-shadow: 2px 2px 0 #ffd166, 3px 3px 0 #1e1e1e;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
+    .intro-couple-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #383838;
+      line-height: 1.6;
+    }
+    .intro-date-venue {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #8a9e9a;
+      margin-top: 0.4rem;
+      font-weight: 500;
     }
 
-    .comic-couple-banner {
-      background: #eef2ff;
-      border: 2.5px solid #1e1e1e;
-      border-radius: 14px;
-      padding: 0.6rem 0.8rem;
-      margin: 0.8rem 0;
-    }
-    .comic-couple-names {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #1e1e1e;
-    }
-    .comic-date-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: #06b6d4;
-      margin-top: 0.2rem;
-    }
-
-    /* Wiggling Action Button */
-    .comic-click-btn {
-      margin-top: 1.2rem;
+    .intro-open-btn {
+      margin-top: 2rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1.5rem;
-      background: #ff4757;
+      gap: 0.6rem;
+      padding: 0.65rem 1.6rem;
+      background: #e29b8f;
       color: #ffffff;
-      border: 3px solid #1e1e1e;
-      box-shadow: 4px 4px 0 #1e1e1e;
       border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      animation: btnBounce 2s ease-in-out infinite;
-      transition: all 0.2s ease;
+      box-shadow: 0 6px 18px rgba(226, 155, 143, 0.4);
+      transition: all 0.3s ease;
+      animation: pulseButton 2.4s infinite;
     }
-    @keyframes btnBounce {
-      0%, 100% { transform: translateY(0) rotate(-1deg); }
-      50% { transform: translateY(-5px) rotate(1.5deg); }
+    @keyframes pulseButton {
+      0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(226, 155, 143, 0.35); }
+      50% { transform: scale(1.03); box-shadow: 0 8px 24px rgba(226, 155, 143, 0.55); }
     }
 
     /* ══════════════════════════════════════════
-       CONFETTI / STARS CANVAS
+       MAIN INVITATION WRAPPER
     ══════════════════════════════════════════ */
     #inv-canvas {
       position: fixed;
@@ -228,9 +163,6 @@
       z-index: 1;
     }
 
-    /* ══════════════════════════════════════════
-       MAIN MANGA WEDDING PAGE
-    ══════════════════════════════════════════ */
     #invitation {
       opacity: 0;
       pointer-events: none;
@@ -246,448 +178,405 @@
     .page {
       position: relative;
       z-index: 2;
-      max-width: 720px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 2.5rem 1.2rem 5rem;
+      padding: 2rem 1.2rem 5rem;
     }
 
-    /* Manga Comic Page Frame */
-    .comic-page-outer {
+    .vintage-card-body {
       background: #ffffff;
-      border: 4.5px solid #1e1e1e;
-      border-radius: 32px;
-      padding: 2.6rem 2.2rem;
-      box-shadow: 10px 10px 0 #1e1e1e;
+      border-radius: 28px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 16px 45px rgba(80, 105, 100, 0.1);
+      border: 1px solid #dce8e6;
       position: relative;
     }
     @media (max-width: 640px) {
-      .comic-page-outer {
-        padding: 2rem 1.2rem;
-        border-width: 3.5px;
-        box-shadow: 6px 6px 0 #1e1e1e;
+      .vintage-card-body {
+        padding: 2.2rem 1.3rem;
+        border-radius: 22px;
       }
     }
 
-    /* Comic Corner Stickers */
-    .comic-corner {
-      position: absolute;
-      width: 36px;
-      height: 36px;
-      z-index: 3;
-    }
-    .corner-tl { top: -14px; left: -14px; transform: rotate(-15deg); }
-    .corner-tr { top: -14px; right: -14px; transform: rotate(15deg); }
-    .corner-bl { bottom: -14px; left: -14px; transform: rotate(15deg); }
-    .corner-br { bottom: -14px; right: -14px; transform: rotate(-15deg); }
-
-    /* Comic Header Tag */
-    .manga-top-bar {
+    /* Top Stamp in main card */
+    .main-top-stamp {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 3px solid #1e1e1e;
-      padding-bottom: 0.8rem;
+      justify-content: center;
       margin-bottom: 2rem;
     }
-    .manga-vol-tag {
-      background: #ffd166;
-      border: 2px solid #1e1e1e;
-      box-shadow: 2px 2px 0 #1e1e1e;
-      border-radius: 8px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 0.2rem 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .manga-sound-fx {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #ff4757;
-      letter-spacing: 0.05em;
-    }
 
-    /* ══════════════════════════════════════════
-       SECTION TITLES (CRAYON SHIN-CHAN MANGA STYLE)
-    ══════════════════════════════════════════ */
-    .comic-section-header {
+    /* Section Typography */
+    .section-title-retro {
       text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
+      margin-bottom: 1.8rem;
     }
-    .comic-title-badge {
-      display: inline-block;
-      background: #ffd166;
-      border: 3.5px solid #1e1e1e;
-      box-shadow: 4px 4px 0 #1e1e1e;
-      border-radius: 16px;
-      padding: 0.45rem 1.6rem;
-      font-size: 0.92rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
+    .retro-badge-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: #1e1e1e;
-      transform: rotate(-1.5deg);
+      color: #8c736e;
+      display: inline-block;
+      position: relative;
+      padding-bottom: 0.45rem;
     }
-    .comic-subtitle-vn {
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #ff4757;
-      margin-top: 0.6rem;
-      text-shadow: 1px 1px 0 #ffd166;
+    .retro-badge-label::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 32px;
+      height: 1.5px;
+      background: #e29b8f;
+    }
+    .retro-title-vn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2b2b2b;
+      margin-top: 0.4rem;
     }
 
-    /* Hero Text */
-    .comic-announce {
-      display: inline-block;
-      background: #eef2ff;
-      border: 2px solid #1e1e1e;
-      border-radius: 999px;
-      padding: 0.3rem 1.2rem;
+    /* Hero Section Typography */
+    .hero-announce {
       font-size: 0.72rem;
-      font-weight: 700;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8a9e9a;
+    }
+    .name-groom {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+      line-height: 1.15;
+      color: #222222;
+    }
+    .name-bride {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+      line-height: 1.15;
+      color: #222222;
+    }
+    .names-connector {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.35rem;
+      color: #e29b8f;
+      margin: 0.2rem 0;
+    }
+    .hero-united-text {
+      font-size: 0.75rem;
+      font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #1e1e1e;
-      margin-bottom: 1.2rem;
+      color: #777777;
+      margin-top: 0.3rem;
     }
 
-    .comic-groom-name {
-      font-size: clamp(1.8rem, 5.5vw, 2.7rem);
-      font-weight: 800;
-      color: #1e1e1e;
-      text-shadow: 2px 2px 0 #ffd166;
-      line-height: 1.2;
-    }
-    .comic-bride-name {
-      font-size: clamp(1.8rem, 5.5vw, 2.7rem);
-      font-weight: 800;
-      color: #ff4757;
-      text-shadow: 2px 2px 0 #ffeaa7;
-      line-height: 1.2;
-    }
-    .comic-and-symbol {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px; height: 38px;
-      background: #06b6d4;
-      border: 2.5px solid #1e1e1e;
-      box-shadow: 2px 2px 0 #1e1e1e;
-      border-radius: 50%;
-      color: #ffffff;
-      font-weight: 800;
-      font-size: 1.1rem;
-      margin: 0.4rem 0;
-    }
-
-    .comic-united-label {
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #1e1e1e;
-      margin-top: 0.5rem;
-    }
-
-    .comic-divider {
+    .retro-divider {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
-      margin: 2.8rem 0;
+      margin: 2.6rem 0;
     }
-    .comic-divider::before, .comic-divider::after {
+    .retro-divider::before, .retro-divider::after {
       content: '';
       flex: 1;
-      height: 3px;
-      background: #1e1e1e;
-      border-radius: 999px;
+      height: 1px;
+      background: #e2ecea;
     }
 
     /* ══════════════════════════════════════════
-       ATTACHED PHOTO KEEPSAKE (MANGA STYLE)
+       ATTACHED PHOTO KEEPSAKE (RETRO POLAROID)
     ══════════════════════════════════════════ */
-    .comic-photo-card {
+    .retro-photo-wrap {
       position: relative;
-      margin: 2rem auto 1rem;
+      margin: 2.2rem auto 1rem;
       max-width: 480px;
+      padding: 12px 12px 24px 12px;
       background: #ffffff;
-      border: 3.5px solid #1e1e1e;
-      border-radius: 20px;
-      box-shadow: 6px 6px 0 #1e1e1e;
-      padding: 14px 14px 24px 14px;
-      transform: rotate(-1.5deg);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(80, 105, 100, 0.12);
+      border: 1px solid #e0ecea;
+      transition: transform 0.4s ease;
     }
-    .comic-photo-card:hover {
-      transform: rotate(0deg) scale(1.02);
+    .retro-photo-wrap:hover {
+      transform: translateY(-3px);
     }
-    /* Washi Tape Accent */
-    .comic-tape-top {
+    .retro-tape-clip {
       position: absolute;
-      top: -14px;
+      top: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 95px;
-      height: 26px;
-      background: #ffd166;
-      border: 2px solid #1e1e1e;
-      box-shadow: 2px 2px 0 #1e1e1e;
-      font-size: 0.62rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      border-radius: 4px;
+      width: 75px;
+      height: 20px;
+      background: rgba(226, 155, 143, 0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 3px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
       z-index: 5;
     }
-    .comic-photo-grid {
+    .retro-photo-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      border-radius: 12px;
+      gap: 8px;
+      border-radius: 10px;
       overflow: hidden;
     }
-    .comic-photo-grid img {
+    .retro-photo-grid img {
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
-      border: 2.5px solid #1e1e1e;
-      border-radius: 10px;
-      transition: transform 0.4s ease;
+      border-radius: 8px;
+      transition: transform 0.5s ease;
     }
-    .comic-photo-card:hover .comic-photo-grid img {
+    .retro-photo-wrap:hover .retro-photo-grid img {
       transform: scale(1.03);
     }
-    .comic-photo-caption {
+    .retro-photo-caption {
       margin-top: 14px;
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ff4757;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #666666;
       text-align: center;
+      letter-spacing: 0.02em;
     }
 
     /* ══════════════════════════════════════════
-       AVATAR SECTION (MANGA PROFILE CARDS)
+       COUNTDOWN TIMER (ĐẾM NGƯỢC THỜI GIAN)
+       Như mockup máy bên phải của người dùng
     ══════════════════════════════════════════ */
-    .couple-cards-grid {
+    .countdown-section {
+      background: #f7faf9;
+      border: 1px solid #e2ecea;
+      border-radius: 20px;
+      padding: 1.8rem 1.4rem;
+      margin: 2.4rem 0;
+      text-align: center;
+    }
+    .countdown-title {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #555555;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+    }
+    .countdown-grid {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .countdown-box {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1.4rem;
-      margin: 2rem 0;
     }
-    @media (max-width: 600px) {
-      .couple-cards-grid {
-        grid-template-columns: 1fr;
-        gap: 1.8rem;
-      }
-      .couple-comic-connector {
-        transform: rotate(90deg);
-        margin: -0.5rem 0;
-      }
+    .countdown-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      color: #c85a4b;
+      line-height: 1;
     }
-    .manga-character-card {
-      background: #fffdf5;
-      border: 3.5px solid #1e1e1e;
-      box-shadow: 5px 5px 0 #1e1e1e;
-      border-radius: 24px;
-      padding: 1.8rem 1.2rem;
+    .countdown-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7d8e8b;
+      margin-top: 0.5rem;
+    }
+
+    /* ══════════════════════════════════════════
+       AVATAR SECTION (THÔNG TIN LIÊN HỆ / CÔ DÂU CHÚ RỂ)
+    ══════════════════════════════════════════ */
+    .couple-avatars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.2rem 0;
+    }
+    .avatar-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      position: relative;
     }
-    .character-avatar-wrap {
-      width: 130px;
-      height: 130px;
+    .avatar-frame {
+      width: 124px;
+      height: 124px;
       border-radius: 50%;
-      border: 3.5px solid #1e1e1e;
-      box-shadow: 3px 3px 0 #1e1e1e;
+      padding: 4px;
+      background: #ffffff;
+      border: 2px solid #e29b8f;
+      box-shadow: 0 8px 20px rgba(226, 155, 143, 0.25);
+      margin-bottom: 0.9rem;
       overflow: hidden;
-      margin-bottom: 1rem;
-      background: #ffeaa7;
     }
-    .character-avatar-wrap img {
+    .avatar-frame img {
       width: 100%;
       height: 100%;
+      border-radius: 50%;
       object-fit: cover;
       object-position: center top;
       transition: transform 0.4s ease;
     }
-    .manga-character-card:hover .character-avatar-wrap img {
-      transform: scale(1.08);
+    .avatar-card:hover .avatar-frame img {
+      transform: scale(1.06);
     }
-
-    .role-bubble-tag {
-      background: #ff4757;
-      color: #ffffff;
-      border: 2px solid #1e1e1e;
-      box-shadow: 2px 2px 0 #1e1e1e;
-      padding: 0.25rem 0.9rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
+    .avatar-role-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #8c736e;
+      margin-bottom: 0.2rem;
     }
-    .character-name {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #1e1e1e;
+    .avatar-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: #2b2b2b;
       line-height: 1.2;
     }
-    .character-speech {
-      background: #ffffff;
-      border: 2px dashed #1e1e1e;
-      border-radius: 12px;
-      padding: 0.6rem 0.8rem;
+    .avatar-desc {
       font-size: 0.78rem;
-      font-weight: 600;
-      line-height: 1.6;
-      color: #333333;
+      line-height: 1.65;
+      color: #666666;
+      max-width: 220px;
+      margin-top: 0.45rem;
+    }
+    .contact-btn {
       margin-top: 0.8rem;
-    }
-
-    .couple-comic-connector {
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-    }
-    .match-stamp {
-      width: 50px;
-      height: 50px;
-      background: #ffd166;
-      border: 3px solid #1e1e1e;
-      box-shadow: 3px 3px 0 #1e1e1e;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      transform: rotate(12deg);
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid #dce8e6;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #555;
+      background: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
     /* ══════════════════════════════════════════
-       CALENDAR (COMIC STYLE)
+       CALENDAR (VINTAGE PASTEL)
     ══════════════════════════════════════════ */
-    .comic-cal-wrap {
-      border: 3.5px solid #1e1e1e;
-      border-radius: 20px;
+    .cal-wrap {
+      border: 1px solid #dce8e6;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 6px 6px 0 #1e1e1e;
       background: #ffffff;
+      box-shadow: 0 6px 20px rgba(80, 105, 100, 0.06);
     }
-    .comic-cal-header {
-      background: #ff4757;
+    .cal-header {
+      background: #7d9692;
       color: #ffffff;
-      border-bottom: 3.5px solid #1e1e1e;
       text-align: center;
-      padding: 1rem;
+      padding: 1rem 1rem;
     }
-    .comic-cal-month {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
+    .cal-month {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      text-shadow: 2px 2px 0 #1e1e1e;
     }
-    .comic-cal-year {
-      font-size: 0.82rem;
-      font-weight: 700;
-      opacity: 0.95;
+    .cal-year {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      opacity: 0.85;
+      margin-top: 0.2rem;
     }
-    .comic-cal-grid {
+    .cal-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       background: #ffffff;
     }
-    .comic-cal-dow {
-      background: #ffd166;
-      font-size: 0.72rem;
-      font-weight: 800;
+    .cal-dow {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #1e1e1e;
+      color: #7d9692;
       text-align: center;
-      padding: 0.65rem 0.2rem;
-      border-right: 2px solid #1e1e1e;
-      border-bottom: 2px solid #1e1e1e;
+      padding: 0.7rem 0.2rem;
+      background: #f7faf9;
+      border-bottom: 1px solid #eef3f2;
     }
-    .comic-cal-dow:last-child { border-right: none; }
-    .comic-cal-day {
+    .cal-day {
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
-      font-weight: 700;
+      font-weight: 500;
       text-align: center;
       padding: 0.65rem 0.2rem;
-      border-right: 1.5px solid #ececec;
-      border-bottom: 1.5px solid #ececec;
-      color: #1e1e1e;
+      color: #333333;
       position: relative;
     }
-    .comic-cal-day:nth-child(7n) { border-right: none; }
-    .comic-cal-day.empty { color: transparent; pointer-events: none; }
-    .comic-cal-day.hi {
-      background: #ff4757;
+    .cal-day.empty { color: transparent; pointer-events: none; }
+    .cal-day.hi {
+      background: #e29b8f;
       color: #ffffff !important;
-      font-weight: 800;
-      font-size: 1.25rem;
-      border-radius: 8px;
+      font-weight: 700;
+      border-radius: 50%;
     }
-    .comic-cal-day.hi::after {
-      content: '★ CƯỚI NÈ!';
+    .cal-day.hi::after {
+      content: '♥';
       position: absolute;
       bottom: 2px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.48rem;
-      font-weight: 800;
-      color: #ffd166;
-      white-space: nowrap;
+      font-size: 0.35rem;
+      color: #ffffff;
     }
-
-    .comic-cal-footer {
+    .cal-footer-text {
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 0.9rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
       font-size: 1.05rem;
-      font-weight: 800;
-      color: #1e1e1e;
+      font-weight: 600;
+      color: #555555;
     }
 
     /* ══════════════════════════════════════════
-       VENUE + MAP (MANGA PANEL)
+       VENUE + MAP
     ══════════════════════════════════════════ */
-    .comic-venue-panel {
-      text-align: center;
-      margin-bottom: 1.4rem;
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #2b2b2b;
     }
-    .comic-venue-name {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: #ff4757;
-      text-shadow: 2px 2px 0 #ffd166;
+    .venue-sub {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #7d8e8b;
+      margin-top: 0.35rem;
     }
-    .comic-venue-sub {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #1e1e1e;
-      margin-top: 0.3rem;
-    }
-    .comic-map-wrap {
-      border: 3.5px solid #1e1e1e;
-      border-radius: 20px;
-      box-shadow: 6px 6px 0 #1e1e1e;
+    .map-wrap {
+      border: 1px solid #dce8e6;
+      border-radius: 18px;
       overflow: hidden;
-      position: relative;
+      box-shadow: 0 6px 22px rgba(80, 105, 100, 0.08);
     }
-    .comic-map-wrap iframe {
+    .map-wrap iframe {
       width: 100%;
       height: 250px;
       display: block;
@@ -695,48 +584,61 @@
     }
 
     /* ══════════════════════════════════════════
-       ALBUM (COMIC POLAROID TILES)
+       ALBUM
     ══════════════════════════════════════════ */
-    .comic-album-grid {
+    .album-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
     @media (max-width: 520px) {
-      .comic-album-grid { grid-template-columns: repeat(2, 1fr); }
+      .album-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .comic-album-item {
+    .album-item {
       position: relative;
       aspect-ratio: 1;
-      border: 3px solid #1e1e1e;
-      border-radius: 16px;
-      box-shadow: 4px 4px 0 #1e1e1e;
+      border-radius: 12px;
       overflow: hidden;
+      border: 1px solid #e0ecea;
+      box-shadow: 0 4px 12px rgba(80, 105, 100, 0.06);
       background: #ffffff;
       cursor: pointer;
-      transition: transform 0.3s ease;
     }
-    .comic-album-item:hover {
-      transform: scale(1.05) rotate(2deg);
-    }
-    .comic-album-item img {
+    .album-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.5s ease;
     }
-    .comic-album-tag {
+    .album-item:hover img {
+      transform: scale(1.06);
+    }
+    .album-item .overlay {
       position: absolute;
-      bottom: 6px;
-      left: 6px;
-      background: #ffd166;
-      border: 1.5px solid #1e1e1e;
-      border-radius: 6px;
-      font-size: 0.62rem;
-      font-weight: 800;
-      padding: 0.15rem 0.5rem;
-      color: #1e1e1e;
+      inset: 0;
+      background: rgba(40, 55, 52, 0);
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .comic-album-placeholder {
+    .album-item:hover .overlay {
+      background: rgba(40, 55, 52, 0.25);
+    }
+    .album-item .overlay span {
+      opacity: 0;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+    .album-item:hover .overlay span {
+      opacity: 1;
+    }
+
+    .album-placeholder {
       width: 100%;
       height: 100%;
       display: flex;
@@ -744,53 +646,42 @@
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      background: #e0f2fe;
-      color: #0284c7;
-      font-size: 0.72rem;
-      font-weight: 800;
+      background: #f4f8f7;
+      color: #7d9692;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
     }
 
-    .comic-album-note {
-      font-family: 'Patrick Hand', cursive;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #ff4757;
+    .verse-box {
       text-align: center;
-      margin-top: 1rem;
+      padding: 1.5rem 1rem;
+      background: #fbfdfc;
+      border-radius: 16px;
+      border: 1px dashed #dce8e6;
+      margin: 2.2rem 0;
+    }
+    .verse-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: #444444;
     }
 
-    /* ══════════════════════════════════════════
-       FOOTER (COMIC SPEECH BUBBLE)
-    ══════════════════════════════════════════ */
-    .comic-footer-bubble {
-      background: #fffdf5;
-      border: 3.5px solid #1e1e1e;
-      box-shadow: 6px 6px 0 #1e1e1e;
-      border-radius: 24px;
-      padding: 1.6rem 1.4rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .comic-verse-text {
-      font-size: 1.15rem;
-      font-weight: 700;
-      line-height: 1.7;
-      color: #1e1e1e;
-    }
-
-    /* Scroll Reveal System */
+    /* Scroll Reveal */
     [data-reveal] {
       opacity: 0;
       will-change: opacity, transform;
-      transition: opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+      transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
-    [data-reveal], [data-reveal="up"] { transform: translateY(28px); }
+    [data-reveal], [data-reveal="up"] { transform: translateY(24px); }
     [data-reveal].v, [data-reveal="up"].v { opacity: 1; transform: translateY(0); }
-    [data-reveal="left"] { transform: translateX(-30px); }
+    [data-reveal="left"] { transform: translateX(-24px); }
     [data-reveal="left"].v { opacity: 1; transform: translateX(0); }
-    [data-reveal="right"] { transform: translateX(30px); }
+    [data-reveal="right"] { transform: translateX(24px); }
     [data-reveal="right"].v { opacity: 1; transform: translateX(0); }
-    [data-reveal="scale"] { transform: scale(0.92); }
+    [data-reveal="scale"] { transform: scale(0.94); }
     [data-reveal="scale"].v { opacity: 1; transform: scale(1); }
     [data-reveal="fade"] { transform: none; }
     [data-reveal="fade"].v { opacity: 1; }
@@ -801,297 +692,298 @@
 </head>
 <body>
 
-<!-- ═══════════════════════ CRAYON SHIN-CHAN MANGA INTRO ═══════════════════════ -->
-<div id="shin-intro-screen" onclick="openComic()">
-  <!-- Comic Floating Clouds -->
-  <div class="comic-cloud cloud-top-left"></div>
-  <div class="comic-cloud cloud-top-right"></div>
-  <div class="cloud-bottom-left comic-cloud"></div>
-  <div class="cloud-bottom-right comic-cloud"></div>
+<!-- ═══════════════════════ VINTAGE PASTEL INTRO SCREEN ═══════════════════════ -->
+<div id="vintage-intro-screen" onclick="openVintageCard()">
+  <div class="screen-ambient-glow"></div>
 
-  <!-- Comic Cover Invitation Card -->
-  <div id="comic-card">
-    <div class="comic-star-seal">
-      <span>NK</span>
+  <div class="vintage-intro-card">
+    <!-- Vertical Watercolor Stamp (theo mẫu ảnh) -->
+    <div class="stamp-box-wrap">
+      <div class="stamp-vertical-block">
+        <span class="stamp-col-text">NHẬT ANH</span>
+        <div class="stamp-v-divider"></div>
+        <span class="stamp-col-text">KHÁNH HUYỀN</span>
+      </div>
     </div>
 
-    <div class="comic-speech-bubble">
-      <span>★ THIỆP MỜI ĐẶC BIỆT NÈ! ★</span>
-    </div>
+    <p class="intro-tag">Trân trọng kính mời</p>
+    <h2 class="intro-guest" id="intro-guest-name">Quý Khách</h2>
 
-    <p style="font-size: 0.78rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #1e1e1e; margin-bottom: 0.3rem;">
-      Trân trọng kính mời:
-    </p>
+    <div style="width: 36px; height: 1.5px; background: #e29b8f; margin: 0.8rem auto 1rem;"></div>
 
-    <h2 class="comic-card-title" id="comic-guest-name">Quý Khách</h2>
+    <p class="intro-couple-names">Nguyễn Ngọc Nhật Anh<br>&amp; Nguyễn Thị Khánh Huyền</p>
+    <p class="intro-date-venue">27 · 01 · 2027 · Bistro Garden Ecopark</p>
 
-    <div class="comic-couple-banner">
-      <p class="comic-couple-names">Nguyễn Ngọc Nhật Anh<br>&amp; Nguyễn Thị Khánh Huyền</p>
-      <p class="comic-date-badge">27 · 01 · 2027 · BISTRO GARDEN ECOPARK</p>
-    </div>
-
-    <div class="comic-click-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+    <div class="intro-open-btn">
+      <span>Chạm để mở thiệp cưới</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 5v14m0-14l-6 6m6-6l6 6"/>
       </svg>
-      <span>BẤM VÀO ĐỂ MỞ THIỆP NÈ! ✨</span>
     </div>
   </div>
 </div>
 
-<!-- ════ Falling Colorful Confetti & Stars Canvas ════ -->
+<!-- ════ Soft Floating Petals Canvas ════ -->
 <canvas id="inv-canvas"></canvas>
 
-<!-- ═══════════════════════ MAIN MANGA INVITATION PAGE ═══════════════════════ -->
+<!-- ═══════════════════════ MAIN VINTAGE INVITATION CARD ═══════════════════════ -->
 <div id="invitation">
   <div class="page">
-    <div class="comic-page-outer">
+    <div class="vintage-card-body">
 
-      <!-- Comic Corner Stickers -->
-      <div class="comic-corner corner-tl">
-        <svg viewBox="0 0 40 40"><polygon points="20,2 25,14 38,15 28,24 31,37 20,30 9,37 12,24 2,15 15,14" fill="#ffd166" stroke="#1e1e1e" stroke-width="3"/></svg>
-      </div>
-      <div class="comic-corner corner-tr">
-        <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#ff4757" stroke="#1e1e1e" stroke-width="3"/><text x="20" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#fff">♥</text></svg>
-      </div>
-      <div class="comic-corner corner-bl">
-        <svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="8" fill="#4fc3f7" stroke="#1e1e1e" stroke-width="3"/><text x="20" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">★</text></svg>
-      </div>
-      <div class="comic-corner corner-br">
-        <svg viewBox="0 0 40 40"><polygon points="20,2 25,14 38,15 28,24 31,37 20,30 9,37 12,24 2,15 15,14" fill="#ffd166" stroke="#1e1e1e" stroke-width="3"/></svg>
-      </div>
-
-      <!-- Manga Top Header Bar -->
-      <div class="manga-top-bar">
-        <span class="manga-vol-tag">TẬP ĐẶC BIỆT: HÔN LỄ THẾ KỶ 🖍️</span>
-        <span class="manga-sound-fx">Kira Kira ✨</span>
+      <!-- Top Watercolor Stamp (như ảnh mẫu) -->
+      <div class="main-top-stamp">
+        <div class="stamp-vertical-block" style="transform: scale(0.9);">
+          <span class="stamp-col-text">NHẬT ANH</span>
+          <div class="stamp-v-divider"></div>
+          <span class="stamp-col-text">KHÁNH HUYỀN</span>
+        </div>
       </div>
 
       <!-- ════ HERO SECTION ════ -->
       <div class="sec text-center">
         <div data-reveal="fade">
-          <span class="comic-announce">— Together with their families —</span>
+          <p class="hero-announce">— Together with their families —</p>
         </div>
 
-        <!-- Dynamic Guest Callout Bubble -->
-        <div id="guest-block" data-reveal="up" style="display:none; margin: 1.2rem auto 1.5rem; max-width: 460px;">
-          <div style="background:#fff3cd; border:3px solid #1e1e1e; box-shadow:4px 4px 0 #1e1e1e; border-radius:20px; padding:0.9rem 1.4rem;">
-            <p style="font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:0.1em; color:#ff4757; margin-bottom:0.3rem">
-              Trân trọng kính mời
-            </p>
-            <h3 id="guest-name" style="font-size:clamp(1.5rem, 5vw, 2.2rem); font-weight:800; color:#1e1e1e; line-height:1.2; margin:0.2rem 0;"></h3>
-            <p style="font-size:0.8rem; font-weight:700; color:#333; margin-top:0.3rem">
-              Đến chung vui cùng bữa tiệc hạnh phúc của tụi mình nha! 🎉
-            </p>
+        <!-- Dynamic Guest Block -->
+        <div id="guest-block" data-reveal="up" style="display:none; margin: 1.5rem auto 1rem; max-width: 440px;">
+          <span style="font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#8c736e; background:#faedea; padding:0.35rem 1.2rem; border-radius:999px; display:inline-block; margin-bottom:0.6rem">
+            Trân trọng kính mời
+          </span>
+          <h3 id="guest-name" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:clamp(1.6rem, 5vw, 2.3rem); color:#2b2b2b; line-height:1.25; margin:0.3rem 0;"></h3>
+          <p style="font-size:0.75rem; color:#777777; margin-top:0.3rem">
+            cùng tham dự hôn lễ ấm áp của chúng tôi
+          </p>
+          <div style="display:flex; justify-content:center; margin-top:0.8rem">
+            <div style="width:40px; height:1.5px; background:#e29b8f;"></div>
           </div>
         </div>
 
-        <!-- Cartoon Graphic Separator -->
-        <div data-reveal="scale" style="display:flex; justify-content:center; align-items:center; gap:0.6rem; margin:1.4rem 0">
-          <span style="font-size:1.4rem;">🖍️</span>
-          <div style="width:70px; height:4px; background:#ff4757; border-radius:999px; border:1px solid #1e1e1e;"></div>
-          <span style="font-size:1.6rem;">💖</span>
-          <div style="width:70px; height:4px; background:#ffd166; border-radius:999px; border:1px solid #1e1e1e;"></div>
-          <span style="font-size:1.4rem;">🍫</span>
+        <div data-reveal="scale" style="display:flex; justify-content:center; align-items:center; gap:0.6rem; margin:1.5rem 0">
+          <svg width="140" height="24" viewBox="0 0 140 24" fill="none">
+            <line x1="0" y1="12" x2="55" y2="12" stroke="#dce8e6" stroke-width="1"/>
+            <line x1="85" y1="12" x2="140" y2="12" stroke="#dce8e6" stroke-width="1"/>
+            <circle cx="70" cy="12" r="3.5" fill="#e29b8f"/>
+          </svg>
         </div>
 
-        <!-- Groom & Bride Names -->
-        <div data-reveal="left"><h2 class="comic-groom-name">Nguyễn Ngọc Nhật Anh</h2></div>
-        <div data-reveal="fade"><span class="comic-and-symbol">&amp;</span></div>
-        <div data-reveal="right" style="margin-bottom:0.8rem"><h2 class="comic-bride-name">Nguyễn Thị Khánh Huyền</h2></div>
-        <div data-reveal="up"><p class="comic-united-label">are joyfully united in marriage</p></div>
+        <div data-reveal="left"><h2 class="name-groom">Nguyễn Ngọc Nhật Anh</h2></div>
+        <div data-reveal="fade"><p class="names-connector">&amp;</p></div>
+        <div data-reveal="right" style="margin-bottom:0.8rem"><h2 class="name-bride">Nguyễn Thị Khánh Huyền</h2></div>
+        <div data-reveal="up"><p class="hero-united-text">are joyfully united in marriage</p></div>
 
-        <!-- ẢNH GẮN TRÊN THIỆP CƯỚI (COMIC PHOTO KEEPSAKE) -->
+        <!-- ẢNH GẮN TRÊN THIỆP CƯỚI (VINTAGE POLAROID KEEPSAKE) -->
         <div data-reveal="scale" style="margin-top: 2rem;">
-          <div class="comic-photo-card">
-            <div class="comic-tape-top">Kỷ Niệm Nè</div>
-            <div class="comic-photo-grid">
+          <div class="retro-photo-wrap">
+            <div class="retro-tape-clip"></div>
+            <div class="retro-photo-grid">
               <img src="groom.jpg" alt="Chú rể Nhật Anh" />
               <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
             </div>
-            <p class="comic-photo-caption">"Hạnh phúc trọn vẹn khi ta tìm thấy nhau giữa cuộc đời!"</p>
+            <p class="retro-photo-caption">"Hạnh phúc trọn vẹn khi ta tìm thấy nhau giữa cuộc đời"</p>
           </div>
         </div>
       </div>
 
-      <div class="comic-divider" data-reveal="fade">
-        <span style="font-size:1.2rem;">✨ ★ ✨</span>
+      <div class="retro-divider" data-reveal="fade">
+        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
       </div>
 
-      <!-- ════ AVATARS: CHÚ RỂ & CÔ DÂU ════ -->
+      <!-- ════ COUNTDOWN TIMER (NHƯ ẢNH MẪU CỦA USER) ════ -->
+      <div class="countdown-section" data-reveal="up">
+        <p class="countdown-title">Mình cùng đếm ngược Thời Gian</p>
+        <div class="countdown-grid">
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-days">00</span>
+            <span class="countdown-label">Ngày</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-hours">00</span>
+            <span class="countdown-label">Giờ</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-mins">00</span>
+            <span class="countdown-label">Phút</span>
+          </div>
+          <div class="countdown-box">
+            <span class="countdown-number" id="cd-secs">00</span>
+            <span class="countdown-label">Giây</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="retro-divider" data-reveal="fade">
+        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#7d9692">◆</span>
+      </div>
+
+      <!-- ════ THÔNG TIN LIÊN HỆ / CÔ DÂU CHÚ RỂ ════ -->
       <div class="sec">
-        <div class="comic-section-header" data-reveal="up">
-          <span class="comic-title-badge">The Happy Couple</span>
-          <h3 class="comic-subtitle-vn">Chú Rể &amp; Cô Dâu</h3>
+        <div class="section-title-retro" data-reveal="up">
+          <span class="retro-badge-label">Thông Tin Liên Hệ</span>
+          <h3 class="retro-title-vn">Chú Rể &amp; Cô Dâu</h3>
         </div>
         
-        <div class="couple-cards-grid">
+        <div class="couple-avatars-grid">
           <!-- Chú Rể -->
-          <div class="manga-character-card" data-reveal="left">
-            <div class="character-avatar-wrap">
+          <div class="avatar-card" data-reveal="left">
+            <div class="avatar-frame">
               <img src="groom.jpg" alt="Chú Rể Nguyễn Ngọc Nhật Anh" />
             </div>
-            <span class="role-bubble-tag" style="background:#06b6d4;">Chú Rể</span>
-            <h4 class="character-name">Nhật Anh</h4>
-            <p class="character-speech">
+            <span class="avatar-role-label">Chú Rể</span>
+            <h4 class="avatar-name">Nhật Anh</h4>
+            <p class="avatar-desc">
               "Chàng trai luôn điềm tĩnh, ấm áp và luôn sẵn lòng che chở cho người mình yêu trên mọi chặng đường."
             </p>
-          </div>
-
-          <!-- Interlocking Comic Heart Stamp -->
-          <div class="couple-comic-connector" data-reveal="scale">
-            <div class="match-stamp">
-              <span>❤️</span>
+            <div class="contact-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e29b8f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Liên Hệ Chú Rể</span>
             </div>
-            <span style="font-family:'Patrick Hand',cursive; font-size:0.95rem; font-weight:700; color:#ff4757; margin-top:0.4rem">
-              100% Match!
-            </span>
           </div>
 
           <!-- Cô Dâu -->
-          <div class="manga-character-card" data-reveal="right">
-            <div class="character-avatar-wrap" style="background:#ffeaa7;">
+          <div class="avatar-card" data-reveal="right">
+            <div class="avatar-frame">
               <img src="bride.jpg" alt="Cô Dâu Nguyễn Thị Khánh Huyền" />
             </div>
-            <span class="role-bubble-tag">Cô Dâu</span>
-            <h4 class="character-name">Khánh Huyền</h4>
-            <p class="character-speech">
+            <span class="avatar-role-label">Cô Dâu</span>
+            <h4 class="avatar-name">Khánh Huyền</h4>
+            <p class="avatar-desc">
               "Cô gái dịu dàng với nụ cười trong trẻo, mảnh ghép diệu kỳ thắp sáng và hoàn thiện cuộc sống của anh."
             </p>
+            <div class="contact-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e29b8f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Liên Hệ Cô Dâu</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="comic-divider" data-reveal="fade">
-        <span style="font-size:1.2rem;">🎉 ★ 🎉</span>
+      <div class="retro-divider" data-reveal="fade">
+        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
       </div>
 
-      <!-- ════ CALENDAR ════ -->
+      <!-- ════ THE WEDDING DAY (CALENDAR) ════ -->
       <div class="sec" data-reveal="up">
-        <div class="comic-section-header">
-          <span class="comic-title-badge">The Wedding Day</span>
-          <h3 class="comic-subtitle-vn">Ngày Hôn Lễ</h3>
+        <div class="section-title-retro">
+          <span class="retro-badge-label">The Wedding Day</span>
+          <h3 class="retro-title-vn">Ngày Hôn Lễ</h3>
         </div>
         
-        <div class="comic-cal-wrap">
-          <div class="comic-cal-header">
-            <p class="comic-cal-month">January 2027</p>
-            <p class="comic-cal-year">THÁNG 1 · NĂM 2027</p>
+        <div class="cal-wrap">
+          <div class="cal-header">
+            <p class="cal-month">January 2027</p>
+            <p class="cal-year">THÁNG 1 · NĂM 2027</p>
           </div>
-          <div class="comic-cal-grid">
-            <div class="comic-cal-dow">Mon</div><div class="comic-cal-dow">Tue</div><div class="comic-cal-dow">Wed</div><div class="comic-cal-dow">Thu</div><div class="comic-cal-dow">Fri</div><div class="comic-cal-dow">Sat</div><div class="comic-cal-dow">Sun</div>
-            <div class="comic-cal-day empty">-</div><div class="comic-cal-day empty">-</div><div class="comic-cal-day empty">-</div><div class="comic-cal-day empty">-</div>
-            <div class="comic-cal-day">1</div><div class="comic-cal-day">2</div><div class="comic-cal-day">3</div>
-            <div class="comic-cal-day">4</div><div class="comic-cal-day">5</div><div class="comic-cal-day">6</div><div class="comic-cal-day">7</div><div class="comic-cal-day">8</div><div class="comic-cal-day">9</div><div class="comic-cal-day">10</div>
-            <div class="comic-cal-day">11</div><div class="comic-cal-day">12</div><div class="comic-cal-day">13</div><div class="comic-cal-day">14</div><div class="comic-cal-day">15</div><div class="comic-cal-day">16</div><div class="comic-cal-day">17</div>
-            <div class="comic-cal-day">18</div><div class="comic-cal-day">19</div><div class="comic-cal-day">20</div><div class="comic-cal-day">21</div><div class="comic-cal-day">22</div><div class="comic-cal-day">23</div><div class="comic-cal-day">24</div>
-            <div class="comic-cal-day">25</div><div class="comic-cal-day">26</div><div class="comic-cal-day hi">27</div><div class="comic-cal-day">28</div><div class="comic-cal-day">29</div><div class="comic-cal-day">30</div><div class="comic-cal-day">31</div>
+          <div class="cal-grid">
+            <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
+            <div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div>
+            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+            <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div>
+            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
+            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+            <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day hi">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
           </div>
         </div>
-        <p class="comic-cal-footer">
-          Thứ Tư · Wednesday · 27 January 2027 🎈
+        <p class="cal-footer-text">
+          Thứ Tư · Wednesday · 27 January 2027
         </p>
       </div>
 
-      <div class="comic-divider" data-reveal="fade">
-        <span style="font-size:1.2rem;">📍 ★ 📍</span>
+      <div class="retro-divider" data-reveal="fade">
+        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#7d9692">◆</span>
       </div>
 
       <!-- ════ VENUE + MAP ════ -->
       <div class="sec">
-        <div class="comic-section-header" data-reveal="up">
-          <span class="comic-title-badge">Wedding Venue</span>
-          <h3 class="comic-subtitle-vn">Địa Điểm Tổ Chức</h3>
+        <div class="section-title-retro" data-reveal="up">
+          <span class="retro-badge-label">Wedding Venue</span>
+          <h3 class="retro-title-vn">Địa Điểm Tổ Chức</h3>
         </div>
-        <div class="comic-venue-panel" data-reveal="up">
-          <p class="comic-venue-name">Bistro Garden</p>
-          <p class="comic-venue-sub">Ecopark · Văn Giang · Hưng Yên</p>
+        <div class="text-center" style="margin-bottom:1.3rem" data-reveal="up">
+          <p class="venue-name">Bistro Garden</p>
+          <p class="venue-sub">Ecopark · Văn Giang · Hưng Yên</p>
         </div>
-        <div class="comic-map-wrap" data-reveal="scale">
+        <div class="map-wrap" data-reveal="scale">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4793824855893!2d106.0592!3d20.9928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abe5f62ccca3%3A0xce7d27ba81a5a3c9!2sBistro%20Garden%20Ecopark!5e0!3m2!1svi!2svn!4v1694000000000!5m2!1svi!2svn"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bistro Garden Ecopark">
           </iframe>
         </div>
       </div>
 
-      <div class="comic-divider" data-reveal="fade">
-        <span style="font-size:1.2rem;">📸 ★ 📸</span>
+      <div class="retro-divider" data-reveal="fade">
+        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
       </div>
 
       <!-- ════ ALBUM ẢNH CƯỚI ════ -->
       <div class="sec">
-        <div class="comic-section-header" data-reveal="up">
-          <span class="comic-title-badge">Wedding Album</span>
-          <h3 class="comic-subtitle-vn">Album Hình Cưới</h3>
+        <div class="section-title-retro" data-reveal="up">
+          <span class="retro-badge-label">Wedding Album</span>
+          <h3 class="retro-title-vn">Khoảnh Khắc Hạnh Phúc</h3>
         </div>
-        <p data-reveal="fade" style="text-align:center; font-family:'Patrick Hand',cursive; font-size:1.25rem; font-weight:700; color:#ff4757; margin-top:-1rem; margin-bottom:1.4rem">
-          Những khoảnh khắc lưu giữ tình yêu của chúng mình
-        </p>
-        <div class="comic-album-grid">
-          <div class="comic-album-item" data-reveal="up" style="--d:0.0s">
+        <div class="album-grid">
+          <div class="album-item" data-reveal="up" style="--d:0.0s">
             <img src="groom.jpg" alt="Chú rể Nhật Anh" />
-            <span class="comic-album-tag">Nhật Anh</span>
+            <div class="overlay"><span>Nhật Anh</span></div>
           </div>
-          <div class="comic-album-item" data-reveal="up" style="--d:0.1s">
+          <div class="album-item" data-reveal="up" style="--d:0.1s">
             <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
-            <span class="comic-album-tag">Khánh Huyền</span>
+            <div class="overlay"><span>Khánh Huyền</span></div>
           </div>
-          <div class="comic-album-item" data-reveal="up" style="--d:0.2s">
-            <div class="comic-album-placeholder">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div class="album-item" data-reveal="up" style="--d:0.2s">
+            <div class="album-placeholder">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               <span>Hẹn Hò Đầu Tiên</span>
             </div>
-            <span class="comic-album-tag">Khoảnh Khắc</span>
+            <div class="overlay"><span>Khoảnh Khắc</span></div>
           </div>
-          <div class="comic-album-item" data-reveal="up" style="--d:0.3s">
-            <div class="comic-album-placeholder">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div class="album-item" data-reveal="up" style="--d:0.3s">
+            <div class="album-placeholder">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               <span>Chuyến Đi Xa</span>
             </div>
-            <span class="comic-album-tag">Bình Yên</span>
+            <div class="overlay"><span>Bình Yên</span></div>
           </div>
-          <div class="comic-album-item" data-reveal="up" style="--d:0.4s">
-            <div class="comic-album-placeholder">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div class="album-item" data-reveal="up" style="--d:0.4s">
+            <div class="album-placeholder">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               <span>Lời Cầu Hôn</span>
             </div>
-            <span class="comic-album-tag">Hẹn Ước</span>
+            <div class="overlay"><span>Hẹn Ước</span></div>
           </div>
-          <div class="comic-album-item" data-reveal="up" style="--d:0.5s">
-            <div class="comic-album-placeholder">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <div class="album-item" data-reveal="up" style="--d:0.5s">
+            <div class="album-placeholder">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
               <span>Save The Date</span>
             </div>
-            <span class="comic-album-tag">27.01.2027</span>
+            <div class="overlay"><span>27.01.2027</span></div>
           </div>
         </div>
-        <p data-reveal="fade" class="comic-album-note">
-          · Bộ ảnh cưới chính thức sẽ tiếp tục được cập nhật nha! ·
+        <p data-reveal="fade" style="font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:#8c9e9b; text-align:center; margin-top:1rem">
+          · Bộ ảnh cưới chính thức sẽ tiếp tục được cập nhật ·
         </p>
       </div>
 
-      <div class="comic-divider" data-reveal="fade">
-        <span style="font-size:1.2rem;">💌 ★ 💌</span>
-      </div>
-
-      <!-- ════ FOOTER (COMIC SPEECH BUBBLE) ════ -->
-      <div class="comic-footer-bubble" data-reveal="up">
-        <p class="comic-verse-text">
+      <!-- ════ FOOTER QUOTE ════ -->
+      <div class="verse-box" data-reveal="up">
+        <p class="verse-text">
           "Hai cuộc đời, một câu chuyện.<br>
           Cảm ơn bạn đã luôn là một phần trân quý trong hành trình hạnh phúc của chúng mình!"
         </p>
-        <div style="margin-top:1.2rem; display:flex; justify-content:center; gap:0.4rem;">
-          <span style="font-size:1.3rem;">✨</span>
-          <span style="font-size:1.3rem;">💖</span>
-          <span style="font-size:1.3rem;">🎈</span>
-        </div>
       </div>
 
       <div class="text-center" data-reveal="up">
-        <p style="font-size:0.95rem; font-weight:800; text-transform:uppercase; letter-spacing:0.12em; color:#1e1e1e;">
+        <div style="display:flex; justify-content:center; margin-bottom:0.8rem">
+          <svg width="100" height="20" viewBox="0 0 100 20" fill="none">
+            <line x1="0" y1="10" x2="38" y2="10" stroke="#dce8e6" stroke-width="1"/>
+            <line x1="62" y1="10" x2="100" y2="10" stroke="#dce8e6" stroke-width="1"/>
+            <rect x="46" y="6" width="8" height="8" transform="rotate(45 50 10)" fill="none" stroke="#e29b8f" stroke-width="1"/>
+          </svg>
+        </div>
+        <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#2b2b2b;">
           27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark
         </p>
-        <p style="font-size:0.85rem; font-weight:700; color:#ff4757; margin-top:0.4rem;">
+        <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; margin-top:0.4rem; color:#8c736e;">
           Nhật Anh &amp; Khánh Huyền
         </p>
       </div>
@@ -1108,11 +1000,11 @@
   if (!guest || !guest.trim()) return;
   const name = decodeURIComponent(guest.trim());
   
-  // Update comic intro screen
-  const comicName = document.getElementById('comic-guest-name');
-  if (comicName) comicName.textContent = name;
+  // Update intro screen
+  const introName = document.getElementById('intro-guest-name');
+  if (introName) introName.textContent = name;
 
-  // Update main invitation guest block
+  // Update main card guest block
   const guestBlock = document.getElementById('guest-block');
   const guestNameEl = document.getElementById('guest-name');
   if (guestBlock && guestNameEl) {
@@ -1121,27 +1013,55 @@
   }
 })();
 
-/* ── Comic Opening Animation on Click ── */
+/* ── Vintage Screen Open Animation on Click ── */
 let opened = false;
-function openComic() {
+function openVintageCard() {
   if (opened) return;
   opened = true;
 
-  const introScreen = document.getElementById('shin-intro-screen');
-  introScreen.classList.add('parting');
+  const introScreen = document.getElementById('vintage-intro-screen');
+  introScreen.classList.add('hidden-screen');
 
-  // Fade out screen and reveal main manga card
   setTimeout(() => {
-    introScreen.classList.add('hidden-screen');
     document.getElementById('inv-canvas').style.display = 'block';
     document.getElementById('invitation').classList.add('visible');
-    startConfetti();
+    startPetals();
     startReveal();
-  }, 900);
+    startCountdown();
+  }, 450);
 
   setTimeout(() => {
     introScreen.style.display = 'none';
-  }, 2000);
+  }, 1000);
+}
+
+/* ── Live Countdown Timer to 27/01/2027 10:00 AM (ICT) ── */
+function startCountdown() {
+  const targetDate = new Date("2027-01-27T10:00:00+07:00").getTime();
+  
+  function update() {
+    const now = new Date().getTime();
+    const diff = targetDate - now;
+
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const dEl = document.getElementById('cd-days');
+      const hEl = document.getElementById('cd-hours');
+      const mEl = document.getElementById('cd-mins');
+      const sEl = document.getElementById('cd-secs');
+
+      if (dEl) dEl.textContent = days < 10 ? '0' + days : days;
+      if (hEl) hEl.textContent = hours < 10 ? '0' + hours : hours;
+      if (mEl) mEl.textContent = mins < 10 ? '0' + mins : mins;
+      if (sEl) sEl.textContent = secs < 10 ? '0' + secs : secs;
+    }
+  }
+  update();
+  setInterval(update, 1000);
 }
 
 /* ── Scroll Reveal IntersectionObserver (Looping) ── */
@@ -1166,12 +1086,11 @@ function startReveal() {
   document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 }
 
-/* ── Falling Colorful Comic Confetti Canvas ── */
-function startConfetti() {
+/* ── Gentle Petals Canvas ── */
+function startPetals() {
   const cvs = document.getElementById('inv-canvas');
   const ctx = cvs.getContext('2d');
   let W, H, P = [];
-  const colors = ['#ff4757', '#ffd166', '#4fc3f7', '#10b981', '#ff6b81', '#70a1ff'];
 
   function resize() {
     W = cvs.width = window.innerWidth;
@@ -1180,29 +1099,31 @@ function startConfetti() {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  function Particle(init) {
+  function Petal(init) {
     this.reset(init);
   }
-  Particle.prototype.reset = function(init) {
+  Petal.prototype.reset = function(init) {
     this.x = Math.random() * W;
     this.y = init ? Math.random() * H : -20;
-    this.size = 5 + Math.random() * 6;
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.vy = 1 + Math.random() * 1.5;
-    this.vx = (Math.random() - 0.5) * 0.8;
+    this.size = 3.5 + Math.random() * 5;
+    this.vy = 0.4 + Math.random() * 0.4;
+    this.vx = (Math.random() - 0.5) * 0.3;
     this.angle = Math.random() * Math.PI * 2;
-    this.spin = (Math.random() - 0.5) * 0.04;
-    this.isStar = Math.random() > 0.6;
+    this.spin = (Math.random() - 0.5) * 0.015;
+    this.sway = Math.random() * Math.PI * 2;
+    this.swaySpeed = 0.008 + Math.random() * 0.01;
+    this.opacity = 0.08 + Math.random() * 0.12;
   };
 
   for (let i = 0; i < 40; i++) {
-    P.push(new Particle(true));
+    P.push(new Petal(true));
   }
 
   function tick() {
     ctx.clearRect(0, 0, W, H);
     P.forEach(p => {
-      p.x += p.vx;
+      p.sway += p.swaySpeed;
+      p.x += p.vx + Math.sin(p.sway) * 0.35;
       p.y += p.vy;
       p.angle += p.spin;
 
@@ -1211,25 +1132,11 @@ function startConfetti() {
       ctx.save();
       ctx.translate(p.x, p.y);
       ctx.rotate(p.angle);
-      ctx.fillStyle = p.color;
-      ctx.strokeStyle = '#1e1e1e';
-      ctx.lineWidth = 1.2;
-
-      if (p.isStar) {
-        ctx.beginPath();
-        for (let j = 0; j < 5; j++) {
-          ctx.lineTo(Math.cos((18 + j * 72) * 0.01745) * p.size, -Math.sin((18 + j * 72) * 0.01745) * p.size);
-          ctx.lineTo(Math.cos((54 + j * 72) * 0.01745) * (p.size * 0.5), -Math.sin((54 + j * 72) * 0.01745) * (p.size * 0.5));
-        }
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-      } else {
-        ctx.beginPath();
-        ctx.rect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
-        ctx.fill();
-        ctx.stroke();
-      }
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = '#e29b8f';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.size * 0.45, p.size, 0, 0, Math.PI * 2);
+      ctx.fill();
       ctx.restore();
     });
     requestAnimationFrame(tick);
