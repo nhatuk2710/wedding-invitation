@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Invitation — Nhật Anh &amp; Khánh Huyền</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100%;
+      background: #fafaf8;
+      color: #0a0a0a;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Canvas background ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Outer frame ── */
+    .frame-outer {
+      border: 1px solid #d4d0c8;
+      padding: 2.5rem 3rem;
+      position: relative;
+      background: rgba(250,250,248,0.94);
+      backdrop-filter: blur(3px);
+    }
+    .frame-outer::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid #0a0a0a;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .frame-outer::after {
+      content: '';
+      position: absolute;
+      inset: 13px;
+      border: 1px solid rgba(10,10,10,0.1);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Corners ── */
+    .corner { position: absolute; width: 26px; height: 26px; z-index: 3; }
+    .corner svg { width: 100%; height: 100%; }
+    .corner-tl { top: 16px; left: 16px; }
+    .corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
+    .corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
+    .corner-br { bottom: 16px; right: 16px; transform: scale(-1); }
+
+    /* ═══════════════════════════════════════════════
+       SCROLL REVEAL SYSTEM
+       All [data-reveal] start hidden.
+       JS adds .is-visible when in viewport → animates in.
+       JS removes .is-visible when out → resets for next scroll.
+    ═══════════════════════════════════════════════ */
+
+    [data-reveal] {
+      opacity: 0;
+      will-change: opacity, transform;
+      transition:
+        opacity 0.85s cubic-bezier(.22,.61,.36,1),
+        transform 0.85s cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* Variant: fade up (default) */
+    [data-reveal],
+    [data-reveal="up"] {
+      transform: translateY(32px);
+    }
+    [data-reveal].is-visible,
+    [data-reveal="up"].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Variant: fade left */
+    [data-reveal="left"] {
+      transform: translateX(-36px);
+    }
+    [data-reveal="left"].is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Variant: fade right */
+    [data-reveal="right"] {
+      transform: translateX(36px);
+    }
+    [data-reveal="right"].is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Variant: scale */
+    [data-reveal="scale"] {
+      transform: scale(0.88);
+    }
+    [data-reveal="scale"].is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Variant: fade only */
+    [data-reveal="fade"] {
+      transform: none;
+    }
+    [data-reveal="fade"].is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Album items stagger via --delay CSS var */
+    [data-reveal][style*="--delay"] {
+      transition-delay: var(--delay, 0s);
+    }
+
+    /* ── Typography ── */
+    .label-sm {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+    .announce {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+    }
+    .name-groom {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.85rem, 5.5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      color: #0a0a0a;
+    }
+    .name-bride {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.85rem, 5.5vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      color: #0a0a0a;
+    }
+    .names-connector {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1rem;
+      color: #6b6b6b;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #d4d0c8;
+    }
+
+    /* ── Calendar ── */
+    .cal-wrap { border: 1px solid #d4d0c8; overflow: hidden; }
+    .cal-header {
+      background: #0a0a0a;
+      color: #fafaf8;
+      text-align: center;
+      padding: 0.9rem 1rem;
+    }
+    .cal-month {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    .cal-year {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 300;
+      letter-spacing: 0.4em;
+      opacity: 0.65;
+      margin-top: 0.2rem;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      border-top: 1px solid #d4d0c8;
+    }
+    .cal-dow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.48rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+      text-align: center;
+      padding: 0.6rem 0.2rem;
+      border-right: 1px solid #ede9e0;
+      border-bottom: 1px solid #ede9e0;
+    }
+    .cal-dow:last-child { border-right: none; }
+    .cal-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      text-align: center;
+      padding: 0.55rem 0.2rem;
+      border-right: 1px solid #ede9e0;
+      border-bottom: 1px solid #ede9e0;
+      color: #0a0a0a;
+      position: relative;
+    }
+    .cal-day:nth-child(7n) { border-right: none; }
+    .cal-day.empty { color: transparent; pointer-events: none; }
+    .cal-day.highlight {
+      background: #0a0a0a;
+      color: #fafaf8 !important;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .cal-day.highlight::after {
+      content: '♥';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.32rem;
+      color: #fafaf8;
+      opacity: 0.65;
+    }
+
+    /* ── Venue ── */
+    .venue-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0a0a0a;
+    }
+    .venue-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6b6b6b;
+      margin-top: 0.35rem;
+    }
+
+    /* ── Map ── */
+    .map-wrap {
+      overflow: hidden;
+      border: 1px solid #d4d0c8;
+      position: relative;
+    }
+    .map-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 5px solid rgba(250,250,248,0.9);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 240px;
+      display: block;
+      border: none;
+      filter: grayscale(1) contrast(1.05);
+    }
+
+    /* ── Album ── */
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .album-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .album-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: grayscale(0.2);
+    }
+    .album-item:hover img { transform: scale(1.06); }
+    .album-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0);
+      transition: background 0.3s;
+      z-index: 1;
+    }
+    .album-item:hover .overlay { background: rgba(10,10,10,0.18); }
+    /* Placeholder (when no real image) */
+    .album-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      color: #b0aa9e;
+    }
+    .album-placeholder svg { width: 26px; height: 26px; opacity: 0.45; }
+    .album-placeholder span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.44rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .ph-1 { background: linear-gradient(135deg,#e8e3da,#f0ece4); }
+    .ph-2 { background: linear-gradient(135deg,#f0ece4,#e4e0d7); }
+    .ph-3 { background: linear-gradient(135deg,#ddd9d0,#e8e3da); }
+    .ph-4 { background: linear-gradient(135deg,#e4e0d7,#f0ece4); }
+    .ph-5 { background: linear-gradient(135deg,#f0ece4,#ddd9d0); }
+    .ph-6 { background: linear-gradient(135deg,#e8e3da,#e4e0d7); }
+
+    /* ── Verse ── */
+    .verse {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.98rem;
+      line-height: 1.85;
+      color: #6b6b6b;
+      text-align: center;
+    }
+
+    /* ── Scroll hint ── */
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50%       { transform: translateY(6px); opacity: 1; }
+    }
+    .scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1.5rem;
+      animation: bounce-down 1.8s ease-in-out infinite;
+    }
+    .scroll-hint span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.48rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b0aa9e;
+    }
+
+    /* ── Section spacing ── */
+    .section { margin-bottom: 2.2rem; }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="page">
+  <div class="frame-outer">
+
+    <!-- Corners -->
+    <div class="corner corner-tl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="0.8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="0.8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
+    <div class="corner corner-tr"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="0.8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="0.8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
+    <div class="corner corner-bl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="0.8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="0.8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
+    <div class="corner corner-br"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="0.8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="0.8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
+
+    <div style="position:relative; z-index:2; padding: 1.5rem 0.5rem;">
+
+      <!-- ── HERO ─────────────────────────── -->
+      <div class="section text-center">
+
+        <div data-reveal="fade">
+          <p class="announce">— Together with their families —</p>
+        </div>
+
+        <!-- Guest block -->
+        <div id="guest-block" data-reveal="up" style="display:none; margin-top:1.5rem; margin-bottom:0.5rem;">
+          <p class="label-sm" style="margin-bottom:0.55rem;">Trân trọng kính mời</p>
+          <p id="guest-name" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.3rem,4vw,1.85rem);color:#0a0a0a;letter-spacing:0.06em;line-height:1.3;margin:0.3rem 0;"></p>
+          <p class="label-sm" style="margin-top:0.45rem;opacity:0.5;">cùng tham dự hôn lễ của chúng tôi</p>
+          <div style="display:flex;justify-content:center;margin-top:0.8rem;"><div style="width:44px;height:1px;background:#0a0a0a;opacity:0.15;"></div></div>
+        </div>
+
+        <!-- Floral ornament -->
+        <div data-reveal="scale" style="display:flex;justify-content:center;margin:1.8rem 0;">
+          <svg width="200" height="44" viewBox="0 0 200 44" fill="none">
+            <line x1="0" y1="22" x2="80" y2="22" stroke="#d4d0c8" stroke-width="0.7"/>
+            <line x1="120" y1="22" x2="200" y2="22" stroke="#d4d0c8" stroke-width="0.7"/>
+            <ellipse cx="100" cy="22" rx="4" ry="4" fill="none" stroke="#0a0a0a" stroke-width="0.9"/>
+            <path d="M100 13C103.5 16.5 103.5 18.5 100 22C96.5 18.5 96.5 16.5 100 13Z" fill="#0a0a0a" opacity="0.14"/>
+            <path d="M100 31C96.5 27.5 96.5 25.5 100 22C103.5 25.5 103.5 27.5 100 31Z" fill="#0a0a0a" opacity="0.14"/>
+            <path d="M91 22C94.5 18.5 96.5 18.5 100 22C96.5 25.5 94.5 25.5 91 22Z" fill="#0a0a0a" opacity="0.14"/>
+            <path d="M109 22C105.5 25.5 103.5 25.5 100 22C103.5 18.5 105.5 18.5 109 22Z" fill="#0a0a0a" opacity="0.14"/>
+            <rect x="84" y="20" width="4" height="4" transform="rotate(45 86 22)" fill="none" stroke="#0a0a0a" stroke-width="0.7"/>
+            <rect x="112" y="20" width="4" height="4" transform="rotate(45 114 22)" fill="none" stroke="#0a0a0a" stroke-width="0.7"/>
+            <circle cx="74" cy="22" r="1.3" fill="#d4d0c8"/>
+            <circle cx="126" cy="22" r="1.3" fill="#d4d0c8"/>
+          </svg>
+        </div>
+
+        <!-- Names -->
+        <div data-reveal="left" style="margin-bottom:0.4rem;">
+          <p class="name-groom">Nguyễn Ngọc Nhật Anh</p>
+        </div>
+        <div data-reveal="fade" style="margin:0.5rem 0;">
+          <p class="names-connector">&amp;</p>
+        </div>
+        <div data-reveal="right" style="margin-bottom:1.2rem;">
+          <p class="name-bride">Nguyễn Thị Khánh Huyền</p>
+        </div>
+        <div data-reveal="up">
+          <p class="label-sm">are joyfully united in marriage</p>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="scroll-hint" id="scroll-hint">
+          <span>Scroll</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 5L7 10L12 5" stroke="#b0aa9e" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider section" data-reveal="fade">
+        <span style="font-size:0.48rem;letter-spacing:0.3em;color:#c0bbb0;">◆ ◆ ◆</span>
+      </div>
+
+      <!-- ── CALENDAR ────────────────────── -->
+      <div class="section" data-reveal="up">
+        <p class="label-sm" style="text-align:center;margin-bottom:0.9rem;">The Wedding Day</p>
+        <div class="cal-wrap">
+          <div class="cal-header">
+            <p class="cal-month">January</p>
+            <p class="cal-year">2027</p>
+          </div>
+          <div class="cal-grid">
+            <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div>
+            <div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
+            <!-- Jan 2027: 1 Jan = Friday → 4 empty Mon-Thu -->
+            <div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div>
+            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
+            <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div>
+            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
+            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
+            <div class="cal-day">25</div><div class="cal-day">26</div>
+            <div class="cal-day highlight">27</div>
+            <div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:0.75rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.82rem;color:#6b6b6b;letter-spacing:0.12em;">
+          Thứ Tư · Wednesday · 27 January 2027
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider section" data-reveal="fade">
+        <span style="font-size:0.48rem;letter-spacing:0.3em;color:#c0bbb0;">◆</span>
+      </div>
+
+      <!-- ── VENUE + MAP ─────────────────── -->
+      <div class="section">
+        <p class="label-sm" style="text-align:center;margin-bottom:0.9rem;" data-reveal="up">Venue</p>
+        <div class="text-center" style="margin-bottom:1.2rem;" data-reveal="up">
+          <p class="venue-name">Bistro Garden</p>
+          <p class="venue-sub">Ecopark · Văn Giang · Hưng Yên</p>
+        </div>
+        <div class="map-wrap" data-reveal="scale">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4793824855893!2d106.0592!3d20.9928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abe5f62ccca3%3A0xce7d27ba81a5a3c9!2sBistro%20Garden%20Ecopark!5e0!3m2!1svi!2svn!4v1694000000000!5m2!1svi!2svn"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Bistro Garden Ecopark">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider section" data-reveal="fade">
+        <span style="font-size:0.48rem;letter-spacing:0.3em;color:#c0bbb0;">◆ ◆ ◆</span>
+      </div>
+
+      <!-- ── ALBUM ───────────────────────── -->
+      <div class="section">
+        <p class="label-sm" style="text-align:center;margin-bottom:0.4rem;" data-reveal="up">Album Hình Cưới</p>
+        <p data-reveal="fade" style="text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.85rem;color:#9b9590;letter-spacing:0.12em;margin-bottom:1.2rem;">
+          A love story in frames
+        </p>
+
+        <!-- Each album cell has data-reveal with staggered --delay -->
+        <div class="album-grid">
+
+          <div class="album-item" data-reveal="up" style="--delay:0.00s">
+            <div class="album-placeholder ph-1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 01</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+          <div class="album-item" data-reveal="up" style="--delay:0.10s">
+            <div class="album-placeholder ph-2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 02</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+          <div class="album-item" data-reveal="up" style="--delay:0.20s">
+            <div class="album-placeholder ph-3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 03</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+          <div class="album-item" data-reveal="up" style="--delay:0.30s">
+            <div class="album-placeholder ph-4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 04</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+          <div class="album-item" data-reveal="up" style="--delay:0.40s">
+            <div class="album-placeholder ph-5">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 05</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+          <div class="album-item" data-reveal="up" style="--delay:0.50s">
+            <div class="album-placeholder ph-6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              <span>Photo 06</span>
+            </div>
+            <div class="overlay"></div>
+          </div>
+
+        </div>
+        <p data-reveal="fade" style="font-family:'Montserrat',sans-serif;font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:#9b9590;text-align:center;margin-top:0.8rem;">
+          · Hình ảnh sẽ được cập nhật sau buổi chụp ảnh cưới ·
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider section" data-reveal="fade">
+        <span style="font-size:0.48rem;letter-spacing:0.3em;color:#c0bbb0;">◆</span>
+      </div>
+
+      <!-- ── VERSE ───────────────────────── -->
+      <div class="section text-center" style="padding:0 0.5rem;" data-reveal="up">
+        <p class="verse">
+          "Two lives, one story.<br>
+          Một tình yêu, một hành trình."
+        </p>
+      </div>
+
+      <!-- ── FOOTER ──────────────────────── -->
+      <div class="text-center" data-reveal="up">
+        <div style="display:flex;justify-content:center;margin-bottom:1rem;">
+          <svg width="100" height="20" viewBox="0 0 100 20" fill="none">
+            <line x1="0" y1="10" x2="38" y2="10" stroke="#d4d0c8" stroke-width="0.7"/>
+            <line x1="62" y1="10" x2="100" y2="10" stroke="#d4d0c8" stroke-width="0.7"/>
+            <rect x="46" y="6" width="8" height="8" transform="rotate(45 50 10)" fill="none" stroke="#0a0a0a" stroke-width="0.7"/>
+          </svg>
+        </div>
+        <p class="label-sm" style="opacity:0.45;">27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark</p>
+        <p class="label-sm" style="margin-top:0.45rem;opacity:0.28;">Nhật Anh &amp; Khánh Huyền</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   1. GUEST NAME — ?to= URL param
+══════════════════════════════════════════════════════════ */
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const g = params.get('to');
+  if (g && g.trim()) {
+    const block = document.getElementById('guest-block');
+    document.getElementById('guest-name').textContent = decodeURIComponent(g.trim());
+    block.style.display = 'block';
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════
+   2. SCROLL REVEAL — IntersectionObserver (looping)
+   • Adds .is-visible when element enters viewport  → animates IN
+   • Removes .is-visible when element leaves viewport → resets
+   • So every scroll-down re-triggers the animation (loop)
+══════════════════════════════════════════════════════════ */
+(function () {
+  const items = document.querySelectorAll('[data-reveal]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Element scrolled INTO view → show it
+          entry.target.classList.add('is-visible');
+        } else {
+          // Element scrolled OUT of view → reset so it can re-animate
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.12,       // trigger when 12% of element is visible
+      rootMargin: '0px 0px -40px 0px'  // small bottom offset for nicer feel
+    }
+  );
+
+  items.forEach(el => observer.observe(el));
+
+  // Hide scroll hint after first scroll
+  const hint = document.getElementById('scroll-hint');
+  if (hint) {
+    window.addEventListener('scroll', function onFirstScroll() {
+      hint.style.opacity = '0';
+      hint.style.transition = 'opacity 0.5s';
+      setTimeout(() => hint.style.display = 'none', 500);
+      window.removeEventListener('scroll', onFirstScroll);
+    }, { passive: true });
+  }
+})();
+
+/* ══════════════════════════════════════════════════════════
+   3. BACKGROUND CANVAS — floating petal particles
+   Soft monochrome petals drifting down, very subtle
+══════════════════════════════════════════════════════════ */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, petals = [];
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+
+  function Petal(init) {
+    this.reset(init);
+  }
+  Petal.prototype.reset = function (init) {
+    this.x     = Math.random() * W;
+    this.y     = init ? Math.random() * H : -20;
+    this.size  = 3 + Math.random() * 7;
+    this.vy    = 0.2 + Math.random() * 0.45;
+    this.vx    = (Math.random() - 0.5) * 0.3;
+    this.angle = Math.random() * Math.PI * 2;
+    this.spin  = (Math.random() - 0.5) * 0.014;
+    this.swing = Math.random() * Math.PI * 2;
+    this.swingSpeed = 0.007 + Math.random() * 0.01;
+    this.alpha = 0.035 + Math.random() * 0.065;
+  };
+
+  for (let i = 0; i < 60; i++) petals.push(new Petal(true));
+
+  function drawPetal(p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.angle);
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle = '#0a0a0a';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.size * 0.38, p.size, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  (function tick() {
+    ctx.clearRect(0, 0, W, H);
+    petals.forEach(p => {
+      p.swing += p.swingSpeed;
+      p.x += p.vx + Math.sin(p.swing) * 0.3;
+      p.y += p.vy;
+      p.angle += p.spin;
+      if (p.y > H + 25) p.reset(false);
+      drawPetal(p);
+    });
+    requestAnimationFrame(tick);
+  })();
+})();
+</script>
+</body>
+</html>
