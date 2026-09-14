@@ -6,7 +6,7 @@
   <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -15,7 +15,7 @@
       background: #fafaf8;
       color: #0a0a0a;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -27,7 +27,7 @@
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: #09090b;
+      background: #08080a;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -41,12 +41,12 @@
       pointer-events: none;
     }
 
-    /* Subtle stars / dust background */
+    /* Stars / Celestial Depth */
     .sky-bg {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 40%, rgba(35, 35, 45, 0.8) 0%, #08080a 100%);
+        radial-gradient(circle at 50% 35%, rgba(45, 45, 60, 0.9) 0%, #08080a 100%);
       z-index: 1;
     }
 
@@ -62,9 +62,9 @@
     .cloud-left {
       z-index: 4;
       background:
-        radial-gradient(ellipse 65% 55% at -5% 35%, rgba(240, 240, 245, 0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 55% 45% at 5% 65%, rgba(220, 220, 230, 0.28) 0%, transparent 65%),
-        radial-gradient(ellipse 70% 60% at -10% 50%, rgba(200, 200, 215, 0.2) 0%, transparent 80%);
+        radial-gradient(ellipse 65% 55% at -5% 35%, rgba(240, 240, 245, 0.26) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 5% 65%, rgba(220, 220, 235, 0.32) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at -10% 50%, rgba(200, 200, 220, 0.24) 0%, transparent 80%);
       filter: blur(35px);
       animation: driftLeft 14s ease-in-out infinite alternate;
     }
@@ -73,9 +73,9 @@
     .cloud-right {
       z-index: 5;
       background:
-        radial-gradient(ellipse 65% 55% at 105% 40%, rgba(240, 240, 245, 0.24) 0%, transparent 70%),
-        radial-gradient(ellipse 55% 45% at 95% 70%, rgba(220, 220, 230, 0.3) 0%, transparent 65%),
-        radial-gradient(ellipse 70% 60% at 110% 50%, rgba(200, 200, 215, 0.2) 0%, transparent 80%);
+        radial-gradient(ellipse 65% 55% at 105% 40%, rgba(240, 240, 245, 0.28) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 45% at 95% 70%, rgba(220, 220, 235, 0.35) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 110% 50%, rgba(200, 200, 220, 0.24) 0%, transparent 80%);
       filter: blur(35px);
       animation: driftRight 16s ease-in-out infinite alternate;
     }
@@ -84,9 +84,9 @@
     .cloud-mist {
       z-index: 3;
       background:
-        radial-gradient(circle at 50% 50%, rgba(245, 245, 250, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(220, 220, 230, 0.25) 0%, transparent 70%),
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(220, 220, 230, 0.15) 0%, transparent 70%);
+        radial-gradient(circle at 50% 50%, rgba(245, 245, 250, 0.16) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(220, 220, 235, 0.28) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(220, 220, 235, 0.18) 0%, transparent 70%);
       filter: blur(25px);
       animation: pulseMist 8s ease-in-out infinite;
     }
@@ -100,11 +100,11 @@
       100% { transform: translate(-25px, 15px) scale(1.05); }
     }
     @keyframes pulseMist {
-      0%, 100% { opacity: 0.65; transform: scale(1); }
-      50% { opacity: 0.95; transform: scale(1.04); }
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
     }
 
-    /* Clouds Parting Animation */
+    /* Clouds Parting */
     #cloud-screen.parting .cloud-left {
       transform: translateX(-130%) scale(1.4);
       opacity: 0;
@@ -127,15 +127,15 @@
     #cloud-card {
       position: relative;
       z-index: 10;
-      width: min(440px, 86vw);
-      padding: 2.8rem 2.2rem;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      width: min(460px, 88vw);
+      padding: 3rem 2.4rem;
+      background: rgba(20, 20, 25, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
       box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.6),
-        inset 0 0 30px rgba(255, 255, 255, 0.05);
+        0 25px 60px rgba(0, 0, 0, 0.75),
+        inset 0 0 35px rgba(255, 255, 255, 0.08);
       text-align: center;
       color: #fafaf8;
       transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.1s ease, filter 1.1s ease;
@@ -147,102 +147,109 @@
       100% { transform: translateY(-8px); }
     }
 
-    /* Card Frame Inner */
     #cloud-card::before {
       content: '';
       position: absolute;
       inset: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       pointer-events: none;
     }
 
     .cloud-seal {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 1.4rem;
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 1.5rem;
       border-radius: 50%;
       background: #B5121B;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(181, 18, 27, 0.4);
+      box-shadow: 0 4px 18px rgba(181, 18, 27, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     .cloud-seal span {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.3rem;
-      color: #fff;
-      font-weight: 400;
+      font-size: 1.45rem;
+      color: #ffffff;
+      font-weight: 500;
       letter-spacing: 2px;
     }
 
     .cloud-card-tag {
-      font-size: 0.55rem;
-      letter-spacing: 0.4em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 0.6rem;
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     }
 
     .cloud-card-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.4rem, 4.5vw, 1.9rem);
+      font-size: clamp(1.7rem, 5.5vw, 2.3rem);
       font-style: italic;
-      font-weight: 300;
-      letter-spacing: 0.05em;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       color: #ffffff;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       line-height: 1.2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     .cloud-divider {
-      width: 48px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.25);
-      margin: 1.2rem auto;
+      width: 56px;
+      height: 2px;
+      background: #B5121B;
+      margin: 1.3rem auto;
     }
 
     .cloud-couple-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.52rem;
-      font-weight: 400;
-      letter-spacing: 0.25em;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.85);
+      color: #ffffff;
       line-height: 1.8;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     }
 
     .cloud-date-venue {
-      font-size: 0.46rem;
-      letter-spacing: 0.2em;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
-      margin-top: 0.4rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 0.5rem;
     }
 
     .cloud-hint-btn {
       margin-top: 2rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      padding: 0.6rem 1.4rem;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      font-size: 0.52rem;
-      letter-spacing: 0.3em;
+      gap: 0.7rem;
+      padding: 0.75rem 1.6rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #fafaf8;
-      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 999px;
       transition: all 0.3s ease;
       animation: pulseGlow 2.5s infinite;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
     @keyframes pulseGlow {
-      0%, 100% { border-color: rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.04); }
-      50% { border-color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.12); }
+      0%, 100% { border-color: rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.08); }
+      50% { border-color: rgba(255, 255, 255, 0.85); background: rgba(255, 255, 255, 0.22); box-shadow: 0 0 20px rgba(255, 255, 255, 0.25); }
     }
 
     /* ══════════════════════════════════════════
-       PETAL CANVAS & INVITATION PAGE
+       PETAL CANVAS & MAIN INVITATION PAGE
     ══════════════════════════════════════════ */
     #inv-canvas {
       position: fixed;
@@ -274,12 +281,12 @@
     }
 
     .frame-outer {
-      border: 1px solid #d8d4cb;
-      padding: 2.8rem 2.4rem;
+      border: 1px solid #d4d0c8;
+      padding: 2.8rem 2.6rem;
       position: relative;
-      background: rgba(252, 252, 250, 0.96);
+      background: rgba(254, 254, 252, 0.98);
       backdrop-filter: blur(4px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.06);
     }
     @media (max-width: 640px) {
       .frame-outer {
@@ -290,7 +297,7 @@
       content: '';
       position: absolute;
       inset: 8px;
-      border: 1px solid #0a0a0a;
+      border: 1.5px solid #0a0a0a;
       pointer-events: none;
       z-index: 0;
     }
@@ -298,107 +305,144 @@
       content: '';
       position: absolute;
       inset: 13px;
-      border: 1px solid rgba(10, 10, 10, 0.08);
+      border: 1px solid rgba(10, 10, 10, 0.12);
       pointer-events: none;
       z-index: 0;
     }
 
-    .corner { position: absolute; width: 26px; height: 26px; z-index: 3; }
+    .corner { position: absolute; width: 28px; height: 28px; z-index: 3; }
     .corner svg { width: 100%; height: 100%; }
     .corner-tl { top: 16px; left: 16px; }
     .corner-tr { top: 16px; right: 16px; transform: scaleX(-1); }
     .corner-bl { bottom: 16px; left: 16px; transform: scaleY(-1); }
     .corner-br { bottom: 16px; right: 16px; transform: scale(-1); }
 
-    /* Typography */
-    .label-sm {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.58rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #6b6b6b;
+    /* ══════════════════════════════════════════
+       UPGRADED SECTION HEADERS & TYPOGRAPHY
+    ══════════════════════════════════════════ */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
+    .section-title-badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #0a0a0a;
+      position: relative;
+      padding-bottom: 0.65rem;
+    }
+    .section-title-badge::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38px;
+      height: 2px;
+      background: #B5121B;
+    }
+    .section-subtitle-vn {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-top: 0.5rem;
+      letter-spacing: 0.04em;
+    }
+
     .announce {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 400;
-      letter-spacing: 0.28em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: #6b6b6b;
+      color: #1a1a1a;
     }
     .name-groom {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(1.85rem, 5.5vw, 2.9rem);
+      font-weight: 600;
+      font-size: clamp(2rem, 6vw, 3.2rem);
       line-height: 1.1;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       color: #0a0a0a;
     }
     .name-bride {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.85rem, 5.5vw, 2.9rem);
+      font-weight: 600;
+      font-size: clamp(2rem, 6vw, 3.2rem);
       line-height: 1.1;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
       color: #0a0a0a;
     }
     .names-connector {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 300;
-      font-size: 1.2rem;
+      font-weight: 400;
+      font-size: 1.5rem;
       color: #B5121B;
-      margin: 0.4rem 0;
+      margin: 0.3rem 0;
+    }
+    .united-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      margin-top: 0.4rem;
     }
 
     .divider {
       display: flex;
       align-items: center;
       gap: 1rem;
-      margin: 2.4rem 0;
+      margin: 2.6rem 0;
     }
     .divider::before, .divider::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: #e2ddd5;
+      background: #ded9cf;
     }
 
     /* ══════════════════════════════════════════
-       ATTACHED PHOTO ON INVITATION (ẢNH GẮN THIỆP)
+       ATTACHED PHOTO ON INVITATION
     ══════════════════════════════════════════ */
     .attached-photo-wrap {
       position: relative;
-      margin: 2.2rem auto;
-      max-width: 480px;
-      padding: 12px 12px 28px 12px;
+      margin: 2.4rem auto 1rem;
+      max-width: 500px;
+      padding: 14px 14px 30px 14px;
       background: #ffffff;
       box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.07),
-        0 2px 6px rgba(0, 0, 0, 0.04);
-      border: 1px solid #e8e4dc;
+        0 14px 35px rgba(0, 0, 0, 0.09),
+        0 3px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dfdad0;
       transform: rotate(-0.8deg);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .attached-photo-wrap:hover {
       transform: rotate(0deg) translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.14);
     }
-    /* Tape / Clip effect */
     .attached-photo-wrap::before {
       content: '';
       position: absolute;
       top: -12px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 22px;
-      background: rgba(230, 225, 215, 0.7);
+      width: 90px;
+      height: 24px;
+      background: rgba(225, 220, 208, 0.85);
       backdrop-filter: blur(2px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
       z-index: 5;
     }
     .attached-photo-grid {
@@ -424,11 +468,12 @@
       transform: scale(1.04);
     }
     .attached-caption {
-      margin-top: 14px;
+      margin-top: 16px;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 0.95rem;
-      color: #555;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #1a1a1a;
       text-align: center;
       letter-spacing: 0.05em;
     }
@@ -440,13 +485,13 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.8rem;
       margin: 2.2rem 0;
     }
     @media (max-width: 580px) {
       .couple-avatars-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.2rem;
       }
       .couple-avatar-connector {
         transform: rotate(90deg);
@@ -461,13 +506,13 @@
     }
     .avatar-frame {
       position: relative;
-      width: 128px;
-      height: 128px;
+      width: 136px;
+      height: 136px;
       border-radius: 50%;
       padding: 5px;
       background: linear-gradient(135deg, #0a0a0a, #d4d0c8, #0a0a0a);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
-      margin-bottom: 1.1rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      margin-bottom: 1.2rem;
     }
     .avatar-img-inner {
       width: 100%;
@@ -487,29 +532,33 @@
     .avatar-card:hover .avatar-img-inner img {
       transform: scale(1.08);
     }
-    .avatar-role {
-      font-size: 0.52rem;
-      letter-spacing: 0.35em;
+    .avatar-role-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      font-weight: 500;
-      color: #B5121B;
-      margin-bottom: 0.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: #0a0a0a;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 0.5rem;
     }
     .avatar-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 500;
+      font-size: 1.55rem;
+      font-weight: 600;
       letter-spacing: 0.03em;
       color: #0a0a0a;
       line-height: 1.2;
     }
     .avatar-desc {
-      font-size: 0.62rem;
-      font-weight: 300;
-      line-height: 1.7;
-      color: #777;
-      max-width: 220px;
-      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.75;
+      color: #2a2a2a;
+      max-width: 240px;
+      margin-top: 0.6rem;
     }
     .couple-avatar-connector {
       display: flex;
@@ -519,7 +568,7 @@
     }
 
     /* ══════════════════════════════════════════
-       LOVE STORY SECTION (CÂU CHUYỆN TIẾNG VIỆT)
+       LOVE STORY SECTION
     ══════════════════════════════════════════ */
     .story-section {
       margin: 2.8rem 0;
@@ -527,39 +576,39 @@
     }
     .story-timeline {
       position: relative;
-      padding-left: 2rem;
-      margin-top: 2rem;
+      padding-left: 2.2rem;
+      margin-top: 2.4rem;
     }
     @media (max-width: 480px) {
       .story-timeline {
-        padding-left: 1.4rem;
+        padding-left: 1.6rem;
       }
     }
     .story-timeline::before {
       content: '';
       position: absolute;
-      top: 8px;
-      bottom: 8px;
-      left: 6px;
-      width: 1px;
+      top: 10px;
+      bottom: 10px;
+      left: 7px;
+      width: 2px;
       background: #ded9cf;
     }
     .story-item {
       position: relative;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2.4rem;
     }
     .story-item:last-child {
       margin-bottom: 0;
     }
     .story-dot {
       position: absolute;
-      top: 6px;
-      left: -2rem;
-      width: 13px;
-      height: 13px;
+      top: 5px;
+      left: -2.2rem;
+      width: 16px;
+      height: 16px;
       border-radius: 50%;
       background: #fafaf8;
-      border: 2px solid #0a0a0a;
+      border: 2.5px solid #0a0a0a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -567,7 +616,7 @@
     }
     @media (max-width: 480px) {
       .story-dot {
-        left: -1.4rem;
+        left: -1.6rem;
       }
     }
     .story-dot.highlight {
@@ -576,75 +625,98 @@
     }
     .story-dot.highlight::after {
       content: '';
-      width: 4px;
-      height: 4px;
+      width: 5px;
+      height: 5px;
       background: #fff;
       border-radius: 50%;
     }
     .story-tag {
-      font-size: 0.5rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: #999;
-      margin-bottom: 0.25rem;
+      color: #B5121B;
+      margin-bottom: 0.35rem;
     }
     .story-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 500;
+      font-size: 1.38rem;
+      font-weight: 600;
       color: #0a0a0a;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.55rem;
+      line-height: 1.25;
     }
     .story-content {
-      font-size: 0.68rem;
-      font-weight: 300;
-      line-height: 1.8;
-      color: #555;
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.85;
+      color: #222222;
     }
 
     /* ══════════════════════════════════════════
        CALENDAR & VENUE
     ══════════════════════════════════════════ */
-    .cal-wrap { border: 1px solid #d4d0c8; overflow: hidden; }
-    .cal-header { background: #0a0a0a; color: #fafaf8; text-align: center; padding: 0.9rem 1rem; }
-    .cal-month { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.3em; text-transform: uppercase; }
-    .cal-year { font-family: 'Montserrat', sans-serif; font-size: 0.55rem; font-weight: 300; letter-spacing: 0.4em; opacity: 0.65; margin-top: 0.2rem; }
-    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid #d4d0c8; }
-    .cal-dow { font-family: 'Montserrat', sans-serif; font-size: 0.48rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6b6b; text-align: center; padding: 0.6rem 0.2rem; border-right: 1px solid #ede9e0; border-bottom: 1px solid #ede9e0; }
+    .cal-wrap { border: 1.5px solid #0a0a0a; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05); }
+    .cal-header { background: #0a0a0a; color: #fafaf8; text-align: center; padding: 1rem 1rem; }
+    .cal-month { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.3rem; letter-spacing: 0.35em; text-transform: uppercase; }
+    .cal-year { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.4em; opacity: 0.85; margin-top: 0.3rem; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid #0a0a0a; background: #fff; }
+    .cal-dow { font-family: 'Montserrat', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0a0a; text-align: center; padding: 0.75rem 0.2rem; border-right: 1px solid #ede9e0; border-bottom: 1px solid #ede9e0; background: #f7f5f0; }
     .cal-dow:last-child { border-right: none; }
-    .cal-day { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 0.92rem; text-align: center; padding: 0.55rem 0.2rem; border-right: 1px solid #ede9e0; border-bottom: 1px solid #ede9e0; color: #0a0a0a; position: relative; }
+    .cal-day { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.05rem; text-align: center; padding: 0.65rem 0.2rem; border-right: 1px solid #ede9e0; border-bottom: 1px solid #ede9e0; color: #111111; position: relative; }
     .cal-day:nth-child(7n) { border-right: none; }
     .cal-day.empty { color: transparent; pointer-events: none; }
-    .cal-day.hi { background: #0a0a0a; color: #fafaf8 !important; font-weight: 600; font-size: 1rem; }
-    .cal-day.hi::after { content: '♥'; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 0.32rem; color: #B5121B; }
+    .cal-day.hi { background: #0a0a0a; color: #ffffff !important; font-weight: 700; font-size: 1.18rem; }
+    .cal-day.hi::after { content: '♥'; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 0.42rem; color: #B5121B; }
 
-    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: #0a0a0a; }
-    .venue-sub { font-family: 'Montserrat', sans-serif; font-size: 0.6rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: #6b6b6b; margin-top: 0.35rem; }
-    .map-wrap { overflow: hidden; border: 1px solid #d4d0c8; position: relative; }
+    .cal-footer-text {
+      text-align: center;
+      margin-top: 0.9rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0a0a0a;
+      letter-spacing: 0.08em;
+    }
+
+    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #0a0a0a; }
+    .venue-sub { font-family: 'Montserrat', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #1a1a1a; margin-top: 0.5rem; }
+    .map-wrap { overflow: hidden; border: 1.5px solid #0a0a0a; position: relative; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
     .map-wrap::before { content: ''; position: absolute; inset: 0; border: 5px solid rgba(250, 250, 248, 0.9); pointer-events: none; z-index: 2; }
-    .map-wrap iframe { width: 100%; height: 240px; display: block; border: none; filter: grayscale(1) contrast(1.05); }
+    .map-wrap iframe { width: 100%; height: 250px; display: block; border: none; filter: grayscale(1) contrast(1.05); }
 
     /* ══════════════════════════════════════════
        ALBUM
     ══════════════════════════════════════════ */
-    .album-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .album-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     @media (max-width: 520px) {
       .album-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .album-item { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: #e5e0d8; border: 1px solid #ded9cf; }
+    .album-item { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: #e5e0d8; border: 1.5px solid #d4d0c8; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); }
     .album-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
     .album-item:hover img { transform: scale(1.08); }
     .album-item .overlay { position: absolute; inset: 0; background: rgba(10, 10, 10, 0); transition: background 0.3s; z-index: 2; display: flex; align-items: center; justify-content: center; }
-    .album-item:hover .overlay { background: rgba(10, 10, 10, 0.35); }
-    .album-item .overlay span { opacity: 0; color: #fff; font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; transform: translateY(8px); transition: all 0.3s ease; }
+    .album-item:hover .overlay { background: rgba(10, 10, 10, 0.4); }
+    .album-item .overlay span { opacity: 0; color: #fff; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase; transform: translateY(8px); transition: all 0.3s ease; }
     .album-item:hover .overlay span { opacity: 1; transform: translateY(0); }
 
-    .album-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; color: #9c9588; background: #ede8df; }
-    .album-placeholder svg { width: 24px; height: 24px; opacity: 0.5; }
-    .album-placeholder span { font-family: 'Montserrat', sans-serif; font-size: 0.44rem; letter-spacing: 0.2em; text-transform: uppercase; }
+    .album-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; color: #444444; background: #eee9e0; }
+    .album-placeholder svg { width: 28px; height: 28px; opacity: 0.7; }
+    .album-placeholder span { font-family: 'Montserrat', sans-serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; }
 
-    .verse { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 1.05rem; line-height: 1.9; color: #555; text-align: center; }
+    .album-footnote {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #333333;
+      text-align: center;
+      margin-top: 1.2rem;
+    }
+
+    .verse { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 1.15rem; line-height: 1.95; color: #1a1a1a; text-align: center; }
 
     /* ══════════════════════════════════════════
        SCROLL REVEAL UTILITY
@@ -666,7 +738,7 @@
     [data-reveal="fade"].v { opacity: 1; }
     [data-reveal][style*="--d"] { transition-delay: var(--d, 0s); }
 
-    .sec { margin-bottom: 2.8rem; }
+    .sec { margin-bottom: 3rem; }
   </style>
 </head>
 <body>
@@ -695,7 +767,7 @@
 
     <div style="margin-top: 1.8rem;">
       <div class="cloud-hint-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M12 4v16m0-16l-4 4m4-4l4 4"/>
         </svg>
         <span>Chạm vào làn mây để mở thiệp</span>
@@ -713,44 +785,48 @@
     <div class="frame-outer">
 
       <!-- Corner Ornaments -->
-      <div class="corner corner-tl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width=".8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width=".8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
-      <div class="corner corner-tr"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width=".8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width=".8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
-      <div class="corner corner-bl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width=".8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width=".8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
-      <div class="corner corner-br"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width=".8"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width=".8" fill="none"/><circle cx="2" cy="2" r="1.5" fill="#0a0a0a"/></svg></div>
+      <div class="corner corner-tl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="1"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="1" fill="none"/><circle cx="2" cy="2" r="1.8" fill="#0a0a0a"/></svg></div>
+      <div class="corner corner-tr"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="1"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="1" fill="none"/><circle cx="2" cy="2" r="1.8" fill="#0a0a0a"/></svg></div>
+      <div class="corner corner-bl"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="1"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="1" fill="none"/><circle cx="2" cy="2" r="1.8" fill="#0a0a0a"/></svg></div>
+      <div class="corner corner-br"><svg viewBox="0 0 30 30" fill="none"><path d="M2 28L2 2L28 2" stroke="#0a0a0a" stroke-width="1"/><path d="M2 14C8 14 14 8 14 2" stroke="#0a0a0a" stroke-width="1" fill="none"/><circle cx="2" cy="2" r="1.8" fill="#0a0a0a"/></svg></div>
 
-      <div style="position:relative; z-index:2; padding: 1.2rem 0.2rem">
+      <div style="position:relative; z-index:2; padding: 1rem 0.2rem">
 
-        <!-- HERO SECTION -->
+        <!-- ════ HERO SECTION ════ -->
         <div class="sec text-center">
           <div data-reveal="fade"><p class="announce">— Together with their families —</p></div>
 
           <!-- Dynamic Guest Greeting Block -->
-          <div id="guest-block" data-reveal="up" style="display:none; margin-top:1.6rem; margin-bottom:0.8rem">
-            <p class="label-sm" style="margin-bottom:0.4rem">Trân trọng kính mời</p>
-            <p id="guest-name" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:400; font-size:clamp(1.4rem, 4.5vw, 2.1rem); color:#0a0a0a; letter-spacing:0.04em; line-height:1.3; margin:0.3rem 0;"></p>
-            <p class="label-sm" style="opacity:0.6; margin-top:0.3rem">cùng tham dự hôn lễ của chúng tôi</p>
-            <div style="display:flex; justify-content:center; margin-top:0.8rem"><div style="width:40px; height:1px; background:#B5121B; opacity:0.6"></div></div>
+          <div id="guest-block" data-reveal="up" style="display:none; margin-top:1.8rem; margin-bottom:1rem">
+            <span style="display:inline-block; font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.35em; text-transform:uppercase; color:#B5121B; background:rgba(181,18,27,0.06); padding:0.35rem 1.2rem; border-radius:999px; margin-bottom:0.6rem">
+              Trân trọng kính mời
+            </span>
+            <p id="guest-name" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:clamp(1.6rem, 5vw, 2.4rem); color:#0a0a0a; letter-spacing:0.04em; line-height:1.3; margin:0.4rem 0;"></p>
+            <p style="font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#222; margin-top:0.4rem;">
+              cùng tham dự hôn lễ của chúng tôi
+            </p>
+            <div style="display:flex; justify-content:center; margin-top:1rem"><div style="width:48px; height:2px; background:#B5121B;"></div></div>
           </div>
 
-          <div data-reveal="scale" style="display:flex; justify-content:center; margin:1.6rem 0">
-            <svg width="180" height="40" viewBox="0 0 200 44" fill="none">
-              <line x1="0" y1="22" x2="80" y2="22" stroke="#d4d0c8" stroke-width=".7"/>
-              <line x1="120" y1="22" x2="200" y2="22" stroke="#d4d0c8" stroke-width=".7"/>
-              <ellipse cx="100" cy="22" rx="4" ry="4" fill="none" stroke="#0a0a0a" stroke-width=".9"/>
-              <path d="M100 13C103.5 16.5 103.5 18.5 100 22C96.5 18.5 96.5 16.5 100 13Z" fill="#B5121B" opacity=".5"/>
-              <path d="M100 31C96.5 27.5 96.5 25.5 100 22C103.5 25.5 103.5 27.5 100 31Z" fill="#B5121B" opacity=".5"/>
-              <rect x="84" y="20" width="4" height="4" transform="rotate(45 86 22)" fill="none" stroke="#0a0a0a" stroke-width=".7"/>
-              <rect x="112" y="20" width="4" height="4" transform="rotate(45 114 22)" fill="none" stroke="#0a0a0a" stroke-width=".7"/>
+          <div data-reveal="scale" style="display:flex; justify-content:center; margin:1.8rem 0">
+            <svg width="200" height="42" viewBox="0 0 200 44" fill="none">
+              <line x1="0" y1="22" x2="80" y2="22" stroke="#0a0a0a" stroke-width="1"/>
+              <line x1="120" y1="22" x2="200" y2="22" stroke="#0a0a0a" stroke-width="1"/>
+              <ellipse cx="100" cy="22" rx="4.5" ry="4.5" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
+              <path d="M100 13C103.5 16.5 103.5 18.5 100 22C96.5 18.5 96.5 16.5 100 13Z" fill="#B5121B"/>
+              <path d="M100 31C96.5 27.5 96.5 25.5 100 22C103.5 25.5 103.5 27.5 100 31Z" fill="#B5121B"/>
+              <rect x="84" y="20" width="4.5" height="4.5" transform="rotate(45 86.2 22.2)" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+              <rect x="112" y="20" width="4.5" height="4.5" transform="rotate(45 114.2 22.2)" fill="none" stroke="#0a0a0a" stroke-width="1"/>
             </svg>
           </div>
 
           <div data-reveal="left"><p class="name-groom">Nguyễn Ngọc Nhật Anh</p></div>
           <div data-reveal="fade"><p class="names-connector">&amp;</p></div>
-          <div data-reveal="right" style="margin-bottom:1.1rem"><p class="name-bride">Nguyễn Thị Khánh Huyền</p></div>
-          <div data-reveal="up"><p class="label-sm">are joyfully united in marriage</p></div>
+          <div data-reveal="right" style="margin-bottom:1.2rem"><p class="name-bride">Nguyễn Thị Khánh Huyền</p></div>
+          <div data-reveal="up"><p class="united-label">are joyfully united in marriage</p></div>
 
           <!-- ẢNH GẮN TRÊN THIỆP CƯỚI (ATTACHED PHOTO KEEPSAKE) -->
-          <div data-reveal="scale" style="margin-top: 2rem;">
+          <div data-reveal="scale" style="margin-top: 2.2rem;">
             <div class="attached-photo-wrap">
               <div class="attached-photo-grid">
                 <div class="attached-img-box">
@@ -765,11 +841,14 @@
           </div>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#B5121B">✦ ✦ ✦</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#B5121B">✦ ✦ ✦</span></div>
 
         <!-- ════ AVATARS: CHÚ RỂ & CÔ DÂU ════ -->
         <div class="sec">
-          <p class="label-sm text-center" style="margin-bottom: 1.4rem;" data-reveal="up">The Happy Couple · Chú Rể &amp; Cô Dâu</p>
+          <div class="section-header" data-reveal="up">
+            <span class="section-title-badge">The Happy Couple</span>
+            <h3 class="section-subtitle-vn">Chú Rể &amp; Cô Dâu</h3>
+          </div>
           
           <div class="couple-avatars-grid">
             <!-- Chú Rể -->
@@ -779,15 +858,15 @@
                   <img src="groom.jpg" alt="Chú Rể Nguyễn Ngọc Nhật Anh" />
                 </div>
               </div>
-              <span class="avatar-role">Chú Rể</span>
+              <span class="avatar-role-badge">Chú Rể</span>
               <h3 class="avatar-name">Nhật Anh</h3>
               <p class="avatar-desc">"Chàng trai luôn điềm tĩnh, ấm áp và luôn sẵn lòng che chở cho người mình yêu trên mọi chặng đường."</p>
             </div>
 
             <!-- Interlocking Heart / Connector -->
             <div class="couple-avatar-connector" data-reveal="scale">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                <circle cx="18" cy="18" r="17" stroke="#e0ded6" stroke-width="1"/>
+              <svg width="40" height="40" viewBox="0 0 36 36" fill="none">
+                <circle cx="18" cy="18" r="17" stroke="#0a0a0a" stroke-width="1.2"/>
                 <path d="M18 24s-6-4.2-6-8.2c0-2.3 1.8-3.8 3.8-3.8 1.4 0 2.2.7 2.2.7s.8-.7 2.2-.7c2 0 3.8 1.5 3.8 3.8 0 4-6 8.2-6 8.2z" fill="#B5121B"/>
               </svg>
             </div>
@@ -799,19 +878,22 @@
                   <img src="bride.jpg" alt="Cô Dâu Nguyễn Thị Khánh Huyền" />
                 </div>
               </div>
-              <span class="avatar-role">Cô Dâu</span>
+              <span class="avatar-role-badge">Cô Dâu</span>
               <h3 class="avatar-name">Khánh Huyền</h3>
               <p class="avatar-desc">"Cô gái dịu dàng với nụ cười trong trẻo, mảnh ghép diệu kỳ thắp sáng và hoàn thiện cuộc sống của anh."</p>
             </div>
           </div>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#c0bbb0">◆</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#0a0a0a">◆</span></div>
 
         <!-- ════ CÂU CHUYỆN TÌNH YÊU TIẾNG VIỆT ════ -->
         <div class="sec story-section">
-          <p class="label-sm text-center" data-reveal="up">Our Story · Chuyện Tình Của Chúng Mình</p>
-          <p class="text-center" data-reveal="fade" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.95rem; color:#888; margin-top:0.4rem;">
+          <div class="section-header" data-reveal="up">
+            <span class="section-title-badge">Our Story</span>
+            <h3 class="section-subtitle-vn">Chuyện Tình Của Chúng Mình</h3>
+          </div>
+          <p class="text-center" data-reveal="fade" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:#222; margin-top:-1rem; margin-bottom:1.5rem;">
             "Tình yêu không phải là một điểm đến, mà là một hành trình cùng nhau đi qua năm tháng."
           </p>
 
@@ -858,11 +940,15 @@
           </div>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#c0bbb0">◆ ◆ ◆</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#B5121B">✦ ✦ ✦</span></div>
 
         <!-- ════ CALENDAR ════ -->
         <div class="sec" data-reveal="up">
-          <p class="label-sm" style="text-align:center; margin-bottom:0.9rem">The Wedding Day · Ngày Cưới</p>
+          <div class="section-header">
+            <span class="section-title-badge">The Wedding Day</span>
+            <h3 class="section-subtitle-vn">Ngày Hôn Lễ</h3>
+          </div>
+          
           <div class="cal-wrap">
             <div class="cal-header">
               <p class="cal-month">January</p>
@@ -878,17 +964,20 @@
               <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day hi">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
             </div>
           </div>
-          <p style="text-align:center; margin-top:0.75rem; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#6b6b6b; letter-spacing:0.12em">
+          <p class="cal-footer-text">
             Thứ Tư · Wednesday · 27 January 2027
           </p>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#c0bbb0">◆</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#0a0a0a">◆</span></div>
 
         <!-- ════ VENUE + MAP ════ -->
         <div class="sec">
-          <p class="label-sm" style="text-align:center; margin-bottom:0.9rem" data-reveal="up">Venue · Địa Điểm Tổ Chức</p>
-          <div class="text-center" style="margin-bottom:1.2rem" data-reveal="up">
+          <div class="section-header" data-reveal="up">
+            <span class="section-title-badge">Wedding Venue</span>
+            <h3 class="section-subtitle-vn">Địa Điểm Tổ Chức</h3>
+          </div>
+          <div class="text-center" style="margin-bottom:1.4rem" data-reveal="up">
             <p class="venue-name">Bistro Garden</p>
             <p class="venue-sub">Ecopark · Văn Giang · Hưng Yên</p>
           </div>
@@ -899,13 +988,16 @@
           </div>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#c0bbb0">◆ ◆ ◆</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#B5121B">✦ ✦ ✦</span></div>
 
         <!-- ════ ALBUM ẢNH CƯỚI ════ -->
         <div class="sec">
-          <p class="label-sm" style="text-align:center; margin-bottom:0.4rem" data-reveal="up">Album Hình Cưới</p>
-          <p data-reveal="fade" style="text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:0.88rem; color:#888; letter-spacing:0.12em; margin-bottom:1.4rem">
-            Những khoảnh khắc lưu giữ tình yêu
+          <div class="section-header" data-reveal="up">
+            <span class="section-title-badge">Wedding Album</span>
+            <h3 class="section-subtitle-vn">Album Hình Cưới</h3>
+          </div>
+          <p data-reveal="fade" style="text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.05rem; color:#222; margin-top:-1rem; margin-bottom:1.5rem">
+            Những khoảnh khắc lưu giữ tình yêu của chúng mình
           </p>
           <div class="album-grid">
             <div class="album-item" data-reveal="up" style="--d:0.0s">
@@ -918,39 +1010,39 @@
             </div>
             <div class="album-item" data-reveal="up" style="--d:0.2s">
               <div class="album-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
                 <span>Hẹn Hò Đầu Tiên</span>
               </div>
               <div class="overlay"><span>Khoảnh Khắc</span></div>
             </div>
             <div class="album-item" data-reveal="up" style="--d:0.3s">
               <div class="album-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
                 <span>Chuyến Đi Xa</span>
               </div>
               <div class="overlay"><span>Bình Yên</span></div>
             </div>
             <div class="album-item" data-reveal="up" style="--d:0.4s">
               <div class="album-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
                 <span>Lời Cầu Hôn</span>
               </div>
               <div class="overlay"><span>Hẹn Ước</span></div>
             </div>
             <div class="album-item" data-reveal="up" style="--d:0.5s">
               <div class="album-placeholder">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
                 <span>Save The Date</span>
               </div>
               <div class="overlay"><span>27.01.2027</span></div>
             </div>
           </div>
-          <p data-reveal="fade" style="font-family:'Montserrat',sans-serif; font-size:0.52rem; letter-spacing:0.18em; text-transform:uppercase; color:#9b9590; text-align:center; margin-top:1rem">
+          <p data-reveal="fade" class="album-footnote">
             · Bộ ảnh cưới chính thức sẽ tiếp tục được cập nhật ·
           </p>
         </div>
 
-        <div class="divider" data-reveal="fade"><span style="font-size:0.48rem; letter-spacing:0.3em; color:#c0bbb0">◆</span></div>
+        <div class="divider" data-reveal="fade"><span style="font-size:0.55rem; letter-spacing:0.35em; color:#0a0a0a">◆</span></div>
 
         <!-- ════ FOOTER QUOTE ════ -->
         <div class="sec text-center" style="padding: 0 0.5rem;" data-reveal="up">
@@ -962,14 +1054,18 @@
 
         <div class="text-center" data-reveal="up">
           <div style="display:flex; justify-content:center; margin-bottom:1rem">
-            <svg width="100" height="20" viewBox="0 0 100 20" fill="none">
-              <line x1="0" y1="10" x2="38" y2="10" stroke="#d4d0c8" stroke-width=".7"/>
-              <line x1="62" y1="10" x2="100" y2="10" stroke="#d4d0c8" stroke-width=".7"/>
-              <rect x="46" y="6" width="8" height="8" transform="rotate(45 50 10)" fill="none" stroke="#B5121B" stroke-width=".8"/>
+            <svg width="110" height="22" viewBox="0 0 100 20" fill="none">
+              <line x1="0" y1="10" x2="38" y2="10" stroke="#0a0a0a" stroke-width="1"/>
+              <line x1="62" y1="10" x2="100" y2="10" stroke="#0a0a0a" stroke-width="1"/>
+              <rect x="46" y="6" width="8" height="8" transform="rotate(45 50 10)" fill="none" stroke="#B5121B" stroke-width="1.2"/>
             </svg>
           </div>
-          <p class="label-sm" style="opacity:0.65">27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark</p>
-          <p class="label-sm" style="margin-top:0.45rem; opacity:0.35">Nhật Anh &amp; Khánh Huyền</p>
+          <p style="font-family:'Montserrat',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.25em; text-transform:uppercase; color:#0a0a0a;">
+            27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark
+          </p>
+          <p style="font-family:'Montserrat',sans-serif; font-size:0.68rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; margin-top:0.45rem; color:#444;">
+            Nhật Anh &amp; Khánh Huyền
+          </p>
         </div>
 
       </div>
