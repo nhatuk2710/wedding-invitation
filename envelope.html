@@ -94,244 +94,118 @@
       pointer-events: none;
     }
 
-    /* Envelope 3D Container */
-    #env-stage {
+    /* ══════════════════════════════════════════
+       DRUNK IN LOVE RECTANGULAR COVER (HÌNH CHỮ NHẬT)
+    ══════════════════════════════════════════ */
+    #rect-cover-card {
+      width: min(350px, 88vw);
+      height: min(490px, 124vw);
+      background: #6B1724;
+      border-radius: 8px;
+      border: 1.5px solid rgba(223, 183, 108, 0.45);
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 4px 16px rgba(0, 0, 0, 0.4);
       position: relative;
-      width: min(340px, 86vw);
-      height: min(440px, 112vw);
-      perspective: 1200px;
-      margin-top: 50px;
-      margin-bottom: 1.6rem;
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      margin-bottom: 1.8rem;
+      padding: 14px;
+      box-sizing: border-box;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease;
     }
 
-    /* Envelope Shell */
-    .env-shell {
-      position: absolute;
-      inset: 0;
+    /* Inner Delicate Border Frame */
+    .rect-card-inner {
       width: 100%;
       height: 100%;
-    }
-
-    /* Flat Back Wall of Pocket (Never sticks up!) */
-    .env-back-wall {
-      position: absolute;
-      inset: 0;
-      background: #56111c;
+      border: 1px solid rgba(223, 183, 108, 0.3);
       border-radius: 4px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Card Inside Envelope (Tucked inside, slides UP on open) */
-    .env-card-inside {
-      position: absolute;
-      top: 12%;
-      left: 6%;
-      right: 6%;
-      height: 78%;
-      background: #FAF7F2;
-      border-radius: 4px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      padding: 1.4rem 1.2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      z-index: 2;
-      border: 1px solid #d4c5b3;
-      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .env-card-inside .card-mini-coupe {
-      width: 50px;
-      height: auto;
-      margin-bottom: 0.6rem;
-    }
-    .env-card-inside .card-mini-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #6B1724;
-      font-weight: 600;
-    }
-    .env-card-inside .card-mini-names {
-      font-family: 'Alex Brush', cursive;
-      font-size: 1.8rem;
-      color: #6B1724;
-      line-height: 1.1;
-      margin: 0.3rem 0;
-    }
-    .env-card-inside .card-mini-date {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      color: #777777;
-    }
-
-    /* Front Pocket of Envelope */
-    .env-front-pocket {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 72%;
-      background: #6B1724;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      box-shadow: 0 -3px 15px rgba(0,0,0,0.25);
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      padding: 1.8rem 1.6rem 1.6rem;
+      padding: 2.2rem 1.6rem 1.8rem;
+      box-sizing: border-box;
+      text-align: center;
       color: #ffffff;
-      /* Top crescent notch cutout */
-      clip-path: polygon(
-        0% 0%, 
-        calc(50% - 30px) 0%, 
-        50% 14px, 
-        calc(50% + 30px) 0%, 
-        100% 0%, 
-        100% 100%, 
-        0% 100%
-      );
+      position: relative;
+    }
+    .rect-card-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    /* Cursive Couple Names on Envelope (Matching Image 1 Left: Linh & Sang) */
-    .env-names-block {
-      text-align: right;
-      padding-right: 0.6rem;
-      margin-top: 0.8rem;
-    }
-    .env-names-script {
-      font-family: 'Alex Brush', cursive;
-      font-size: clamp(2.3rem, 7.5vw, 3.1rem);
-      line-height: 0.95;
-      color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-    }
-    .env-names-date {
+    .rect-card-tag {
       font-family: 'Playfair Display', serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.2em;
-      color: rgba(255, 255, 255, 0.92);
-      margin-top: 0.35rem;
-      text-align: right;
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
     }
 
-    /* Dotted Line for Guest Name (Image 1: KÍNH MỜI: .........) */
-    .env-guest-dotted-row {
+    .rect-card-coupe-icon {
+      width: 58px;
+      height: auto;
+      margin: 0.8rem auto 0;
+      opacity: 0.95;
+    }
+
+    .rect-card-names-script {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(2.6rem, 8.5vw, 3.4rem);
+      line-height: 1;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      margin: 0.6rem 0 0.3rem;
+    }
+
+    .rect-card-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.24em;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 1.2rem;
+    }
+
+    .rect-card-guest-row {
+      width: 100%;
       display: flex;
       align-items: baseline;
-      gap: 0.4rem;
+      justify-content: center;
+      gap: 0.5rem;
       font-size: 0.72rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(255, 255, 255, 0.85);
       border-bottom: 1px dotted rgba(255, 255, 255, 0.65);
-      padding-bottom: 0.35rem;
+      padding-bottom: 0.4rem;
       margin-top: auto;
     }
-    .env-guest-label {
+    .rect-guest-label {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       white-space: nowrap;
     }
-    .env-guest-name-val {
+    .rect-guest-val {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #ffffff;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: none;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    /* ── 3D FLAP HINGE (STARTS FOLDED DOWN, ROTATES 180deg UP ON OPEN) ── */
-    .env-flap-hinge {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 165px;
-      transform-origin: top center;
-      transform-style: preserve-3d;
-      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 10;
-    }
-
-    .flap-face {
-      position: absolute;
-      inset: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    /* Front side of Flap (Points DOWN when closed) */
-    .flap-front {
-      background: #6B1724;
-      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 6px;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
-    }
-
-    .flap-wax-seal {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #f3d790, #b88628, #7a5510);
-      border: 1.5px solid #dfb76c;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #432b00;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transform: translateY(16px);
-      cursor: pointer;
-    }
-
-    /* Back side of Flap (Revealed pointing UP with striped liner on open) */
-    .flap-back {
-      background: #6B1724;
-      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-      transform: rotateX(180deg);
-      padding: 6px 8px 8px;
-      box-sizing: border-box;
-    }
-
-    .flap-striped-liner {
-      width: 100%;
-      height: 100%;
-      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-      background: repeating-linear-gradient(
-        90deg,
-        #6B1724 0,
-        #6B1724 10px,
-        #ffffff 10px,
-        #ffffff 20px
-      );
-    }
-
-    /* Open Action Animations */
-    #wine-intro-screen.opening .env-flap-hinge {
-      transform: rotateX(180deg);
-    }
-    #wine-intro-screen.opening .env-card-inside {
-      transform: translateY(-100px) scale(1.04);
-      z-index: 12;
-    }
-    #wine-intro-screen.opening #env-stage {
-      transform: translateY(30px) scale(0.97);
+    /* Open Action Animation */
+    #wine-intro-screen.opening #rect-cover-card {
+      transform: translateY(-25px) scale(0.96);
+      opacity: 0;
     }
 
     /* Open Button */
@@ -1107,21 +981,17 @@
   <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-114421.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ═══════════════════════ DRUNK IN LOVE ENVELOPE INTRO (IMAGE 1) ═══════════════════════ -->
+<!-- ═══════════════════════ DRUNK IN LOVE RECTANGULAR COVER (HÌNH CHỮ NHẬT) ═══════════════════════ -->
 <div id="wine-intro-screen" onclick="openWineEnvelope()">
   
-  <div id="env-stage">
-    
-    <!-- Envelope Shell -->
-    <div class="env-shell">
+  <div id="rect-cover-card">
+    <div class="rect-card-inner">
       
-      <!-- Flat Back Wall (Never sticks up!) -->
-      <div class="env-back-wall"></div>
-
-      <!-- Sliding Card Inside Pocket -->
-      <div class="env-card-inside">
-        <!-- Mini Champagne Coupe lineart -->
-        <svg class="card-mini-coupe" viewBox="0 0 100 80" fill="none" stroke="#6B1724" stroke-width="1.6">
+      <div>
+        <p class="rect-card-tag">WE'RE GETTING MARRIED</p>
+        
+        <!-- Champagne Coupe Lineart -->
+        <svg class="rect-card-coupe-icon" viewBox="0 0 100 80" fill="none" stroke="#ffffff" stroke-width="1.6">
           <ellipse cx="50" cy="20" rx="30" ry="10"/>
           <path d="M 20 20 C 20 40, 80 40, 80 20"/>
           <line x1="50" y1="36" x2="50" y2="68"/>
@@ -1131,44 +1001,20 @@
           <path d="M 50 48 C 40 40, 32 50, 48 50 Z" fill="#ffffff" stroke="#6B1724"/>
           <path d="M 50 48 C 60 40, 68 50, 52 50 Z" fill="#ffffff" stroke="#6B1724"/>
         </svg>
-        <p class="card-mini-title">Wedding Invitation</p>
-        <p class="card-mini-names">Nhật &amp; Huyền</p>
-        <p class="card-mini-date">27 · 01 · 2027</p>
       </div>
 
-      <!-- Front Pocket (Burgundy face with names & guest line) -->
-      <div class="env-front-pocket">
-        
-        <!-- Couple Script Names (Image 1 Left: Linh & Sang) -->
-        <div class="env-names-block">
-          <p class="env-names-script">Nhật &amp;<br>Huyền</p>
-          <p class="env-names-date">27.01.2027</p>
-        </div>
-
-        <!-- Dotted Guest Line (Image 1 Left: KÍNH MỜI: .........) -->
-        <div class="env-guest-dotted-row">
-          <span class="env-guest-label">KÍNH MỜI:</span>
-          <span class="env-guest-name-val" id="env-guest-val">Quý Khách</span>
-        </div>
-
+      <div>
+        <p class="rect-card-names-script">Nhật &amp;<br>Huyền</p>
+        <p class="rect-card-date">27 · 01 · 2027</p>
       </div>
 
-      <!-- 3D Flap Hinge: Folds DOWN when closed, Flips UP with striped liner when opened -->
-      <div class="env-flap-hinge">
-        <!-- Front: Burgundy with Wax Seal (Points DOWN) -->
-        <div class="flap-face flap-front">
-          <div class="flap-wax-seal">
-            <span>NH</span>
-          </div>
-        </div>
-        <!-- Back: Striped Liner (Points UP when flipped) -->
-        <div class="flap-face flap-back">
-          <div class="flap-striped-liner"></div>
-        </div>
+      <!-- Dotted Guest Line -->
+      <div class="rect-card-guest-row">
+        <span class="rect-guest-label">KÍNH MỜI:</span>
+        <span class="rect-guest-val" id="env-guest-val">Quý Khách</span>
       </div>
 
     </div>
-
   </div>
 
   <div class="wine-open-btn">
