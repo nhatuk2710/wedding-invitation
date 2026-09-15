@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Dark Floral Editorial)</title>
+  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Dark Floral Matisse)</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
@@ -28,7 +28,7 @@
     }
 
     /* ══════════════════════════════════════════
-       CANVAS AMBIENT: MINIMALIST BOTANICAL SEEDS & BUBBLES
+       CANVAS AMBIENT: MINIMALIST BOTANICAL PARTICLES
     ══════════════════════════════════════════ */
     #ambient-canvas {
       position: fixed;
@@ -96,7 +96,7 @@
 
     #rect-cover-card {
       width: min(350px, 88vw);
-      height: min(495px, 126vw);
+      height: min(500px, 128vw);
       background: #1C1A19;
       border-radius: 4px;
       border: 1.5px solid #C8BEB0;
@@ -144,14 +144,27 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: #C8BEB0;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* Matisse Botanical Graphic on Cover Card */
-    .rect-card-matisse-art {
-      width: 100px;
-      height: 85px;
-      margin: 0 auto;
+    /* Exact Matisse Artwork on Cover Card */
+    .rect-card-artwork-wrap {
+      width: 130px;
+      height: 130px;
+      background: #FAF8F5;
+      border-radius: 4px;
+      padding: 8px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.4rem auto;
+      border: 1px solid #C8BEB0;
+    }
+    .rect-card-artwork-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -233,6 +246,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 1.1s ease;
+      overflow-x: hidden;
     }
     #invitation.visible {
       opacity: 1;
@@ -243,12 +257,13 @@
       max-width: 530px;
       width: 100%;
       margin: 0 auto;
-      padding: 3rem 1.2rem 6rem;
+      padding: 3rem 1.4rem 6rem;
       box-sizing: border-box;
+      position: relative;
     }
     @media (max-width: 480px) {
       .wedding-suite-container {
-        padding: 2rem 0.8rem 5rem;
+        padding: 2rem 1rem 5rem;
       }
     }
 
@@ -262,16 +277,16 @@
         0 24px 70px rgba(28, 26, 25, 0.12),
         0 3px 12px rgba(0, 0, 0, 0.04);
       position: relative;
-      padding: 4.2rem 2.2rem 3.8rem;
+      padding: 4.4rem 2.2rem 4rem;
       box-sizing: border-box;
       width: 100%;
-      border: 1.5px solid #1C1A19; /* Khung viền chỉ chính Dark Noir */
+      border: 1.5px solid #1C1A19;
       text-align: center;
-      overflow: hidden;
+      overflow: visible; /* Cho phép các chùm hoa cỡ lớn đính nhô ra viền thiệp */
     }
     @media (max-width: 480px) {
       .unified-invitation-card {
-        padding: 3.4rem 1.2rem 2.8rem;
+        padding: 3.4rem 1.3rem 3rem;
       }
     }
 
@@ -286,19 +301,67 @@
     }
 
     /* ══════════════════════════════════════════
-       MATISSE ABSTRACT FLORAL CORNER ACCENTS (SVG)
+       HOẠ TIẾT HOA CHUẨN MẪU KOZY.PLACE ĐÍNH BÊN CẠNH THIỆP (SIZE LỚN)
     ══════════════════════════════════════════ */
-    .matisse-corner {
+    .matisse-side-attach {
       position: absolute;
-      width: 78px;
-      height: 78px;
       pointer-events: none;
-      z-index: 2;
+      z-index: 5;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 18px rgba(28, 26, 25, 0.14));
+      transition: transform 0.4s ease;
     }
-    .corner-top-left { top: 11px; left: 11px; }
-    .corner-top-right { top: 11px; right: 11px; transform: scaleX(-1); }
-    .corner-bottom-left { bottom: 11px; left: 11px; transform: scaleY(-1); }
-    .corner-bottom-right { bottom: 11px; right: 11px; transform: scale(-1, -1); }
+    .side-top-right {
+      top: 35px;
+      right: -32px;
+      width: 155px;
+      transform: rotate(4deg);
+    }
+    .side-mid-left {
+      top: 540px;
+      left: -32px;
+      width: 148px;
+      transform: rotate(-5deg);
+    }
+    .side-mid-right {
+      top: 1100px;
+      right: -30px;
+      width: 145px;
+      transform: rotate(3deg);
+    }
+    .side-bottom-left {
+      bottom: 85px;
+      left: -30px;
+      width: 152px;
+      transform: rotate(-4deg);
+    }
+
+    @media (max-width: 520px) {
+      .side-top-right {
+        top: 25px;
+        right: -16px;
+        width: 115px;
+        opacity: 0.94;
+      }
+      .side-mid-left {
+        top: 510px;
+        left: -16px;
+        width: 110px;
+        opacity: 0.94;
+      }
+      .side-mid-right {
+        top: 1060px;
+        right: -16px;
+        width: 110px;
+        opacity: 0.94;
+      }
+      .side-bottom-left {
+        bottom: 65px;
+        left: -16px;
+        width: 115px;
+        opacity: 0.94;
+      }
+    }
 
     /* Content Wrapper */
     .unified-card-content {
@@ -306,7 +369,7 @@
       z-index: 4;
     }
 
-    /* Matisse Graphic Floral Divider (Vạch Ngăn Cách Hoa Trừu Tượng) */
+    /* Matisse Graphic Floral Divider (Vạch Ngăn Cách Dùng Ảnh Gốc) */
     .floral-divider {
       display: flex;
       align-items: center;
@@ -319,13 +382,15 @@
     .fd-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(28, 26, 25, 0.25), transparent);
+      background: linear-gradient(90deg, transparent, rgba(28, 26, 25, 0.28), transparent);
     }
-    .matisse-divider-art {
-      width: 46px;
-      height: 46px;
+    .matisse-divider-img {
+      width: 50px;
+      height: 50px;
       flex-shrink: 0;
+      object-fit: contain;
       display: block;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.06));
     }
 
     /* Section Generic */
@@ -801,7 +866,7 @@
     }
 
     /* ══════════════════════════════════════════
-       SECTION 6: WEDDING PHOTO ALBUM
+       SECTION 6: WEDDING PHOTO ALBUM (WITH MATISSE ART ARTWORK)
     ══════════════════════════════════════════ */
     .album-grid-box {
       display: grid;
@@ -829,7 +894,21 @@
     }
     .album-grid-item.full-col {
       grid-column: 1 / -1;
-      aspect-ratio: 21/9;
+      aspect-ratio: auto;
+      padding: 1.6rem 1.2rem;
+      background: #EAE4DC;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .album-matisse-feature {
+      width: min(220px, 60vw);
+      border-radius: 3px;
+      border: 1px solid rgba(28, 26, 25, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
     /* ══════════════════════════════════════════
@@ -905,46 +984,10 @@
       <div>
         <p class="rect-card-tag">WE'RE GETTING MARRIED</p>
         
-        <!-- Matisse Graphic Botanical Centerpiece on Cover -->
-        <svg class="rect-card-matisse-art" viewBox="0 0 100 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tall Teardrop Leaf Branch on Right -->
-          <path d="M 82 78 Q 82 45 82 12" stroke="#FAF8F5" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M 82 22 Q 92 18 90 28 Q 84 27 82 22 Z" fill="#C8BEB0"/>
-          <path d="M 82 36 Q 72 32 74 42 Q 80 41 82 36 Z" fill="#FAF8F5"/>
-          <path d="M 82 50 Q 92 46 90 56 Q 84 55 82 50 Z" fill="#C8BEB0"/>
-          <path d="M 82 64 Q 72 60 74 70 Q 80 69 82 64 Z" fill="#FAF8F5"/>
-
-          <!-- Matisse Graphic Dandelion Seedhead -->
-          <circle cx="42" cy="38" r="18" fill="#C8BEB0"/>
-          <circle cx="42" cy="38" r="13" fill="#1C1A19"/>
-          <!-- Inner Dotted Ring -->
-          <circle cx="42" cy="30" r="1.4" fill="#FAF8F5"/>
-          <circle cx="48" cy="32" r="1.4" fill="#FAF8F5"/>
-          <circle cx="50" cy="38" r="1.4" fill="#FAF8F5"/>
-          <circle cx="48" cy="44" r="1.4" fill="#FAF8F5"/>
-          <circle cx="42" cy="46" r="1.4" fill="#FAF8F5"/>
-          <circle cx="36" cy="44" r="1.4" fill="#FAF8F5"/>
-          <circle cx="34" cy="38" r="1.4" fill="#FAF8F5"/>
-          <circle cx="36" cy="32" r="1.4" fill="#FAF8F5"/>
-
-          <!-- Radiating seed stalks -->
-          <path d="M 42 20 L 42 12" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="42" cy="11" r="1.8" fill="#C8BEB0"/>
-          <path d="M 55 25 L 61 18" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="62" cy="17" r="1.8" fill="#C8BEB0"/>
-          <path d="M 60 38 L 68 38" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="69" cy="38" r="1.8" fill="#C8BEB0"/>
-          <path d="M 29 25 L 23 18" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="22" cy="17" r="1.8" fill="#C8BEB0"/>
-          <path d="M 24 38 L 16 38" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="15" cy="38" r="1.8" fill="#C8BEB0"/>
-          <path d="M 27 51 L 20 57" stroke="#FAF8F5" stroke-width="1.3"/>
-          <circle cx="19" cy="58" r="1.8" fill="#C8BEB0"/>
-
-          <!-- Stem & Organic Cutout Leaf -->
-          <path d="M 42 56 Q 40 70 36 82" stroke="#FAF8F5" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M 12 78 C 12 60, 30 65, 36 78 Z" fill="#C8BEB0"/>
-        </svg>
+        <!-- Exact Matisse Dandelion Artwork on Cover Card -->
+        <div class="rect-card-artwork-wrap">
+          <img src="assets/matisse_dandelion_transparent.png" class="rect-card-artwork-img" alt="Matisse Dandelion &amp; Foliage" />
+        </div>
       </div>
 
       <div>
@@ -982,115 +1025,18 @@
       <!-- Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame Warm Sand) -->
       <div class="card-inner-frame"></div>
 
-      <!-- ── 4 GÓC THIỆP: HOẠ TIẾT MATISSE BOTANICAL ABSTRACT (SVG) ── -->
-      
-      <!-- Góc Trên Trái: Matisse Allium & Dandelion Botanical Composition -->
-      <svg class="matisse-corner corner-top-left" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Stem with Teardrop Leaves -->
-        <path d="M 14 74 Q 14 38 14 10" stroke="#1C1A19" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M 14 20 Q 24 16 22 26 Q 16 25 14 20 Z" fill="#1C1A19"/>
-        <path d="M 14 34 Q 4 30 6 40 Q 12 39 14 34 Z" fill="#C8BEB0"/>
-        <path d="M 14 48 Q 24 44 22 54 Q 16 53 14 48 Z" fill="#1C1A19"/>
-        
-        <!-- Big Dandelion Seedhead -->
-        <circle cx="48" cy="34" r="18" fill="#1C1A19"/>
-        <circle cx="48" cy="34" r="12" fill="#FAF8F5"/>
-        <!-- Negative space dots -->
-        <circle cx="48" cy="27" r="1.3" fill="#1C1A19"/>
-        <circle cx="53" cy="29" r="1.3" fill="#1C1A19"/>
-        <circle cx="55" cy="34" r="1.3" fill="#1C1A19"/>
-        <circle cx="53" cy="39" r="1.3" fill="#1C1A19"/>
-        <circle cx="48" cy="41" r="1.3" fill="#1C1A19"/>
-        <circle cx="43" cy="39" r="1.3" fill="#1C1A19"/>
-        <circle cx="41" cy="34" r="1.3" fill="#1C1A19"/>
-        <circle cx="43" cy="29" r="1.3" fill="#1C1A19"/>
+      <!-- ── CÁC HOẠ TIẾT HOA CHUẨN MẪU KOZY.PLACE ĐÍNH CẠNH THIỆP (SIZE LỚN) ── -->
+      <!-- 1. Top-Right: Exact Matisse Dandelion & Leaf Stalk -->
+      <img src="assets/matisse_dandelion_transparent.png" class="matisse-side-attach side-top-right" alt="Matisse Dandelion" />
 
-        <!-- Spiky seed radiating tips -->
-        <path d="M 48 16 L 48 8" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="48" cy="7" r="1.6" fill="#C8BEB0"/>
-        <path d="M 61 21 L 67 14" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="68" cy="13" r="1.6" fill="#C8BEB0"/>
-        <path d="M 66 34 L 74 34" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="75" cy="34" r="1.6" fill="#C8BEB0"/>
-        <path d="M 35 21 L 29 14" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="28" cy="13" r="1.6" fill="#C8BEB0"/>
+      <!-- 2. Mid-Left: Exact Matisse Ribbed Poppies -->
+      <img src="assets/matisse_poppy_transparent.png" class="matisse-side-attach side-mid-left" alt="Matisse Poppies" />
 
-        <!-- Smaller companion allium -->
-        <circle cx="64" cy="56" r="10" fill="#C8BEB0"/>
-        <circle cx="64" cy="56" r="6" fill="#FAF8F5"/>
-        <circle cx="64" cy="56" r="2" fill="#1C1A19"/>
-      </svg>
+      <!-- 3. Mid-Right: Exact Matisse Starburst Asters -->
+      <img src="assets/matisse_starburst_transparent.png" class="matisse-side-attach side-mid-right" alt="Matisse Starburst Asters" />
 
-      <!-- Góc Trên Phải: Matisse Starburst Aster & Cutout Foliage -->
-      <svg class="matisse-corner corner-top-right" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 14 74 Q 14 38 14 10" stroke="#1C1A19" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M 14 20 Q 24 16 22 26 Q 16 25 14 20 Z" fill="#1C1A19"/>
-        <path d="M 14 34 Q 4 30 6 40 Q 12 39 14 34 Z" fill="#C8BEB0"/>
-        <path d="M 14 48 Q 24 44 22 54 Q 16 53 14 48 Z" fill="#1C1A19"/>
-        
-        <circle cx="48" cy="34" r="18" fill="#1C1A19"/>
-        <circle cx="48" cy="34" r="12" fill="#FAF8F5"/>
-        <circle cx="48" cy="27" r="1.3" fill="#1C1A19"/>
-        <circle cx="53" cy="29" r="1.3" fill="#1C1A19"/>
-        <circle cx="55" cy="34" r="1.3" fill="#1C1A19"/>
-        <circle cx="53" cy="39" r="1.3" fill="#1C1A19"/>
-        <circle cx="48" cy="41" r="1.3" fill="#1C1A19"/>
-        <circle cx="43" cy="39" r="1.3" fill="#1C1A19"/>
-        <circle cx="41" cy="34" r="1.3" fill="#1C1A19"/>
-        <circle cx="43" cy="29" r="1.3" fill="#1C1A19"/>
-
-        <path d="M 48 16 L 48 8" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="48" cy="7" r="1.6" fill="#C8BEB0"/>
-        <path d="M 61 21 L 67 14" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="68" cy="13" r="1.6" fill="#C8BEB0"/>
-        <path d="M 66 34 L 74 34" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="75" cy="34" r="1.6" fill="#C8BEB0"/>
-        <path d="M 35 21 L 29 14" stroke="#1C1A19" stroke-width="1.3"/>
-        <circle cx="28" cy="13" r="1.6" fill="#C8BEB0"/>
-
-        <circle cx="64" cy="56" r="10" fill="#C8BEB0"/>
-        <circle cx="64" cy="56" r="6" fill="#FAF8F5"/>
-        <circle cx="64" cy="56" r="2" fill="#1C1A19"/>
-      </svg>
-
-      <!-- Góc Dưới Trái: Matisse Ribbed Poppy & Cutout Blossom -->
-      <svg class="matisse-corner corner-bottom-left" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Organic Ribbed Poppy in Sand & Noir -->
-        <g transform="translate(36, 36)">
-          <!-- Petal 1 -->
-          <path d="M 0 0 C -12 -18, -26 -12, -22 2 C -18 12, -6 6, 0 0 Z" fill="#1C1A19"/>
-          <path d="M 0 0 C -10 -14, -20 -8, -18 0" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <!-- Petal 2 -->
-          <path d="M 0 0 C -18 -6, -24 16, -6 22 C 4 18, 2 8, 0 0 Z" fill="#C8BEB0"/>
-          <path d="M 0 0 C -14 0, -18 12, -4 16" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <!-- Petal 3 -->
-          <path d="M 0 0 C 6 18, 22 22, 22 6 C 18 -4, 8 -2, 0 0 Z" fill="#1C1A19"/>
-          <path d="M 0 0 C 6 12, 16 14, 16 4" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <!-- Petal 4 -->
-          <path d="M 0 0 C 14 -12, 18 -26, 2 -24 C -8 -18, -4 -6, 0 0 Z" fill="#C8BEB0"/>
-          <path d="M 0 0 C 10 -8, 12 -18, 0 -18" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <!-- Center Eye -->
-          <circle cx="0" cy="0" r="4" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1.2"/>
-        </g>
-        <!-- Companion leaf -->
-        <path d="M 8 72 C 8 52, 28 58, 34 72 Z" fill="#1C1A19"/>
-      </svg>
-
-      <!-- Góc Dưới Phải: Matisse Starburst & Botanical Cutout -->
-      <svg class="matisse-corner corner-bottom-right" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(36, 36)">
-          <path d="M 0 0 C -12 -18, -26 -12, -22 2 C -18 12, -6 6, 0 0 Z" fill="#1C1A19"/>
-          <path d="M 0 0 C -10 -14, -20 -8, -18 0" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <path d="M 0 0 C -18 -6, -24 16, -6 22 C 4 18, 2 8, 0 0 Z" fill="#C8BEB0"/>
-          <path d="M 0 0 C -14 0, -18 12, -4 16" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <path d="M 0 0 C 6 18, 22 22, 22 6 C 18 -4, 8 -2, 0 0 Z" fill="#1C1A19"/>
-          <path d="M 0 0 C 6 12, 16 14, 16 4" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <path d="M 0 0 C 14 -12, 18 -26, 2 -24 C -8 -18, -4 -6, 0 0 Z" fill="#C8BEB0"/>
-          <path d="M 0 0 C 10 -8, 12 -18, 0 -18" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
-          <circle cx="0" cy="0" r="4" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1.2"/>
-        </g>
-        <path d="M 8 72 C 8 52, 28 58, 34 72 Z" fill="#1C1A19"/>
-      </svg>
+      <!-- 4. Bottom-Left: Exact Matisse Dandelion Composition -->
+      <img src="assets/matisse_dandelion_transparent.png" class="matisse-side-attach side-bottom-left" alt="Matisse Botanical" />
 
       <!-- Main Unified Content -->
       <div class="unified-card-content">
@@ -1237,31 +1183,10 @@
           </div>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 1: ALLIUM SEEDHEAD ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 1: DANDELION ARTWORK ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="22" cy="22" r="14" fill="#1C1A19"/>
-            <circle cx="22" cy="22" r="9" fill="#FAF8F5"/>
-            <!-- Dotted ring -->
-            <circle cx="22" cy="17" r="1.2" fill="#1C1A19"/>
-            <circle cx="26" cy="19" r="1.2" fill="#1C1A19"/>
-            <circle cx="27" cy="22" r="1.2" fill="#1C1A19"/>
-            <circle cx="26" cy="25" r="1.2" fill="#1C1A19"/>
-            <circle cx="22" cy="27" r="1.2" fill="#1C1A19"/>
-            <circle cx="18" cy="25" r="1.2" fill="#1C1A19"/>
-            <circle cx="17" cy="22" r="1.2" fill="#1C1A19"/>
-            <circle cx="18" cy="19" r="1.2" fill="#1C1A19"/>
-            <!-- Radiating dot tips -->
-            <circle cx="22" cy="4" r="1.6" fill="#C8BEB0"/>
-            <circle cx="35" cy="9" r="1.6" fill="#C8BEB0"/>
-            <circle cx="40" cy="22" r="1.6" fill="#C8BEB0"/>
-            <circle cx="35" cy="35" r="1.6" fill="#C8BEB0"/>
-            <circle cx="22" cy="40" r="1.6" fill="#C8BEB0"/>
-            <circle cx="9" cy="35" r="1.6" fill="#C8BEB0"/>
-            <circle cx="4" cy="22" r="1.6" fill="#C8BEB0"/>
-            <circle cx="9" cy="9" r="1.6" fill="#C8BEB0"/>
-          </svg>
+          <img src="assets/matisse_dandelion_transparent.png" class="matisse-divider-img" alt="Matisse Dandelion" />
           <span class="fd-line"></span>
         </div>
 
@@ -1292,18 +1217,10 @@
           <p class="ivory-signoff-script">Rất hân hạnh được đón tiếp!</p>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 2: RIBBED POPPY ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 2: RIBBED POPPY ARTWORK ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(22, 22)">
-              <path d="M 0 0 C -8 -13, -18 -8, -15 2 C -12 9, -4 4, 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 C -13 -4, -16 12, -4 15 C 3 12, 1 5, 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 C 4 13, 15 15, 15 4 C 12 -3, 5 -1, 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 C 10 -8, 13 -18, 1 -16 C -5 -12, -3 -4, 0 0 Z" fill="#C8BEB0"/>
-              <circle cx="0" cy="0" r="3" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1"/>
-            </g>
-          </svg>
+          <img src="assets/matisse_poppy_transparent.png" class="matisse-divider-img" alt="Matisse Poppy" />
           <span class="fd-line"></span>
         </div>
 
@@ -1354,31 +1271,10 @@
           </div>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 3: STARBURST ASTER ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 3: STARBURST ASTER ARTWORK ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(22, 22)">
-              <!-- Radiating Starburst Petals (Matisse Panel 4 Style) -->
-              <path d="M 0 0 L 0 -17 L 1.5 0 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 6 -16 L 3 0 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 12 -12 L 4 -2 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 16 -6 L 4 -1 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 17 0 L 2 1.5 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 16 6 L 2 3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 12 12 L 1 4 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 6 16 L 0 3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 0 17 L -1.5 0 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -6 16 L -3 0 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -12 12 L -4 2 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -16 6 L -4 1 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -17 0 L -2 -1.5 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -16 -6 L -2 -3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -12 -12 L -1 -4 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -6 -16 L 0 -3 L 0 0 Z" fill="#C8BEB0"/>
-              <circle cx="0" cy="0" r="2.8" fill="#FAF8F5"/>
-            </g>
-          </svg>
+          <img src="assets/matisse_starburst_transparent.png" class="matisse-divider-img" alt="Matisse Starburst" />
           <span class="fd-line"></span>
         </div>
 
@@ -1474,29 +1370,10 @@
           </a>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 4: ALLIUM & SEED STALKS ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 4: DANDELION & SEEDS ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="22" cy="22" r="14" fill="#C8BEB0"/>
-            <circle cx="22" cy="22" r="9" fill="#1C1A19"/>
-            <circle cx="22" cy="17" r="1.2" fill="#FAF8F5"/>
-            <circle cx="26" cy="19" r="1.2" fill="#FAF8F5"/>
-            <circle cx="27" cy="22" r="1.2" fill="#FAF8F5"/>
-            <circle cx="26" cy="25" r="1.2" fill="#FAF8F5"/>
-            <circle cx="22" cy="27" r="1.2" fill="#FAF8F5"/>
-            <circle cx="18" cy="25" r="1.2" fill="#FAF8F5"/>
-            <circle cx="17" cy="22" r="1.2" fill="#FAF8F5"/>
-            <circle cx="18" cy="19" r="1.2" fill="#FAF8F5"/>
-            <circle cx="22" cy="4" r="1.6" fill="#1C1A19"/>
-            <circle cx="35" cy="9" r="1.6" fill="#1C1A19"/>
-            <circle cx="40" cy="22" r="1.6" fill="#1C1A19"/>
-            <circle cx="35" cy="35" r="1.6" fill="#1C1A19"/>
-            <circle cx="22" cy="40" r="1.6" fill="#1C1A19"/>
-            <circle cx="9" cy="35" r="1.6" fill="#1C1A19"/>
-            <circle cx="4" cy="22" r="1.6" fill="#1C1A19"/>
-            <circle cx="9" cy="9" r="1.6" fill="#1C1A19"/>
-          </svg>
+          <img src="assets/matisse_dandelion_transparent.png" class="matisse-divider-img" alt="Matisse Dandelion" />
           <span class="fd-line"></span>
         </div>
 
@@ -1531,35 +1408,15 @@
           </a>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 5: STARBURST ASTER ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 5: POPPY ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(22, 22)">
-              <path d="M 0 0 L 0 -17 L 1.5 0 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 6 -16 L 3 0 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 12 -12 L 4 -2 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 16 -6 L 4 -1 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 17 0 L 2 1.5 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 16 6 L 2 3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 12 12 L 1 4 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L 6 16 L 0 3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L 0 17 L -1.5 0 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -6 16 L -3 0 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -12 12 L -4 2 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -16 6 L -4 1 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -17 0 L -2 -1.5 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -16 -6 L -2 -3 L 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 L -12 -12 L -1 -4 L 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 L -6 -16 L 0 -3 L 0 0 Z" fill="#C8BEB0"/>
-              <circle cx="0" cy="0" r="2.8" fill="#FAF8F5"/>
-            </g>
-          </svg>
+          <img src="assets/matisse_poppy_transparent.png" class="matisse-divider-img" alt="Matisse Poppy" />
           <span class="fd-line"></span>
         </div>
 
         <!-- ══════════════════════════════════════════
-             6. WEDDING PHOTO ALBUM
+             6. WEDDING PHOTO ALBUM (FEATURING EXACT FULL MATISSE ARTWORK)
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
           <div class="section-badge-title">
@@ -1580,9 +1437,11 @@
               <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
             </div>
             <div class="album-grid-item full-col">
-              <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#EAE4DC; color:#1C1A19; padding:1.5rem; text-align:center; border-radius:4px;">
+              <!-- Exact Matisse Full Grid Art Piece -->
+              <img src="assets/matisse_full_grid.png" class="album-matisse-feature" alt="Dark Flower Botanical Composition" />
+              <div>
                 <p style="font-family:'Alex Brush',cursive; font-size:2.2rem; color:#1C1A19;">Drunk In Love</p>
-                <p style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6E675E; margin-top:0.3rem;">
+                <p style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6E675E; margin-top:0.2rem;">
                   "Khoảnh khắc ngọt ngào là khi ta tìm thấy nhau"
                 </p>
               </div>
@@ -1590,18 +1449,10 @@
           </div>
         </section>
 
-        <!-- ── MATISSE FLORAL DIVIDER 6: RIBBED POPPY ── -->
+        <!-- ── EXACT MATISSE FLORAL DIVIDER 6: STARBURST ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g transform="translate(22, 22)">
-              <path d="M 0 0 C -8 -13, -18 -8, -15 2 C -12 9, -4 4, 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 C -13 -4, -16 12, -4 15 C 3 12, 1 5, 0 0 Z" fill="#C8BEB0"/>
-              <path d="M 0 0 C 4 13, 15 15, 15 4 C 12 -3, 5 -1, 0 0 Z" fill="#1C1A19"/>
-              <path d="M 0 0 C 10 -8, 13 -18, 1 -16 C -5 -12, -3 -4, 0 0 Z" fill="#C8BEB0"/>
-              <circle cx="0" cy="0" r="3" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1"/>
-            </g>
-          </svg>
+          <img src="assets/matisse_starburst_transparent.png" class="matisse-divider-img" alt="Matisse Starburst" />
           <span class="fd-line"></span>
         </div>
 
@@ -1761,11 +1612,9 @@ window.addEventListener('DOMContentLoaded', () => {
       ctx.rotate(this.angle);
       ctx.globalAlpha = this.alpha;
       ctx.fillStyle = '#1C1A19';
-      // Seed head
       ctx.beginPath();
       ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
       ctx.fill();
-      // Fine tail
       ctx.strokeStyle = '#8A8177';
       ctx.lineWidth = 0.8;
       ctx.beginPath();
