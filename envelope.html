@@ -1792,19 +1792,19 @@ function escapeHtml(str) {
   }[tag] || tag));
 }
 
-/* ── 7. HTML5 CANVAS: 3D EMBOSSED FLOWERS ('HOA NỔI'), PETALS & BUBBLES ── */
+/* ── 7. HIGH-PERFORMANCE 60FPS CANVAS: 3D FLOWERS ('HOA NỔI'), PETALS & BUBBLES ── */
 
-// Master function to render an embossed 3D blooming rose ('Hoa Nổi')
-function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
+// Master function to render a 3D blooming rose ('Hoa Nổi')
+function renderBloomDirect(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);
   ctx.globalAlpha = alpha;
 
   // 3D Drop Shadow for 'Hoa Nổi' (Embossed depth)
-  ctx.shadowColor = 'rgba(50, 10, 20, 0.35)';
-  ctx.shadowBlur = radius * 0.45;
-  ctx.shadowOffsetY = radius * 0.2;
+  ctx.shadowColor = 'rgba(50, 10, 20, 0.32)';
+  ctx.shadowBlur = radius * 0.4;
+  ctx.shadowOffsetY = radius * 0.18;
 
   // Botanical Leaves behind bloom
   ctx.save();
@@ -1825,8 +1825,7 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
     ctx.quadraticCurveTo(radius * 0.35, -radius * 0.25, radius * 0.75, 0);
     ctx.quadraticCurveTo(radius * 0.35, radius * 0.25, 0, 0);
     ctx.fill();
-    // Leaf central vein
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, 0);
@@ -1843,11 +1842,9 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
   } else if (scheme === 'champagne') {
     cBase = '#5A1722'; cOuter = '#8C2B3C'; cMid = '#BA7A65'; cInner = '#DEC0AE'; cHighlight = '#FFF4EC'; cStamen = '#DFB76C';
   } else {
-    // Default: Velvet Burgundy Wine Red
     cBase = '#3E0B13'; cOuter = '#6B1724'; cMid = '#852030'; cInner = '#A32C3F'; cHighlight = '#C84D62'; cStamen = '#DFB76C';
   }
 
-  // Helper: Draw Petal Layer
   function drawLayer(count, dist, size, color, baseColor, rotOffset) {
     const step = (Math.PI * 2) / count;
     for (let i = 0; i < count; i++) {
@@ -1876,14 +1873,12 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
     }
   }
 
-  // Layer 1: Outer Petals
+  // Petals
   drawLayer(7, radius * 0.4, radius * 0.62, cOuter, cBase, 0);
-  // Layer 2: Middle Petals
   drawLayer(6, radius * 0.3, radius * 0.5, cMid, cOuter, Math.PI / 6);
-  // Layer 3: Inner Petals
   drawLayer(5, radius * 0.2, radius * 0.38, cInner, cMid, Math.PI / 4);
 
-  // Layer 4: Spiral Rosebud Center
+  // Spiral Rosebud Center
   const coreR = radius * 0.26;
   const cg = ctx.createRadialGradient(0, 0, 1, 0, 0, coreR);
   cg.addColorStop(0, cHighlight);
@@ -1894,11 +1889,10 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
   ctx.arc(0, 0, coreR, 0, Math.PI * 2);
   ctx.fill();
 
-  // Rose swirl petals
   ctx.strokeStyle = cHighlight;
   ctx.lineWidth = 1.3;
   ctx.beginPath();
-  for (let t = 0; t < Math.PI * 3.5; t += 0.2) {
+  for (let t = 0; t < Math.PI * 3.5; t += 0.25) {
     const r = (coreR * 0.25) + (coreR * 0.7) * (t / (Math.PI * 3.5));
     const px = Math.cos(t) * r;
     const py = Math.sin(t) * r;
@@ -1907,10 +1901,8 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
   }
   ctx.stroke();
 
-  // Layer 5: Golden Stamen Dots
+  // Golden Stamen Dots
   ctx.fillStyle = cStamen;
-  ctx.shadowColor = 'rgba(223, 183, 108, 0.8)';
-  ctx.shadowBlur = 4;
   for (let i = 0; i < 7; i++) {
     const a = (i / 7) * Math.PI * 2;
     const d = (i % 2 === 0) ? coreR * 0.55 : coreR * 0.3;
@@ -1922,7 +1914,27 @@ function renderBloom(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
   ctx.restore();
 }
 
-// Draw floral bouquets inside inner card backgrounds (Nền thiệp nội dung bên trong)
+// ── OFFSCREEN SPRITE CACHE (Pre-render once, blit at 60fps GPU speed) ──
+const bloomSpriteCache = {};
+
+function getBloomSprite(scheme, radius = 35) {
+  const key = scheme + '_' + Math.round(radius);
+  if (bloomSpriteCache[key]) return bloomSpriteCache[key];
+
+  const off = document.createElement('canvas');
+  const pad = Math.ceil(radius * 0.65);
+  const side = Math.ceil((radius + pad) * 2);
+  off.width = side;
+  off.height = side;
+  const octx = off.getContext('2d');
+
+  renderBloomDirect(octx, side / 2, side / 2, radius, 0, 1.0, scheme);
+
+  bloomSpriteCache[key] = off;
+  return off;
+}
+
+// Draw static floral bouquets inside inner card backgrounds (Rendered once on layout)
 function drawCardFlorals() {
   const c2 = document.getElementById('card2-floral-canvas');
   if (c2) {
@@ -1932,14 +1944,14 @@ function drawCardFlorals() {
     if (w > 0 && h > 0) {
       ctx.clearRect(0, 0, w, h);
       // Top-Right Corner Bouquet
-      renderBloom(ctx, w - 24, 28, 38, -0.4, 0.92, 'wine');
-      renderBloom(ctx, w - 70, 32, 25, 0.8, 0.88, 'blush');
-      renderBloom(ctx, w - 32, 76, 22, -1.2, 0.85, 'champagne');
+      renderBloomDirect(ctx, w - 24, 28, 38, -0.4, 0.92, 'wine');
+      renderBloomDirect(ctx, w - 70, 32, 25, 0.8, 0.88, 'blush');
+      renderBloomDirect(ctx, w - 32, 76, 22, -1.2, 0.85, 'champagne');
 
       // Bottom-Left Corner Bouquet
-      renderBloom(ctx, 28, h - 28, 38, 2.6, 0.92, 'wine');
-      renderBloom(ctx, 74, h - 34, 25, -0.7, 0.88, 'blush');
-      renderBloom(ctx, 34, h - 76, 22, 1.4, 0.85, 'champagne');
+      renderBloomDirect(ctx, 28, h - 28, 38, 2.6, 0.92, 'wine');
+      renderBloomDirect(ctx, 74, h - 34, 25, -0.7, 0.88, 'blush');
+      renderBloomDirect(ctx, 34, h - 76, 22, 1.4, 0.85, 'champagne');
     }
   }
 
@@ -1950,15 +1962,15 @@ function drawCardFlorals() {
     const h = c1.height = c1.clientHeight;
     if (w > 0 && h > 0) {
       ctx.clearRect(0, 0, w, h);
-      renderBloom(ctx, 24, 28, 32, 0.5, 0.55, 'blush');
-      renderBloom(ctx, w - 24, h - 28, 32, -2.4, 0.55, 'champagne');
+      renderBloomDirect(ctx, 24, 28, 32, 0.5, 0.55, 'blush');
+      renderBloomDirect(ctx, w - 24, h - 28, 32, -2.4, 0.55, 'champagne');
     }
   }
 }
 
 window.addEventListener('resize', drawCardFlorals, { passive: true });
 
-// Ambient Canvas Animation: Floating Blooms, Rose Petals & Champagne Bubbles
+// ── AMBIENT 60FPS ANIMATION: SPRITE-BASED BLOOMS, PETALS & BUBBLES ──
 (function() {
   const canvas = document.getElementById('ambient-canvas');
   if (!canvas) return;
@@ -1968,56 +1980,67 @@ window.addEventListener('resize', drawCardFlorals, { passive: true });
   function resize() {
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
-    drawCardFlorals();
   }
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  // 1. Floating 3D Blooming Flowers ('Hoa Nổi')
+  // Pre-warm sprite cache
+  ['wine', 'blush', 'champagne'].forEach(sch => {
+    [24, 32, 38].forEach(r => getBloomSprite(sch, r));
+  });
+
+  // 1. Floating 3D Blooming Flowers (Uses fast cached offscreen bitmaps)
   class FloatingBloom {
     constructor(init = false) { this.reset(init); }
     reset(init = false) {
       this.x = Math.random() * W;
-      this.y = init ? Math.random() * H : -60;
-      this.radius = 20 + Math.random() * 22; // 20px to 42px
-      this.speedY = 0.28 + Math.random() * 0.35;
-      this.speedX = (Math.random() - 0.5) * 0.32;
+      this.y = init ? Math.random() * H : -70;
+      this.radius = [24, 32, 38][Math.floor(Math.random() * 3)];
+      this.speedY = 0.28 + Math.random() * 0.3;
+      this.speedX = (Math.random() - 0.5) * 0.25;
       this.angle = Math.random() * Math.PI * 2;
-      this.spin = (Math.random() - 0.5) * 0.005;
+      this.spin = (Math.random() - 0.5) * 0.004;
       this.sway = Math.random() * Math.PI * 2;
-      this.swaySpeed = 0.01 + Math.random() * 0.012;
+      this.swaySpeed = 0.008 + Math.random() * 0.01;
       const schemes = ['wine', 'wine', 'blush', 'champagne'];
       this.scheme = schemes[Math.floor(Math.random() * schemes.length)];
-      this.alpha = 0.65 + Math.random() * 0.28;
+      this.alpha = 0.68 + Math.random() * 0.26;
+      this.sprite = getBloomSprite(this.scheme, this.radius);
     }
     update() {
       this.y += this.speedY;
       this.sway += this.swaySpeed;
-      this.x += this.speedX + Math.sin(this.sway) * 0.45;
+      this.x += this.speedX + Math.sin(this.sway) * 0.4;
       this.angle += this.spin;
-      if (this.y > H + 60) this.reset();
+      if (this.y > H + 70) this.reset();
     }
     draw() {
-      renderBloom(ctx, this.x, this.y, this.radius, this.angle, this.alpha, this.scheme);
+      if (!this.sprite) return;
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.globalAlpha = this.alpha;
+      ctx.drawImage(this.sprite, -this.sprite.width / 2, -this.sprite.height / 2);
+      ctx.restore();
     }
   }
 
-  // 2. Effervescent Champagne Micro-bubbles (Rising)
+  // 2. Effervescent Champagne Micro-bubbles
   class Bubble {
     constructor() { this.reset(true); }
     reset(init = false) {
       this.x = Math.random() * W;
       this.y = init ? Math.random() * H : H + 10;
-      this.radius = 1.2 + Math.random() * 2.6;
-      this.speedY = 0.5 + Math.random() * 1.1;
-      this.speedX = (Math.random() - 0.5) * 0.4;
-      this.alpha = 0.15 + Math.random() * 0.35;
+      this.radius = 1.2 + Math.random() * 2.4;
+      this.speedY = 0.45 + Math.random() * 0.9;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.alpha = 0.15 + Math.random() * 0.3;
       this.wobble = Math.random() * Math.PI * 2;
     }
     update() {
       this.y -= this.speedY;
       this.wobble += 0.03;
-      this.x += this.speedX + Math.sin(this.wobble) * 0.3;
+      this.x += this.speedX + Math.sin(this.wobble) * 0.25;
       if (this.y < -10) this.reset();
     }
     draw() {
@@ -2031,24 +2054,24 @@ window.addEventListener('resize', drawCardFlorals, { passive: true });
     }
   }
 
-  // 3. Velvet Burgundy Rose Petals (Drifting)
+  // 3. Velvet Burgundy Rose Petals
   class Petal {
     constructor() { this.reset(true); }
     reset(init = false) {
       this.x = Math.random() * W;
       this.y = init ? Math.random() * H : -20;
-      this.size = 4 + Math.random() * 6;
-      this.speedY = 0.4 + Math.random() * 0.6;
-      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.size = 4 + Math.random() * 5.5;
+      this.speedY = 0.35 + Math.random() * 0.55;
+      this.speedX = (Math.random() - 0.5) * 0.4;
       this.angle = Math.random() * Math.PI * 2;
-      this.spin = (Math.random() - 0.5) * 0.02;
-      this.alpha = 0.12 + Math.random() * 0.22;
+      this.spin = (Math.random() - 0.5) * 0.015;
+      this.alpha = 0.12 + Math.random() * 0.2;
       this.sway = Math.random() * Math.PI * 2;
     }
     update() {
       this.y += this.speedY;
       this.sway += 0.012;
-      this.x += this.speedX + Math.sin(this.sway) * 0.4;
+      this.x += this.speedX + Math.sin(this.sway) * 0.35;
       this.angle += this.spin;
       if (this.y > H + 20) this.reset();
     }
@@ -2065,9 +2088,9 @@ window.addEventListener('resize', drawCardFlorals, { passive: true });
     }
   }
 
-  const blooms = Array.from({ length: 7 }, () => new FloatingBloom(true));
-  const bubbles = Array.from({ length: 38 }, () => new Bubble());
-  const petals = Array.from({ length: 26 }, () => new Petal());
+  const blooms = Array.from({ length: 5 }, () => new FloatingBloom(true));
+  const bubbles = Array.from({ length: 28 }, () => new Bubble());
+  const petals = Array.from({ length: 18 }, () => new Petal());
 
   function loop() {
     ctx.clearRect(0, 0, W, H);
