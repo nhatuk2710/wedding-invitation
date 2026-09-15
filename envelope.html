@@ -3,158 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền</title>
+  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Drunk In Love Edition)</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       min-height: 100%;
-      background: #eaf2f1;
-      color: #333333;
-      font-family: 'Be Vietnam Pro', 'Montserrat', sans-serif;
+      background: #f7f3ee;
+      color: #2b2b2b;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
     /* ══════════════════════════════════════════
-       VINTAGE PASTEL INTRO SCREEN
+       CANVAS AMBIENT: CHAMPAGNE BUBBLES & PETALS
     ══════════════════════════════════════════ */
-    #vintage-intro-screen {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: #eaf2f1;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.9s ease;
-    }
-    #vintage-intro-screen.hidden-screen {
-      opacity: 0;
-      transform: translateY(-30px);
-      pointer-events: none;
-    }
-
-    /* Subtle texture */
-    .screen-ambient-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.65) 0%, rgba(234, 242, 241, 0.9) 100%);
-      pointer-events: none;
-    }
-
-    /* Intro Card Container */
-    .vintage-intro-card {
-      position: relative;
-      z-index: 10;
-      width: min(440px, 88vw);
-      padding: 2.8rem 2.2rem;
-      background: #ffffff;
-      border-radius: 24px;
-      box-shadow: 0 16px 40px rgba(80, 105, 100, 0.12);
-      border: 1px solid #dce8e6;
-      text-align: center;
-      transition: transform 0.4s ease;
-    }
-
-    /* Vertical Watercolor Name Stamp (như ảnh mẫu) */
-    .stamp-box-wrap {
-      display: inline-flex;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-    }
-    .stamp-vertical-block {
-      background: #e29b8f;
-      border-radius: 6px;
-      padding: 0.6rem 0.85rem;
-      box-shadow: 0 4px 12px rgba(226, 155, 143, 0.35);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .stamp-col-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.88rem;
-      font-weight: 600;
-      letter-spacing: 0.28em;
-      color: #ffffff;
-      writing-mode: vertical-rl;
-      text-orientation: upright;
-      line-height: 1;
-    }
-    .stamp-v-divider {
-      width: 1px;
-      height: 38px;
-      background: rgba(255, 255, 255, 0.5);
-    }
-
-    .intro-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #8c736e;
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-    }
-    .intro-guest {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
-      font-style: italic;
-      font-weight: 600;
-      color: #2b2b2b;
-      line-height: 1.25;
-      margin-bottom: 0.8rem;
-    }
-
-    .intro-couple-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: #383838;
-      line-height: 1.6;
-    }
-    .intro-date-venue {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #8a9e9a;
-      margin-top: 0.4rem;
-      font-weight: 500;
-    }
-
-    .intro-open-btn {
-      margin-top: 2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.65rem 1.6rem;
-      background: #e29b8f;
-      color: #ffffff;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      box-shadow: 0 6px 18px rgba(226, 155, 143, 0.4);
-      transition: all 0.3s ease;
-      animation: pulseButton 2.4s infinite;
-    }
-    @keyframes pulseButton {
-      0%, 100% { transform: scale(1); box-shadow: 0 4px 14px rgba(226, 155, 143, 0.35); }
-      50% { transform: scale(1.03); box-shadow: 0 8px 24px rgba(226, 155, 143, 0.55); }
-    }
-
-    /* ══════════════════════════════════════════
-       MAIN INVITATION WRAPPER
-    ══════════════════════════════════════════ */
-    #inv-canvas {
+    #ambient-canvas {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -163,10 +32,190 @@
       z-index: 1;
     }
 
+    /* ══════════════════════════════════════════
+       DRUNK IN LOVE ENVELOPE INTRO SCREEN
+    ══════════════════════════════════════════ */
+    #wine-intro-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: radial-gradient(circle at 50% 40%, #421017 0%, #1f070b 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #wine-intro-screen.hidden-screen {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* 3D Envelope Wrapper */
+    #env-container {
+      position: relative;
+      width: min(500px, 90vw);
+      height: min(340px, 62vw);
+      perspective: 1200px;
+      margin-bottom: 2rem;
+      transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Wine Red Envelope Body */
+    .env-body {
+      position: absolute;
+      inset: 0;
+      background: #6B1724;
+      border-radius: 6px;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 4px 16px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.8rem 2rem;
+      color: #ffffff;
+      z-index: 2;
+    }
+    .env-body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%, rgba(0,0,0,0.2) 100%);
+      pointer-events: none;
+    }
+
+    /* Couple Script on Envelope */
+    .env-script-names {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(2.4rem, 6.5vw, 3.4rem);
+      color: #ffffff;
+      line-height: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .env-date-tag {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.25em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-top: 0.35rem;
+    }
+
+    /* Guest Baseline on Envelope */
+    .env-guest-line {
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
+      padding-top: 0.75rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .env-kinh-moi {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .env-guest-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #ffffff;
+      letter-spacing: 0.04em;
+    }
+
+    /* Peeking Photo Card from Envelope */
+    #peeking-card {
+      position: absolute;
+      top: 12%;
+      left: 8%;
+      right: 8%;
+      bottom: 6%;
+      background: #58111A;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .peeking-thumb {
+      width: 82%;
+      height: 60%;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .peeking-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(108%);
+    }
+    .peeking-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-top: 0.6rem;
+    }
+    .peeking-script {
+      font-family: 'Alex Brush', cursive;
+      font-size: 1.35rem;
+      color: #DFB76C;
+      margin-top: -0.2rem;
+    }
+
+    /* Open Button */
+    .wine-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.8rem;
+      background: #6B1724;
+      border: 1.5px solid rgba(223, 183, 108, 0.5);
+      border-radius: 999px;
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+      animation: wineGlow 2.4s infinite;
+      transition: all 0.3s ease;
+    }
+    @keyframes wineGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(223, 183, 108, 0.25); transform: scale(1); }
+      50% { box-shadow: 0 0 28px rgba(223, 183, 108, 0.55); transform: scale(1.03); }
+    }
+
+    /* Parting Trigger */
+    #wine-intro-screen.opening #peeking-card {
+      transform: translateY(-130%) scale(1.08);
+      z-index: 10;
+    }
+    #wine-intro-screen.opening #env-container {
+      transform: translateY(120px) scale(0.9);
+      opacity: 0;
+    }
+
+    /* ══════════════════════════════════════════
+       MAIN INVITATION WRAPPER
+    ══════════════════════════════════════════ */
     #invitation {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 1s ease;
+      transition: opacity 1.2s ease;
       position: relative;
       z-index: 2;
     }
@@ -180,465 +229,493 @@
       z-index: 2;
       max-width: 680px;
       margin: 0 auto;
-      padding: 2rem 1.2rem 5rem;
+      padding: 3rem 1.2rem 6rem;
     }
 
-    .vintage-card-body {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 2.8rem 2.2rem;
-      box-shadow: 0 16px 45px rgba(80, 105, 100, 0.1);
-      border: 1px solid #dce8e6;
+    /* ── CARD 1: BURGUNDY COVER ("HERE BEGINS the REST OF OUR story") ── */
+    .drunk-cover-card {
+      background: #6B1724;
+      border-radius: 8px;
+      box-shadow: 0 20px 50px rgba(70, 15, 25, 0.25);
+      padding: 3.2rem 2.4rem;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 2.5rem;
       position: relative;
+      overflow: hidden;
+    }
+    .drunk-cover-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-photo-frame {
+      max-width: 440px;
+      margin: 0 auto 2.2rem;
+      border: 8px solid #ffffff;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      background: #ffffff;
+    }
+    .cover-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .cover-photo-grid img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(108%);
+    }
+
+    /* The Iconic Typography: HERE BEGINS the REST OF OUR story */
+    .drunk-quote-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .drunk-quote-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.3rem 0;
+    }
+    .script-the {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(2.4rem, 7vw, 3.4rem);
+      color: #ffffff;
+      text-transform: none;
+      line-height: 0.8;
+    }
+    .serif-rest {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .serif-our {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+    .script-story {
+      font-family: 'Alex Brush', cursive;
+      font-size: clamp(2.6rem, 7.5vw, 3.6rem);
+      color: #ffffff;
+      text-transform: none;
+      line-height: 0.8;
+      margin-left: 0.3rem;
+    }
+
+    .cover-footer-names {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.75);
+      margin-top: 1.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* ── CARD 2: IVORY LETTERPRESS INVITATION CARD (WITH WAVY BORDER) ── */
+    .drunk-main-card {
+      background: #FAF7F2;
+      border-radius: 8px;
+      box-shadow: 0 16px 45px rgba(70, 15, 25, 0.12);
+      padding: 3.5rem 2.6rem;
+      position: relative;
+      overflow: hidden;
     }
     @media (max-width: 640px) {
-      .vintage-card-body {
-        padding: 2.2rem 1.3rem;
-        border-radius: 22px;
+      .drunk-main-card {
+        padding: 2.6rem 1.5rem;
       }
     }
 
-    /* Top Stamp in main card */
-    .main-top-stamp {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
+    /* Wavy Scalloped SVG Border (Signature TheSimple) */
+    .wavy-border-svg {
+      position: absolute;
+      inset: 12px;
+      width: calc(100% - 24px);
+      height: calc(100% - 24px);
+      pointer-events: none;
+      z-index: 1;
     }
 
-    /* Section Typography */
-    .section-title-retro {
-      text-align: center;
-      margin-bottom: 1.8rem;
+    .card-content-inner {
+      position: relative;
+      z-index: 2;
     }
-    .retro-badge-label {
+
+    /* Header Announcement */
+    .intro-announce-badge {
       font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #8c736e;
+      color: #6B1724;
+      margin-bottom: 0.6rem;
+    }
+
+    .guest-highlight-block {
+      background: #f1e9df;
+      padding: 1rem 1.4rem;
+      border-radius: 4px;
+      margin: 1.2rem auto;
+      max-width: 440px;
+      border-left: 3px solid #6B1724;
+    }
+    .guest-highlight-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
+      color: #6B1724;
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0.2rem 0;
+    }
+
+    /* Clinking Champagne Coupes with Ribbons & Cherries */
+    .champagne-illustration {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 1.6rem;
+    }
+
+    /* Groom & Bride Names */
+    .name-groom {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+      font-weight: 600;
+      color: #6B1724;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+    }
+    .name-bride {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+      font-weight: 600;
+      color: #6B1724;
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+    }
+    .name-connector {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.2rem;
+      color: #6B1724;
+      margin: 0.1rem 0;
+    }
+
+    /* Section Headings */
+    .wine-section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .wine-badge-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #6B1724;
       display: inline-block;
       position: relative;
-      padding-bottom: 0.45rem;
+      padding-bottom: 0.5rem;
     }
-    .retro-badge-label::after {
+    .wine-badge-label::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 32px;
+      width: 36px;
       height: 1.5px;
-      background: #e29b8f;
+      background: #6B1724;
     }
-    .retro-title-vn {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #2b2b2b;
-      margin-top: 0.4rem;
-    }
-
-    /* Hero Section Typography */
-    .hero-announce {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #8a9e9a;
-    }
-    .name-groom {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600;
-      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
-      line-height: 1.15;
-      color: #222222;
-    }
-    .name-bride {
+    .wine-subtitle-vn {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-weight: 600;
-      font-size: clamp(1.9rem, 5.5vw, 2.7rem);
-      line-height: 1.15;
-      color: #222222;
-    }
-    .names-connector {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.35rem;
-      color: #e29b8f;
-      margin: 0.2rem 0;
-    }
-    .hero-united-text {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #777777;
-      margin-top: 0.3rem;
+      font-size: 1.25rem;
+      color: #555555;
+      margin-top: 0.35rem;
     }
 
-    .retro-divider {
+    /* Wedding Timeline (Đón khách, Lễ cưới, Khai tiệc - Theo mẫu Drunk in Love) */
+    .timeline-three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin: 2.5rem 0;
+      text-align: center;
+      padding: 1.5rem 0.5rem;
+      border-top: 1px solid #e8decb;
+      border-bottom: 1px solid #e8decb;
+    }
+    .timeline-item-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 0.6rem;
+      border-radius: 50%;
+      border: 1px solid #6B1724;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8rem;
-      margin: 2.6rem 0;
+      color: #6B1724;
     }
-    .retro-divider::before, .retro-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: #e2ecea;
+    .timeline-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #6B1724;
+      letter-spacing: 0.05em;
     }
-
-    /* ══════════════════════════════════════════
-       ATTACHED PHOTO KEEPSAKE (RETRO POLAROID)
-    ══════════════════════════════════════════ */
-    .retro-photo-wrap {
-      position: relative;
-      margin: 2.2rem auto 1rem;
-      max-width: 480px;
-      padding: 12px 12px 24px 12px;
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(80, 105, 100, 0.12);
-      border: 1px solid #e0ecea;
-      transition: transform 0.4s ease;
-    }
-    .retro-photo-wrap:hover {
-      transform: translateY(-3px);
-    }
-    .retro-tape-clip {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 75px;
-      height: 20px;
-      background: rgba(226, 155, 143, 0.7);
-      backdrop-filter: blur(2px);
-      border-radius: 3px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-      z-index: 5;
-    }
-    .retro-photo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .retro-photo-grid img {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.5s ease;
-    }
-    .retro-photo-wrap:hover .retro-photo-grid img {
-      transform: scale(1.03);
-    }
-    .retro-photo-caption {
-      margin-top: 14px;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      font-weight: 500;
+    .timeline-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
       color: #666666;
-      text-align: center;
-      letter-spacing: 0.02em;
+      margin-top: 0.25rem;
     }
 
-    /* ══════════════════════════════════════════
-       COUNTDOWN TIMER (ĐẾM NGƯỢC THỜI GIAN)
-       Như mockup máy bên phải của người dùng
-    ══════════════════════════════════════════ */
-    .countdown-section {
-      background: #f7faf9;
-      border: 1px solid #e2ecea;
-      border-radius: 20px;
-      padding: 1.8rem 1.4rem;
-      margin: 2.4rem 0;
+    /* Countdown Timer */
+    .countdown-wine-card {
+      background: #ffffff;
+      border: 1px solid #e8decb;
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
+      margin: 2.6rem 0;
       text-align: center;
-    }
-    .countdown-title {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #555555;
-      letter-spacing: 0.08em;
-      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
     }
     .countdown-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.8rem;
+      gap: 1rem;
       max-width: 440px;
-      margin: 0 auto;
+      margin: 1.2rem auto 0;
     }
-    .countdown-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .countdown-number {
-      font-family: 'Montserrat', sans-serif;
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
-      font-weight: 700;
-      color: #c85a4b;
+    .countdown-num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5.5vw, 2.5rem);
+      font-weight: 600;
+      color: #6B1724;
       line-height: 1;
     }
-    .countdown-label {
+    .countdown-lbl {
       font-size: 0.62rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #7d8e8b;
-      margin-top: 0.5rem;
+      color: #888888;
+      margin-top: 0.4rem;
     }
 
-    /* ══════════════════════════════════════════
-       AVATAR SECTION (THÔNG TIN LIÊN HỆ / CÔ DÂU CHÚ RỂ)
-    ══════════════════════════════════════════ */
-    .couple-avatars-grid {
+    /* Avatars */
+    .avatars-wine-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      gap: 1.8rem;
       margin: 2.2rem 0;
     }
-    .avatar-card {
+    .avatar-wine-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-    .avatar-frame {
-      width: 124px;
-      height: 124px;
+    .avatar-wine-frame {
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       padding: 4px;
+      border: 2px solid #6B1724;
       background: #ffffff;
-      border: 2px solid #e29b8f;
-      box-shadow: 0 8px 20px rgba(226, 155, 143, 0.25);
-      margin-bottom: 0.9rem;
+      box-shadow: 0 8px 24px rgba(107, 23, 36, 0.18);
+      margin-bottom: 1rem;
       overflow: hidden;
     }
-    .avatar-frame img {
+    .avatar-wine-frame img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      transition: transform 0.4s ease;
+      filter: grayscale(15%) contrast(105%);
+      transition: transform 0.5s ease;
     }
-    .avatar-card:hover .avatar-frame img {
-      transform: scale(1.06);
+    .avatar-wine-card:hover .avatar-wine-frame img {
+      transform: scale(1.08);
     }
-    .avatar-role-label {
+    .avatar-role-tag {
       font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
       font-weight: 600;
-      color: #8c736e;
-      margin-bottom: 0.2rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #6B1724;
+      margin-bottom: 0.25rem;
     }
-    .avatar-name {
-      font-family: 'Cormorant Garamond', serif;
+    .avatar-name-txt {
+      font-family: 'Playfair Display', serif;
       font-size: 1.45rem;
       font-weight: 600;
       color: #2b2b2b;
       line-height: 1.2;
     }
-    .avatar-desc {
+    .avatar-desc-txt {
       font-size: 0.78rem;
-      line-height: 1.65;
-      color: #666666;
-      max-width: 220px;
-      margin-top: 0.45rem;
-    }
-    .contact-btn {
-      margin-top: 0.8rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.4rem 1rem;
-      border: 1px solid #dce8e6;
-      border-radius: 999px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      color: #555;
-      background: #ffffff;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      line-height: 1.7;
+      color: #555555;
+      max-width: 230px;
+      margin-top: 0.5rem;
     }
 
-    /* ══════════════════════════════════════════
-       CALENDAR (VINTAGE PASTEL)
-    ══════════════════════════════════════════ */
-    .cal-wrap {
-      border: 1px solid #dce8e6;
-      border-radius: 18px;
+    /* Calendar */
+    .cal-wine-wrap {
+      border: 1px solid #6B1724;
+      border-radius: 6px;
       overflow: hidden;
       background: #ffffff;
-      box-shadow: 0 6px 20px rgba(80, 105, 100, 0.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     }
-    .cal-header {
-      background: #7d9692;
+    .cal-wine-header {
+      background: #6B1724;
       color: #ffffff;
       text-align: center;
-      padding: 1rem 1rem;
+      padding: 1.1rem 1rem;
     }
-    .cal-month {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+    .cal-wine-month {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
       font-weight: 600;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
     }
-    .cal-year {
-      font-size: 0.65rem;
+    .cal-wine-year {
+      font-size: 0.68rem;
       letter-spacing: 0.3em;
       opacity: 0.85;
-      margin-top: 0.2rem;
+      margin-top: 0.25rem;
     }
-    .cal-grid {
+    .cal-wine-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       background: #ffffff;
     }
-    .cal-dow {
-      font-size: 0.62rem;
+    .cal-wine-dow {
+      font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #7d9692;
+      color: #6B1724;
       text-align: center;
-      padding: 0.7rem 0.2rem;
-      background: #f7faf9;
-      border-bottom: 1px solid #eef3f2;
+      padding: 0.75rem 0.2rem;
+      background: #f9f5f0;
+      border-bottom: 1px solid #ebdccc;
     }
-    .cal-day {
+    .cal-wine-day {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 500;
       text-align: center;
-      padding: 0.65rem 0.2rem;
+      padding: 0.7rem 0.2rem;
       color: #333333;
       position: relative;
     }
-    .cal-day.empty { color: transparent; pointer-events: none; }
-    .cal-day.hi {
-      background: #e29b8f;
+    .cal-wine-day.empty { color: transparent; pointer-events: none; }
+    .cal-wine-day.hi {
+      background: #6B1724;
       color: #ffffff !important;
       font-weight: 700;
       border-radius: 50%;
     }
-    .cal-day.hi::after {
+    .cal-wine-day.hi::after {
       content: '♥';
       position: absolute;
       bottom: 2px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.35rem;
+      font-size: 0.4rem;
       color: #ffffff;
     }
-    .cal-footer-text {
-      text-align: center;
-      margin-top: 0.9rem;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #555555;
-    }
 
-    /* ══════════════════════════════════════════
-       VENUE + MAP
-    ══════════════════════════════════════════ */
-    .venue-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.65rem;
+    /* Venue */
+    .venue-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #2b2b2b;
+      color: #6B1724;
     }
-    .venue-sub {
-      font-size: 0.78rem;
+    .venue-subtitle {
+      font-size: 0.82rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #7d8e8b;
-      margin-top: 0.35rem;
+      color: #666666;
+      margin-top: 0.4rem;
     }
-    .map-wrap {
-      border: 1px solid #dce8e6;
-      border-radius: 18px;
+    .map-wine-frame {
+      border: 1px solid #6B1724;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 6px 22px rgba(80, 105, 100, 0.08);
+      margin-top: 1.2rem;
     }
-    .map-wrap iframe {
+    .map-wine-frame iframe {
       width: 100%;
       height: 250px;
       display: block;
       border: none;
     }
 
-    /* ══════════════════════════════════════════
-       ALBUM
-    ══════════════════════════════════════════ */
-    .album-grid {
+    /* Album */
+    .album-wine-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
     @media (max-width: 520px) {
-      .album-grid { grid-template-columns: repeat(2, 1fr); }
+      .album-wine-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .album-item {
+    .album-wine-item {
       position: relative;
       aspect-ratio: 1;
-      border-radius: 12px;
+      border-radius: 4px;
       overflow: hidden;
-      border: 1px solid #e0ecea;
-      box-shadow: 0 4px 12px rgba(80, 105, 100, 0.06);
-      background: #ffffff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      background: #FAF7F2;
       cursor: pointer;
     }
-    .album-item img {
+    .album-wine-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      filter: grayscale(80%) contrast(105%);
+      transition: filter 0.4s ease, transform 0.4s ease;
     }
-    .album-item:hover img {
-      transform: scale(1.06);
+    .album-wine-item:hover img {
+      filter: grayscale(0%) contrast(100%);
+      transform: scale(1.05);
     }
-    .album-item .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(40, 55, 52, 0);
-      transition: background 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .album-item:hover .overlay {
-      background: rgba(40, 55, 52, 0.25);
-    }
-    .album-item .overlay span {
-      opacity: 0;
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      transition: opacity 0.3s ease;
-    }
-    .album-item:hover .overlay span {
-      opacity: 1;
-    }
-
-    .album-placeholder {
+    .album-wine-placeholder {
       width: 100%;
       height: 100%;
       display: flex;
@@ -646,27 +723,28 @@
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      background: #f4f8f7;
-      color: #7d9692;
+      background: #f1e9df;
+      color: #6B1724;
       font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
-    .verse-box {
+    .verse-wine-box {
       text-align: center;
-      padding: 1.5rem 1rem;
-      background: #fbfdfc;
-      border-radius: 16px;
-      border: 1px dashed #dce8e6;
-      margin: 2.2rem 0;
+      padding: 2rem 1rem;
+      background: #f7f0e7;
+      border-radius: 6px;
+      border: 1px dashed #d8c7b4;
+      margin: 2.8rem 0;
     }
-    .verse-text {
+    .verse-wine-text {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.12rem;
-      line-height: 1.85;
-      color: #444444;
+      font-size: 1.18rem;
+      line-height: 1.9;
+      color: #4a131b;
     }
 
     /* Scroll Reveal */
@@ -675,11 +753,11 @@
       will-change: opacity, transform;
       transition: opacity 0.85s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
-    [data-reveal], [data-reveal="up"] { transform: translateY(24px); }
+    [data-reveal], [data-reveal="up"] { transform: translateY(26px); }
     [data-reveal].v, [data-reveal="up"].v { opacity: 1; transform: translateY(0); }
-    [data-reveal="left"] { transform: translateX(-24px); }
+    [data-reveal="left"] { transform: translateX(-26px); }
     [data-reveal="left"].v { opacity: 1; transform: translateX(0); }
-    [data-reveal="right"] { transform: translateX(24px); }
+    [data-reveal="right"] { transform: translateX(26px); }
     [data-reveal="right"].v { opacity: 1; transform: translateX(0); }
     [data-reveal="scale"] { transform: scale(0.94); }
     [data-reveal="scale"].v { opacity: 1; transform: scale(1); }
@@ -687,308 +765,355 @@
     [data-reveal="fade"].v { opacity: 1; }
     [data-reveal][style*="--d"] { transition-delay: var(--d, 0s); }
 
-    .sec { margin-bottom: 2.8rem; }
+    .sec { margin-bottom: 3rem; }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════ VINTAGE PASTEL INTRO SCREEN ═══════════════════════ -->
-<div id="vintage-intro-screen" onclick="openVintageCard()">
-  <div class="screen-ambient-glow"></div>
+<!-- ═══════════════════════ CANVAS BACKGROUND ═══════════════════════ -->
+<canvas id="ambient-canvas"></canvas>
 
-  <div class="vintage-intro-card">
-    <!-- Vertical Watercolor Stamp (theo mẫu ảnh) -->
-    <div class="stamp-box-wrap">
-      <div class="stamp-vertical-block">
-        <span class="stamp-col-text">NHẬT ANH</span>
-        <div class="stamp-v-divider"></div>
-        <span class="stamp-col-text">KHÁNH HUYỀN</span>
+<!-- ═══════════════════════ DRUNK IN LOVE ENVELOPE INTRO ═══════════════════════ -->
+<div id="wine-intro-screen" onclick="openWineEnvelope()">
+  
+  <div id="env-container">
+
+    <!-- Peeking Drunk in Love Photo Card -->
+    <div id="peeking-card">
+      <div class="peeking-thumb">
+        <img src="groom.jpg" alt="Nhật Anh &amp; Khánh Huyền" />
+      </div>
+      <p class="peeking-title">HERE BEGINS</p>
+      <p class="peeking-script">the rest of our story</p>
+    </div>
+
+    <!-- Wine Red Envelope Body -->
+    <div class="env-body">
+      <div>
+        <h2 class="env-script-names">Nhật &amp; Huyền</h2>
+        <p class="env-date-tag">27 · 01 · 2027</p>
+      </div>
+
+      <div class="env-guest-line">
+        <span class="env-kinh-moi">Kính mời:</span>
+        <span class="env-guest-val" id="env-guest-name">Quý Khách</span>
       </div>
     </div>
 
-    <p class="intro-tag">Trân trọng kính mời</p>
-    <h2 class="intro-guest" id="intro-guest-name">Quý Khách</h2>
-
-    <div style="width: 36px; height: 1.5px; background: #e29b8f; margin: 0.8rem auto 1rem;"></div>
-
-    <p class="intro-couple-names">Nguyễn Ngọc Nhật Anh<br>&amp; Nguyễn Thị Khánh Huyền</p>
-    <p class="intro-date-venue">27 · 01 · 2027 · Bistro Garden Ecopark</p>
-
-    <div class="intro-open-btn">
-      <span>Chạm để mở thiệp cưới</span>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14m0-14l-6 6m6-6l6 6"/>
-      </svg>
-    </div>
   </div>
+
+  <div class="wine-open-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14m0-14l-6 6m6-6l6 6"/>
+    </svg>
+    <span>Chạm để mở thiệp</span>
+  </div>
+
 </div>
 
-<!-- ════ Soft Floating Petals Canvas ════ -->
-<canvas id="inv-canvas"></canvas>
-
-<!-- ═══════════════════════ MAIN VINTAGE INVITATION CARD ═══════════════════════ -->
+<!-- ═══════════════════════ MAIN WEDDING INVITATION ═══════════════════════ -->
 <div id="invitation">
   <div class="page">
-    <div class="vintage-card-body">
 
-      <!-- Top Watercolor Stamp (như ảnh mẫu) -->
-      <div class="main-top-stamp">
-        <div class="stamp-vertical-block" style="transform: scale(0.9);">
-          <span class="stamp-col-text">NHẬT ANH</span>
-          <div class="stamp-v-divider"></div>
-          <span class="stamp-col-text">KHÁNH HUYỀN</span>
+    <!-- ── CARD 1: SIGNATURE DRUNK IN LOVE BURGUNDY COVER ── -->
+    <div class="drunk-cover-card" data-reveal="scale">
+      
+      <!-- B&W Keepsake Couple Photo (With Signature White Border) -->
+      <div class="cover-photo-frame">
+        <div class="cover-photo-grid">
+          <img src="groom.jpg" alt="Chú rể Nhật Anh" />
+          <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
         </div>
       </div>
 
-      <!-- ════ HERO SECTION ════ -->
-      <div class="sec text-center">
-        <div data-reveal="fade">
-          <p class="hero-announce">— Together with their families —</p>
+      <!-- Signature Typography from TheSimple: HERE BEGINS the REST OF OUR story -->
+      <div>
+        <h2 class="drunk-quote-h1">HERE BEGINS</h2>
+        <div class="drunk-quote-row">
+          <span class="script-the">the</span>
+          <span class="serif-rest">REST OF</span>
         </div>
-
-        <!-- Dynamic Guest Block -->
-        <div id="guest-block" data-reveal="up" style="display:none; margin: 1.5rem auto 1rem; max-width: 440px;">
-          <span style="font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#8c736e; background:#faedea; padding:0.35rem 1.2rem; border-radius:999px; display:inline-block; margin-bottom:0.6rem">
-            Trân trọng kính mời
-          </span>
-          <h3 id="guest-name" style="font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; font-size:clamp(1.6rem, 5vw, 2.3rem); color:#2b2b2b; line-height:1.25; margin:0.3rem 0;"></h3>
-          <p style="font-size:0.75rem; color:#777777; margin-top:0.3rem">
-            cùng tham dự hôn lễ ấm áp của chúng tôi
-          </p>
-          <div style="display:flex; justify-content:center; margin-top:0.8rem">
-            <div style="width:40px; height:1.5px; background:#e29b8f;"></div>
-          </div>
-        </div>
-
-        <div data-reveal="scale" style="display:flex; justify-content:center; align-items:center; gap:0.6rem; margin:1.5rem 0">
-          <svg width="140" height="24" viewBox="0 0 140 24" fill="none">
-            <line x1="0" y1="12" x2="55" y2="12" stroke="#dce8e6" stroke-width="1"/>
-            <line x1="85" y1="12" x2="140" y2="12" stroke="#dce8e6" stroke-width="1"/>
-            <circle cx="70" cy="12" r="3.5" fill="#e29b8f"/>
-          </svg>
-        </div>
-
-        <div data-reveal="left"><h2 class="name-groom">Nguyễn Ngọc Nhật Anh</h2></div>
-        <div data-reveal="fade"><p class="names-connector">&amp;</p></div>
-        <div data-reveal="right" style="margin-bottom:0.8rem"><h2 class="name-bride">Nguyễn Thị Khánh Huyền</h2></div>
-        <div data-reveal="up"><p class="hero-united-text">are joyfully united in marriage</p></div>
-
-        <!-- ẢNH GẮN TRÊN THIỆP CƯỚI (VINTAGE POLAROID KEEPSAKE) -->
-        <div data-reveal="scale" style="margin-top: 2rem;">
-          <div class="retro-photo-wrap">
-            <div class="retro-tape-clip"></div>
-            <div class="retro-photo-grid">
-              <img src="groom.jpg" alt="Chú rể Nhật Anh" />
-              <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
-            </div>
-            <p class="retro-photo-caption">"Hạnh phúc trọn vẹn khi ta tìm thấy nhau giữa cuộc đời"</p>
-          </div>
+        <div class="drunk-quote-row">
+          <span class="serif-our">OUR</span>
+          <span class="script-story">story</span>
         </div>
       </div>
 
-      <div class="retro-divider" data-reveal="fade">
-        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
-      </div>
-
-      <!-- ════ COUNTDOWN TIMER (NHƯ ẢNH MẪU CỦA USER) ════ -->
-      <div class="countdown-section" data-reveal="up">
-        <p class="countdown-title">Mình cùng đếm ngược Thời Gian</p>
-        <div class="countdown-grid">
-          <div class="countdown-box">
-            <span class="countdown-number" id="cd-days">00</span>
-            <span class="countdown-label">Ngày</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-number" id="cd-hours">00</span>
-            <span class="countdown-label">Giờ</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-number" id="cd-mins">00</span>
-            <span class="countdown-label">Phút</span>
-          </div>
-          <div class="countdown-box">
-            <span class="countdown-number" id="cd-secs">00</span>
-            <span class="countdown-label">Giây</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="retro-divider" data-reveal="fade">
-        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#7d9692">◆</span>
-      </div>
-
-      <!-- ════ THÔNG TIN LIÊN HỆ / CÔ DÂU CHÚ RỂ ════ -->
-      <div class="sec">
-        <div class="section-title-retro" data-reveal="up">
-          <span class="retro-badge-label">Thông Tin Liên Hệ</span>
-          <h3 class="retro-title-vn">Chú Rể &amp; Cô Dâu</h3>
-        </div>
-        
-        <div class="couple-avatars-grid">
-          <!-- Chú Rể -->
-          <div class="avatar-card" data-reveal="left">
-            <div class="avatar-frame">
-              <img src="groom.jpg" alt="Chú Rể Nguyễn Ngọc Nhật Anh" />
-            </div>
-            <span class="avatar-role-label">Chú Rể</span>
-            <h4 class="avatar-name">Nhật Anh</h4>
-            <p class="avatar-desc">
-              "Chàng trai luôn điềm tĩnh, ấm áp và luôn sẵn lòng che chở cho người mình yêu trên mọi chặng đường."
-            </p>
-            <div class="contact-btn">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e29b8f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>Liên Hệ Chú Rể</span>
-            </div>
-          </div>
-
-          <!-- Cô Dâu -->
-          <div class="avatar-card" data-reveal="right">
-            <div class="avatar-frame">
-              <img src="bride.jpg" alt="Cô Dâu Nguyễn Thị Khánh Huyền" />
-            </div>
-            <span class="avatar-role-label">Cô Dâu</span>
-            <h4 class="avatar-name">Khánh Huyền</h4>
-            <p class="avatar-desc">
-              "Cô gái dịu dàng với nụ cười trong trẻo, mảnh ghép diệu kỳ thắp sáng và hoàn thiện cuộc sống của anh."
-            </p>
-            <div class="contact-btn">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e29b8f" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>Liên Hệ Cô Dâu</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="retro-divider" data-reveal="fade">
-        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
-      </div>
-
-      <!-- ════ THE WEDDING DAY (CALENDAR) ════ -->
-      <div class="sec" data-reveal="up">
-        <div class="section-title-retro">
-          <span class="retro-badge-label">The Wedding Day</span>
-          <h3 class="retro-title-vn">Ngày Hôn Lễ</h3>
-        </div>
-        
-        <div class="cal-wrap">
-          <div class="cal-header">
-            <p class="cal-month">January 2027</p>
-            <p class="cal-year">THÁNG 1 · NĂM 2027</p>
-          </div>
-          <div class="cal-grid">
-            <div class="cal-dow">Mon</div><div class="cal-dow">Tue</div><div class="cal-dow">Wed</div><div class="cal-dow">Thu</div><div class="cal-dow">Fri</div><div class="cal-dow">Sat</div><div class="cal-dow">Sun</div>
-            <div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div><div class="cal-day empty">-</div>
-            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div>
-            <div class="cal-day">4</div><div class="cal-day">5</div><div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div><div class="cal-day">10</div>
-            <div class="cal-day">11</div><div class="cal-day">12</div><div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div>
-            <div class="cal-day">18</div><div class="cal-day">19</div><div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div>
-            <div class="cal-day">25</div><div class="cal-day">26</div><div class="cal-day hi">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div><div class="cal-day">31</div>
-          </div>
-        </div>
-        <p class="cal-footer-text">
-          Thứ Tư · Wednesday · 27 January 2027
-        </p>
-      </div>
-
-      <div class="retro-divider" data-reveal="fade">
-        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#7d9692">◆</span>
-      </div>
-
-      <!-- ════ VENUE + MAP ════ -->
-      <div class="sec">
-        <div class="section-title-retro" data-reveal="up">
-          <span class="retro-badge-label">Wedding Venue</span>
-          <h3 class="retro-title-vn">Địa Điểm Tổ Chức</h3>
-        </div>
-        <div class="text-center" style="margin-bottom:1.3rem" data-reveal="up">
-          <p class="venue-name">Bistro Garden</p>
-          <p class="venue-sub">Ecopark · Văn Giang · Hưng Yên</p>
-        </div>
-        <div class="map-wrap" data-reveal="scale">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4793824855893!2d106.0592!3d20.9928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abe5f62ccca3%3A0xce7d27ba81a5a3c9!2sBistro%20Garden%20Ecopark!5e0!3m2!1svi!2svn!4v1694000000000!5m2!1svi!2svn"
-            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bistro Garden Ecopark">
-          </iframe>
-        </div>
-      </div>
-
-      <div class="retro-divider" data-reveal="fade">
-        <span style="font-size:0.6rem; letter-spacing:0.25em; color:#e29b8f">✦ ✦ ✦</span>
-      </div>
-
-      <!-- ════ ALBUM ẢNH CƯỚI ════ -->
-      <div class="sec">
-        <div class="section-title-retro" data-reveal="up">
-          <span class="retro-badge-label">Wedding Album</span>
-          <h3 class="retro-title-vn">Khoảnh Khắc Hạnh Phúc</h3>
-        </div>
-        <div class="album-grid">
-          <div class="album-item" data-reveal="up" style="--d:0.0s">
-            <img src="groom.jpg" alt="Chú rể Nhật Anh" />
-            <div class="overlay"><span>Nhật Anh</span></div>
-          </div>
-          <div class="album-item" data-reveal="up" style="--d:0.1s">
-            <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
-            <div class="overlay"><span>Khánh Huyền</span></div>
-          </div>
-          <div class="album-item" data-reveal="up" style="--d:0.2s">
-            <div class="album-placeholder">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Hẹn Hò Đầu Tiên</span>
-            </div>
-            <div class="overlay"><span>Khoảnh Khắc</span></div>
-          </div>
-          <div class="album-item" data-reveal="up" style="--d:0.3s">
-            <div class="album-placeholder">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Chuyến Đi Xa</span>
-            </div>
-            <div class="overlay"><span>Bình Yên</span></div>
-          </div>
-          <div class="album-item" data-reveal="up" style="--d:0.4s">
-            <div class="album-placeholder">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Lời Cầu Hôn</span>
-            </div>
-            <div class="overlay"><span>Hẹn Ước</span></div>
-          </div>
-          <div class="album-item" data-reveal="up" style="--d:0.5s">
-            <div class="album-placeholder">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-              <span>Save The Date</span>
-            </div>
-            <div class="overlay"><span>27.01.2027</span></div>
-          </div>
-        </div>
-        <p data-reveal="fade" style="font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:#8c9e9b; text-align:center; margin-top:1rem">
-          · Bộ ảnh cưới chính thức sẽ tiếp tục được cập nhật ·
-        </p>
-      </div>
-
-      <!-- ════ FOOTER QUOTE ════ -->
-      <div class="verse-box" data-reveal="up">
-        <p class="verse-text">
-          "Hai cuộc đời, một câu chuyện.<br>
-          Cảm ơn bạn đã luôn là một phần trân quý trong hành trình hạnh phúc của chúng mình!"
-        </p>
-      </div>
-
-      <div class="text-center" data-reveal="up">
-        <div style="display:flex; justify-content:center; margin-bottom:0.8rem">
-          <svg width="100" height="20" viewBox="0 0 100 20" fill="none">
-            <line x1="0" y1="10" x2="38" y2="10" stroke="#dce8e6" stroke-width="1"/>
-            <line x1="62" y1="10" x2="100" y2="10" stroke="#dce8e6" stroke-width="1"/>
-            <rect x="46" y="6" width="8" height="8" transform="rotate(45 50 10)" fill="none" stroke="#e29b8f" stroke-width="1"/>
-          </svg>
-        </div>
-        <p style="font-size:0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#2b2b2b;">
-          27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark
-        </p>
-        <p style="font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; margin-top:0.4rem; color:#8c736e;">
-          Nhật Anh &amp; Khánh Huyền
-        </p>
-      </div>
+      <p class="cover-footer-names">
+        Nguyễn Ngọc Nhật Anh &nbsp;×&nbsp; Nguyễn Thị Khánh Huyền &nbsp;·&nbsp; 27.01.2027
+      </p>
 
     </div>
+
+    <!-- ── CARD 2: IVORY LETTERPRESS CARD WITH SIGNATURE WAVY BORDER ── -->
+    <div class="drunk-main-card" data-reveal="up">
+
+      <!-- Signature Wine-Red Wavy Border (Sinusoidal Scalloped Frame) -->
+      <svg class="wavy-border-svg" viewBox="0 0 500 750" preserveAspectRatio="none" fill="none">
+        <path d="M 26 26 Q 48.4 30 70.8 26 Q 93.2 22 115.6 26 Q 138.0 30 160.4 26 Q 182.8 22 205.2 26 Q 227.6 30 250.0 26 Q 272.4 22 294.8 26 Q 317.2 30 339.6 26 Q 362.0 22 384.4 26 Q 406.8 30 429.2 26 Q 451.6 22 474.0 26 Q 478 47.8 474 69.6 Q 470 91.4 474 113.2 Q 478 135.0 474 156.8 Q 470 178.6 474 200.4 Q 478 222.2 474 244.0 Q 470 265.8 474 287.6 Q 478 309.4 474 331.2 Q 470 353.0 474 374.8 Q 478 396.6 474 418.4 Q 470 440.2 474 462.0 Q 478 483.8 474 505.6 Q 470 527.4 474 549.2 Q 478 571.0 474 592.8 Q 470 614.6 474 636.4 Q 478 658.2 474 680.0 Q 470 701.8 474 724.0 Q 451.6 728 429.2 724 Q 406.8 720 384.4 724 Q 362.0 728 339.6 724 Q 317.2 720 294.8 724 Q 272.4 728 250.0 724 Q 227.6 720 205.2 724 Q 182.8 728 160.4 724 Q 138.0 720 115.6 724 Q 93.2 728 70.8 724 Q 48.4 720 26.0 724 Q 22 701.8 26 680.0 Q 30 658.2 26 636.4 Q 22 614.6 26 592.8 Q 30 571.0 26 549.2 Q 22 527.4 26 505.6 Q 30 483.8 26 462.0 Q 22 440.2 26 418.4 Q 30 396.6 26 374.8 Q 22 353.0 26 331.2 Q 30 309.4 26 287.6 Q 22 265.8 26 244.0 Q 30 222.2 26 200.4 Q 22 178.6 26 156.8 Q 30 135.0 26 113.2 Q 22 91.4 26 69.6 Q 30 47.8 26 26.0 Z" 
+              stroke="#6B1724" stroke-width="2.2" vector-effect="non-scaling-stroke" />
+      </svg>
+
+      <div class="card-content-inner">
+
+        <!-- Announcement -->
+        <div class="sec text-center">
+          <p class="intro-announce-badge">— Together with their families —</p>
+          <p style="font-family:'Playfair Display',serif; font-size:0.85rem; letter-spacing:0.18em; text-transform:uppercase; color:#6B1724; font-weight:600;">
+            TRÂN TRỌNG BÁO TIN LỄ THÀNH HÔN
+          </p>
+
+          <!-- Dynamic Guest Greeting -->
+          <div id="guest-block" style="display:none;" class="guest-highlight-block">
+            <p style="font-size:0.68rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#6B1724;">
+              Kính mời
+            </p>
+            <h3 id="guest-name" class="guest-highlight-name"></h3>
+            <p style="font-size:0.75rem; color:#555555; margin-top:0.2rem;">
+              đến dự buổi tiệc chung vui cùng gia đình chúng tôi
+            </p>
+          </div>
+
+          <!-- Clinking Champagne Coupes Lineart (Signature Drunk in Love) -->
+          <div class="champagne-illustration">
+            <svg width="140" height="75" viewBox="0 0 140 75" fill="none" stroke="#6B1724" stroke-width="1.3">
+              <!-- Left Coupe -->
+              <g transform="translate(10, 0)">
+                <ellipse cx="40" cy="22" rx="22" ry="9" stroke="#6B1724" fill="rgba(107, 23, 36, 0.05)"/>
+                <path d="M 18 22 C 18 36 32 44 40 44 C 48 44 62 36 62 22" stroke="#6B1724"/>
+                <line x1="40" y1="44" x2="40" y2="65" stroke="#6B1724" stroke-width="1.5"/>
+                <ellipse cx="40" cy="67" rx="14" ry="4" stroke="#6B1724"/>
+                <!-- Ribbon Bow on stem -->
+                <path d="M 33 50 Q 25 45 33 42 Q 40 46 40 48 Q 40 46 47 42 Q 55 45 47 50" fill="none" stroke="#6B1724"/>
+                <path d="M 38 49 Q 34 56 32 62" stroke="#6B1724"/>
+                <path d="M 42 49 Q 46 56 48 62" stroke="#6B1724"/>
+                <!-- Cherry with stem inside -->
+                <circle cx="44" cy="25" r="3.2" fill="#6B1724"/>
+                <path d="M 44 22 Q 48 14 53 12" stroke="#6B1724" stroke-width="1"/>
+              </g>
+
+              <!-- Right Coupe (Clinking angle) -->
+              <g transform="translate(52, 2) rotate(6 40 22)">
+                <ellipse cx="40" cy="22" rx="22" ry="9" stroke="#6B1724" fill="rgba(107, 23, 36, 0.05)"/>
+                <path d="M 18 22 C 18 36 32 44 40 44 C 48 44 62 36 62 22" stroke="#6B1724"/>
+                <line x1="40" y1="44" x2="40" y2="65" stroke="#6B1724" stroke-width="1.5"/>
+                <ellipse cx="40" cy="67" rx="14" ry="4" stroke="#6B1724"/>
+                <!-- Ribbon Bow -->
+                <path d="M 33 50 Q 25 45 33 42 Q 40 46 40 48 Q 40 46 47 42 Q 55 45 47 50" fill="none" stroke="#6B1724"/>
+                <path d="M 38 49 Q 34 56 32 62" stroke="#6B1724"/>
+                <path d="M 42 49 Q 46 56 48 62" stroke="#6B1724"/>
+                <!-- Cherry -->
+                <circle cx="36" cy="25" r="3.2" fill="#6B1724"/>
+                <path d="M 36 22 Q 32 14 27 12" stroke="#6B1724" stroke-width="1"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Couple Names -->
+          <div><h3 class="name-groom">Nguyễn Ngọc Nhật Anh</h3></div>
+          <div><p class="name-connector">&amp;</p></div>
+          <div><h3 class="name-bride">Nguyễn Thị Khánh Huyền</h3></div>
+
+          <p style="font-size:0.75rem; letter-spacing:0.22em; text-transform:uppercase; color:#6B1724; font-weight:600; margin-top:1.2rem;">
+            ARE JOYFULLY UNITED IN MARRIAGE
+          </p>
+        </div>
+
+        <!-- ── WEDDING TIMELINE (THE SIMPLE DRUNK IN LOVE SIGNATURE) ── -->
+        <div class="timeline-three-col" data-reveal="up">
+          <div>
+            <div class="timeline-item-icon">
+              <!-- Camera icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <p class="timeline-time">18:00</p>
+            <p class="timeline-label">ĐÓN KHÁCH</p>
+          </div>
+
+          <div>
+            <div class="timeline-item-icon">
+              <!-- Rings icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg>
+            </div>
+            <p class="timeline-time">19:00</p>
+            <p class="timeline-label">LỄ CƯỚI</p>
+          </div>
+
+          <div>
+            <div class="timeline-item-icon">
+              <!-- Toast Coupe icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 22h8M12 15v7M5 3h14l-2 8a5 5 0 0 1-5 4 5 5 0 0 1-5-4L5 3z"/></svg>
+            </div>
+            <p class="timeline-time">19:30</p>
+            <p class="timeline-label">KHAI TIỆC</p>
+          </div>
+        </div>
+
+        <!-- ── COUNTDOWN TIMER ── -->
+        <div class="countdown-wine-card" data-reveal="up">
+          <p style="font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#6B1724;">
+            Mình cùng đếm ngược Thời Gian
+          </p>
+          <div class="countdown-grid">
+            <div>
+              <span class="countdown-num" id="cd-days">00</span>
+              <p class="countdown-lbl">NGÀY</p>
+            </div>
+            <div>
+              <span class="countdown-num" id="cd-hours">00</span>
+              <p class="countdown-lbl">GIỜ</p>
+            </div>
+            <div>
+              <span class="countdown-num" id="cd-mins">00</span>
+              <p class="countdown-lbl">PHÚT</p>
+            </div>
+            <div>
+              <span class="countdown-num" id="cd-secs">00</span>
+              <p class="countdown-lbl">GIÂY</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── AVATAR CHÚ RỂ & CÔ DÂU ── -->
+        <div class="sec">
+          <div class="wine-section-title" data-reveal="up">
+            <span class="wine-badge-label">The Happy Couple</span>
+            <h4 class="wine-subtitle-vn">Chú Rể &amp; Cô Dâu</h4>
+          </div>
+          
+          <div class="avatars-wine-grid">
+            <!-- Chú Rể -->
+            <div class="avatar-wine-card" data-reveal="left">
+              <div class="avatar-wine-frame">
+                <img src="groom.jpg" alt="Chú Rể Nguyễn Ngọc Nhật Anh" />
+              </div>
+              <span class="avatar-role-tag">Chú Rể</span>
+              <h4 class="avatar-name-txt">Nhật Anh</h4>
+              <p class="avatar-desc-txt">
+                "Chàng trai luôn điềm tĩnh, ấm áp và luôn sẵn lòng che chở cho người mình yêu trên mọi chặng đường."
+              </p>
+            </div>
+
+            <!-- Cô Dâu -->
+            <div class="avatar-wine-card" data-reveal="right">
+              <div class="avatar-wine-frame">
+                <img src="bride.jpg" alt="Cô Dâu Nguyễn Thị Khánh Huyền" />
+              </div>
+              <span class="avatar-role-tag">Cô Dâu</span>
+              <h4 class="avatar-name-txt">Khánh Huyền</h4>
+              <p class="avatar-desc-txt">
+                "Cô gái dịu dàng với nụ cười trong trẻo, mảnh ghép diệu kỳ thắp sáng và hoàn thiện cuộc sống của anh."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── CALENDAR ── -->
+        <div class="sec" data-reveal="up">
+          <div class="wine-section-title">
+            <span class="wine-badge-label">The Wedding Day</span>
+            <h4 class="wine-subtitle-vn">Ngày Hôn Lễ</h4>
+          </div>
+          
+          <div class="cal-wine-wrap">
+            <div class="cal-wine-header">
+              <p class="cal-wine-month">January 2027</p>
+              <p class="cal-wine-year">THÁNG 1 · NĂM 2027</p>
+            </div>
+            <div class="cal-wine-grid">
+              <div class="cal-wine-dow">Mon</div><div class="cal-wine-dow">Tue</div><div class="cal-wine-dow">Wed</div><div class="cal-wine-dow">Thu</div><div class="cal-wine-dow">Fri</div><div class="cal-wine-dow">Sat</div><div class="cal-wine-dow">Sun</div>
+              <div class="cal-wine-day empty">-</div><div class="cal-wine-day empty">-</div><div class="cal-wine-day empty">-</div><div class="cal-wine-day empty">-</div>
+              <div class="cal-wine-day">1</div><div class="cal-wine-day">2</div><div class="cal-wine-day">3</div>
+              <div class="cal-wine-day">4</div><div class="cal-wine-day">5</div><div class="cal-wine-day">6</div><div class="cal-wine-day">7</div><div class="cal-wine-day">8</div><div class="cal-wine-day">9</div><div class="cal-wine-day">10</div>
+              <div class="cal-wine-day">11</div><div class="cal-wine-day">12</div><div class="cal-wine-day">13</div><div class="cal-wine-day">14</div><div class="cal-wine-day">15</div><div class="cal-wine-day">16</div><div class="cal-wine-day">17</div>
+              <div class="cal-wine-day">18</div><div class="cal-wine-day">19</div><div class="cal-wine-day">20</div><div class="cal-wine-day">21</div><div class="cal-wine-day">22</div><div class="cal-wine-day">23</div><div class="cal-wine-day">24</div>
+              <div class="cal-wine-day">25</div><div class="cal-wine-day">26</div><div class="cal-wine-day hi">27</div><div class="cal-wine-day">28</div><div class="cal-wine-day">29</div><div class="cal-wine-day">30</div><div class="cal-wine-day">31</div>
+            </div>
+          </div>
+          <p style="text-align:center; margin-top:1rem; font-family:'Playfair Display',serif; font-style:italic; font-size:1.05rem; color:#6B1724;">
+            Thứ Tư · Wednesday · 27 January 2027
+          </p>
+        </div>
+
+        <!-- ── VENUE + MAP ── -->
+        <div class="sec">
+          <div class="wine-section-title" data-reveal="up">
+            <span class="wine-badge-label">Wedding Venue</span>
+            <h4 class="wine-subtitle-vn">Địa Điểm Tổ Chức</h4>
+          </div>
+          <div class="text-center" style="margin-bottom:1.4rem" data-reveal="up">
+            <p class="venue-title">Bistro Garden</p>
+            <p class="venue-subtitle">Ecopark · Văn Giang · Hưng Yên</p>
+          </div>
+          <div class="map-wine-frame" data-reveal="scale">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4793824855893!2d106.0592!3d20.9928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abe5f62ccca3%3A0xce7d27ba81a5a3c9!2sBistro%20Garden%20Ecopark!5e0!3m2!1svi!2svn!4v1694000000000!5m2!1svi!2svn"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bistro Garden Ecopark">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- ── ALBUM ẢNH CƯỚI ── -->
+        <div class="sec">
+          <div class="wine-section-title" data-reveal="up">
+            <span class="wine-badge-label">Wedding Album</span>
+            <h4 class="wine-subtitle-vn">Khoảnh Khắc Hạnh Phúc</h4>
+          </div>
+          <div class="album-wine-grid">
+            <div class="album-wine-item" data-reveal="up" style="--d:0.0s">
+              <img src="groom.jpg" alt="Chú rể Nhật Anh" />
+            </div>
+            <div class="album-wine-item" data-reveal="up" style="--d:0.1s">
+              <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
+            </div>
+            <div class="album-wine-item" data-reveal="up" style="--d:0.2s">
+              <div class="album-wine-placeholder">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Hẹn Hò</span>
+              </div>
+            </div>
+            <div class="album-wine-item" data-reveal="up" style="--d:0.3s">
+              <div class="album-wine-placeholder">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Chuyến Đi</span>
+              </div>
+            </div>
+            <div class="album-wine-item" data-reveal="up" style="--d:0.4s">
+              <div class="album-wine-placeholder">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>Hẹn Ước</span>
+              </div>
+            </div>
+            <div class="album-wine-item" data-reveal="up" style="--d:0.5s">
+              <div class="album-wine-placeholder">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>27.01.2027</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── FOOTER QUOTE ── -->
+        <div class="verse-wine-box" data-reveal="up">
+          <p class="verse-wine-text">
+            "Khi chúng ta dành cho nhau những điều ngọt ngào và chân thành, tất cả đều sẽ trở thành ngoại lệ."
+          </p>
+          <p style="font-family:'Playfair Display',serif; font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase; color:#6B1724; font-weight:600; margin-top:0.8rem">
+            — DRUNK IN LOVE —
+          </p>
+        </div>
+
+        <div class="text-center" data-reveal="up" style="padding-bottom: 1rem;">
+          <p style="font-family:'Playfair Display',serif; font-size:0.85rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:#6B1724;">
+            27 · 01 · 2027 &nbsp;·&nbsp; Bistro Garden Ecopark
+          </p>
+          <p style="font-family:'Alex Brush',cursive; font-size:1.8rem; color:#6B1724; margin-top:0.2rem;">
+            Nhật Anh &amp; Khánh Huyền
+          </p>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1000,9 +1125,9 @@
   if (!guest || !guest.trim()) return;
   const name = decodeURIComponent(guest.trim());
   
-  // Update intro screen
-  const introName = document.getElementById('intro-guest-name');
-  if (introName) introName.textContent = name;
+  // Update envelope screen
+  const envGuest = document.getElementById('env-guest-name');
+  if (envGuest) envGuest.textContent = name;
 
   // Update main card guest block
   const guestBlock = document.getElementById('guest-block');
@@ -1013,29 +1138,28 @@
   }
 })();
 
-/* ── Vintage Screen Open Animation on Click ── */
+/* ── Wine Envelope Open Animation ── */
 let opened = false;
-function openVintageCard() {
+function openWineEnvelope() {
   if (opened) return;
   opened = true;
 
-  const introScreen = document.getElementById('vintage-intro-screen');
-  introScreen.classList.add('hidden-screen');
+  const introScreen = document.getElementById('wine-intro-screen');
+  introScreen.classList.add('opening');
 
   setTimeout(() => {
-    document.getElementById('inv-canvas').style.display = 'block';
+    introScreen.classList.add('hidden-screen');
     document.getElementById('invitation').classList.add('visible');
-    startPetals();
     startReveal();
     startCountdown();
-  }, 450);
+  }, 950);
 
   setTimeout(() => {
     introScreen.style.display = 'none';
-  }, 1000);
+  }, 1800);
 }
 
-/* ── Live Countdown Timer to 27/01/2027 10:00 AM (ICT) ── */
+/* ── Live Countdown Timer to 27/01/2027 10:00 AM ── */
 function startCountdown() {
   const targetDate = new Date("2027-01-27T10:00:00+07:00").getTime();
   
@@ -1064,7 +1188,7 @@ function startCountdown() {
   setInterval(update, 1000);
 }
 
-/* ── Scroll Reveal IntersectionObserver (Looping) ── */
+/* ── Scroll Reveal IntersectionObserver ── */
 let revealOn = false;
 function startReveal() {
   if (revealOn) return;
@@ -1086,63 +1210,99 @@ function startReveal() {
   document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 }
 
-/* ── Gentle Petals Canvas ── */
-function startPetals() {
-  const cvs = document.getElementById('inv-canvas');
-  const ctx = cvs.getContext('2d');
-  let W, H, P = [];
+/* ══════════════════════════════════════════
+   HTML5 CANVAS: CHAMPAGNE BUBBLES & ROSE PETALS
+══════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('ambient-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
 
   function resize() {
-    W = cvs.width = window.innerWidth;
-    H = cvs.height = window.innerHeight;
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  function Petal(init) {
-    this.reset(init);
-  }
-  Petal.prototype.reset = function(init) {
-    this.x = Math.random() * W;
-    this.y = init ? Math.random() * H : -20;
-    this.size = 3.5 + Math.random() * 5;
-    this.vy = 0.4 + Math.random() * 0.4;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.angle = Math.random() * Math.PI * 2;
-    this.spin = (Math.random() - 0.5) * 0.015;
-    this.sway = Math.random() * Math.PI * 2;
-    this.swaySpeed = 0.008 + Math.random() * 0.01;
-    this.opacity = 0.08 + Math.random() * 0.12;
-  };
-
-  for (let i = 0; i < 40; i++) {
-    P.push(new Petal(true));
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
-    P.forEach(p => {
-      p.sway += p.swaySpeed;
-      p.x += p.vx + Math.sin(p.sway) * 0.35;
-      p.y += p.vy;
-      p.angle += p.spin;
-
-      if (p.y > H + 20) p.reset(false);
-
+  // 1. Effervescent Champagne Micro-bubbles (rising)
+  class Bubble {
+    constructor() {
+      this.reset(true);
+    }
+    reset(init = false) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 10;
+      this.radius = 1.2 + Math.random() * 2.8;
+      this.speedY = 0.5 + Math.random() * 1.2;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.alpha = 0.15 + Math.random() * 0.35;
+      this.wobble = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.y -= this.speedY;
+      this.wobble += 0.03;
+      this.x += this.speedX + Math.sin(this.wobble) * 0.3;
+      if (this.y < -10) this.reset();
+    }
+    draw() {
       ctx.save();
-      ctx.translate(p.x, p.y);
-      ctx.rotate(p.angle);
-      ctx.globalAlpha = p.opacity;
-      ctx.fillStyle = '#e29b8f';
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = '#DFB76C';
       ctx.beginPath();
-      ctx.ellipse(0, 0, p.size * 0.45, p.size, 0, 0, Math.PI * 2);
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
-    });
-    requestAnimationFrame(tick);
+    }
   }
-  tick();
-}
+
+  // 2. Velvet Burgundy Rose Petals (drifting down)
+  class Petal {
+    constructor() {
+      this.reset(true);
+    }
+    reset(init = false) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : -20;
+      this.size = 4 + Math.random() * 6;
+      this.speedY = 0.4 + Math.random() * 0.6;
+      this.speedX = (Math.random() - 0.5) * 0.5;
+      this.angle = Math.random() * Math.PI * 2;
+      this.spin = (Math.random() - 0.5) * 0.02;
+      this.alpha = 0.12 + Math.random() * 0.22;
+      this.sway = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.y += this.speedY;
+      this.sway += 0.012;
+      this.x += this.speedX + Math.sin(this.sway) * 0.4;
+      this.angle += this.spin;
+      if (this.y > H + 20) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = '#6B1724';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.size * 0.5, this.size, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  const bubbles = Array.from({ length: 45 }, () => new Bubble());
+  const petals = Array.from({ length: 30 }, () => new Petal());
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    bubbles.forEach(b => { b.update(); b.draw(); });
+    petals.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
 </script>
 </body>
 </html>
