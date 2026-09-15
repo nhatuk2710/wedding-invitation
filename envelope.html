@@ -28,7 +28,7 @@
     }
 
     /* ══════════════════════════════════════════
-       CANVAS AMBIENT: SUBTLE CHAMPAGNE BUBBLES & PETALS
+       CANVAS AMBIENT: FLOATING BLOOMS, BUBBLES & PETALS
     ══════════════════════════════════════════ */
     #ambient-canvas {
       position: fixed;
@@ -262,7 +262,7 @@
         0 24px 70px rgba(70, 15, 25, 0.13),
         0 3px 12px rgba(0, 0, 0, 0.04);
       position: relative;
-      padding: 3.6rem 2.2rem 3.4rem;
+      padding: 4rem 2.2rem 3.6rem;
       box-sizing: border-box;
       width: 100%;
       border: 1.5px solid #6B1724; /* Khung viền chỉ chính */
@@ -271,7 +271,7 @@
     }
     @media (max-width: 480px) {
       .unified-invitation-card {
-        padding: 2.8rem 1.2rem 2.5rem;
+        padding: 3.2rem 1.2rem 2.8rem;
       }
     }
 
@@ -285,44 +285,52 @@
       z-index: 1;
     }
 
-    /* 4 Corner Botanical Ornaments (Icon Hoa Nét Mảnh Ở 4 Góc Khung) */
-    .card-corner-motif {
+    /* ══════════════════════════════════════════
+       CANVAS HOA NỔI TRANG TRÍ (GÓC THIỆP & VẠCH PHÂN CÁCH)
+    ══════════════════════════════════════════ */
+    .card-corner-floral-canvas {
       position: absolute;
-      width: 38px;
-      height: 38px;
+      left: 0;
+      right: 0;
+      width: 100%;
       pointer-events: none;
-      z-index: 2;
-      color: #6B1724;
+      z-index: 3; /* Nằm trên viền chỉ khung */
     }
-    .corner-tl { top: 11px; left: 11px; }
-    .corner-tr { top: 11px; right: 11px; transform: scaleX(-1); }
-    .corner-bl { bottom: 11px; left: 11px; transform: scaleY(-1); }
-    .corner-br { bottom: 11px; right: 11px; transform: scale(-1, -1); }
+    .card-corner-floral-canvas.top {
+      top: 0;
+      height: 125px;
+    }
+    .card-corner-floral-canvas.bottom {
+      bottom: 0;
+      height: 125px;
+    }
 
     /* Content Wrapper */
     .unified-card-content {
       position: relative;
-      z-index: 3;
+      z-index: 4;
     }
 
-    /* Minimalist Floral Line Divider (Vạch Ngăn Cách Hoa Đơn Giản) */
+    /* Minimalist Floral Garland Divider (Vạch Phân Cách Hoa Vẽ Bằng Canvas) */
     .floral-divider {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.9rem;
-      margin: 2.6rem auto;
+      gap: 0.8rem;
+      margin: 2.8rem auto;
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
     }
     .fd-line {
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(107, 23, 36, 0.35), transparent);
     }
-    .fd-icon {
+    .divider-floral-canvas {
+      width: 130px;
+      height: 48px;
       flex-shrink: 0;
-      color: #6B1724;
+      display: block;
     }
 
     /* Section Generic */
@@ -876,7 +884,7 @@
 </head>
 <body>
 
-<!-- ═══════════════════════ AMBIENT CANVAS (BUBBLES & PETALS ONLY) ═══════════════════════ -->
+<!-- ═══════════════════════ AMBIENT CANVAS (BLOOMS, BUBBLES & PETALS) ═══════════════════════ -->
 <canvas id="ambient-canvas"></canvas>
 
 <!-- ═══════════════════════ FLOATING MUSIC BUTTON ═══════════════════════ -->
@@ -950,39 +958,9 @@
       <!-- Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame) -->
       <div class="card-inner-frame"></div>
 
-      <!-- 4 Corner Botanical Accents (Icon Hoa Nét Mảnh Ở 4 Góc Khung) -->
-      <div class="card-corner-motif corner-tl">
-        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M 4 34 C 4 17, 17 4, 34 4" stroke-dasharray="2 3" opacity="0.5"/>
-          <path d="M 4 24 C 9 21, 11 16, 9 13 C 7 15, 4 18, 4 24 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <path d="M 24 4 C 21 9, 16 11, 13 9 C 15 7, 18 4, 24 4 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <circle cx="17" cy="17" r="2.2" fill="#DFB76C"/>
-        </svg>
-      </div>
-      <div class="card-corner-motif corner-tr">
-        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M 4 34 C 4 17, 17 4, 34 4" stroke-dasharray="2 3" opacity="0.5"/>
-          <path d="M 4 24 C 9 21, 11 16, 9 13 C 7 15, 4 18, 4 24 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <path d="M 24 4 C 21 9, 16 11, 13 9 C 15 7, 18 4, 24 4 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <circle cx="17" cy="17" r="2.2" fill="#DFB76C"/>
-        </svg>
-      </div>
-      <div class="card-corner-motif corner-bl">
-        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M 4 34 C 4 17, 17 4, 34 4" stroke-dasharray="2 3" opacity="0.5"/>
-          <path d="M 4 24 C 9 21, 11 16, 9 13 C 7 15, 4 18, 4 24 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <path d="M 24 4 C 21 9, 16 11, 13 9 C 15 7, 18 4, 24 4 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <circle cx="17" cy="17" r="2.2" fill="#DFB76C"/>
-        </svg>
-      </div>
-      <div class="card-corner-motif corner-br">
-        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M 4 34 C 4 17, 17 4, 34 4" stroke-dasharray="2 3" opacity="0.5"/>
-          <path d="M 4 24 C 9 21, 11 16, 9 13 C 7 15, 4 18, 4 24 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <path d="M 24 4 C 21 9, 16 11, 13 9 C 15 7, 18 4, 24 4 Z" fill="#6B1724" fill-opacity="0.18"/>
-          <circle cx="17" cy="17" r="2.2" fill="#DFB76C"/>
-        </svg>
-      </div>
+      <!-- ── CANVAS HOA NỔI TRANG TRÍ GÓC THIỆP TRÊN & DƯỚI ── -->
+      <canvas id="card-top-florals" class="card-corner-floral-canvas top"></canvas>
+      <canvas id="card-bottom-florals" class="card-corner-floral-canvas bottom"></canvas>
 
       <!-- Main Unified Content -->
       <div class="unified-card-content">
@@ -1129,17 +1107,10 @@
           </div>
         </section>
 
-        <!-- ── FLORAL DIVIDER 1 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 1 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1170,17 +1141,10 @@
           <p class="ivory-signoff-script">Rất hân hạnh được đón tiếp!</p>
         </section>
 
-        <!-- ── FLORAL DIVIDER 2 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 2 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1231,17 +1195,10 @@
           </div>
         </section>
 
-        <!-- ── FLORAL DIVIDER 3 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 3 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1337,17 +1294,10 @@
           </a>
         </section>
 
-        <!-- ── FLORAL DIVIDER 4 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 4 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1382,17 +1332,10 @@
           </a>
         </section>
 
-        <!-- ── FLORAL DIVIDER 5 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 5 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1428,17 +1371,10 @@
           </div>
         </section>
 
-        <!-- ── FLORAL DIVIDER 6 ── -->
+        <!-- ── FLORAL GARLAND DIVIDER 6 ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <svg class="fd-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#6B1724" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M 6 16 L 11 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 21 16 L 26 16" stroke="#6B1724" stroke-width="1"/>
-            <path d="M 16 16 C 13 13, 10 14, 11 16 C 10 18, 13 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <path d="M 16 16 C 19 13, 22 14, 21 16 C 22 18, 19 19, 16 16 Z" fill="#6B1724" fill-opacity="0.18"/>
-            <circle cx="16" cy="16" r="3.4" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.3"/>
-            <circle cx="16" cy="16" r="1.2" fill="#DFB76C"/>
-          </svg>
+          <canvas class="divider-floral-canvas"></canvas>
           <span class="fd-line"></span>
         </div>
 
@@ -1460,7 +1396,7 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     SCRIPTS: URL PARAMS, ENVELOPE OPEN, AMBIENT PARTICLES
+     SCRIPTS: URL PARAMS, ENVELOPE OPEN, CANVAS FLORALS
 ══════════════════════════════════════════ -->
 <script>
 /* ── 1. URL Parameter Extraction (?to=...) ── */
@@ -1491,6 +1427,8 @@ function openWineEnvelope() {
     introScreen.classList.add('hidden-screen');
     document.getElementById('invitation').classList.add('visible');
     initScrollReveal();
+    drawCardCornerFlorals();
+    drawDividerFlorals();
   }, 950);
 
   setTimeout(() => {
@@ -1551,11 +1489,232 @@ function initScrollReveal() {
   document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 }
 
+/* ══════════════════════════════════════════════════════════════
+   ── 5. MASTER CANVAS FLORAL ENGINE (3D BLOOMS & CORNER BOUQUETS) ──
+══════════════════════════════════════════════════════════════ */
+
+// Master function to render a 3D blooming rose ('Hoa Nổi')
+function renderBloomDirect(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(angle);
+  ctx.globalAlpha = alpha;
+
+  // 3D Drop Shadow for 'Hoa Nổi' (Embossed depth)
+  ctx.shadowColor = 'rgba(50, 10, 20, 0.32)';
+  ctx.shadowBlur = radius * 0.4;
+  ctx.shadowOffsetY = radius * 0.18;
+
+  // Botanical Leaves behind bloom
+  ctx.save();
+  ctx.shadowColor = 'transparent';
+  const leafAngles = [-0.65, 1.75, 3.3];
+  leafAngles.forEach((ang) => {
+    ctx.save();
+    ctx.rotate(ang);
+    ctx.translate(radius * 0.82, 0);
+    ctx.rotate(0.25);
+    const lg = ctx.createLinearGradient(0, 0, radius * 0.75, 0);
+    lg.addColorStop(0, '#384635');
+    lg.addColorStop(0.5, '#4E614A');
+    lg.addColorStop(1, '#687F63');
+    ctx.fillStyle = lg;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(radius * 0.35, -radius * 0.25, radius * 0.75, 0);
+    ctx.quadraticCurveTo(radius * 0.35, radius * 0.25, 0, 0);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(radius * 0.65, 0);
+    ctx.stroke();
+    ctx.restore();
+  });
+  ctx.restore();
+
+  // Color definitions
+  let cBase, cOuter, cMid, cInner, cHighlight, cStamen;
+  if (scheme === 'blush') {
+    cBase = '#6B1B29'; cOuter = '#B34A5D'; cMid = '#D26E80'; cInner = '#E890A0'; cHighlight = '#FCE0E5'; cStamen = '#DFB76C';
+  } else if (scheme === 'champagne') {
+    cBase = '#5A1722'; cOuter = '#8C2B3C'; cMid = '#BA7A65'; cInner = '#DEC0AE'; cHighlight = '#FFF4EC'; cStamen = '#DFB76C';
+  } else {
+    cBase = '#3E0B13'; cOuter = '#6B1724'; cMid = '#852030'; cInner = '#A32C3F'; cHighlight = '#C84D62'; cStamen = '#DFB76C';
+  }
+
+  function drawLayer(count, dist, size, color, baseColor, rotOffset) {
+    const step = (Math.PI * 2) / count;
+    for (let i = 0; i < count; i++) {
+      const a = rotOffset + i * step;
+      ctx.save();
+      ctx.rotate(a);
+      ctx.translate(dist, 0);
+
+      const grad = ctx.createRadialGradient(size * 0.3, 0, 1, 0, 0, size);
+      grad.addColorStop(0, color);
+      grad.addColorStop(0.65, color);
+      grad.addColorStop(1, baseColor);
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(0, -size * 0.32);
+      ctx.bezierCurveTo(size * 0.4, -size * 0.72, size * 0.9, -size * 0.45, size, 0);
+      ctx.bezierCurveTo(size * 0.9, size * 0.45, size * 0.4, size * 0.72, 0, size * 0.32);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // Petals
+  drawLayer(7, radius * 0.4, radius * 0.62, cOuter, cBase, 0);
+  drawLayer(6, radius * 0.3, radius * 0.5, cMid, cOuter, Math.PI / 6);
+  drawLayer(5, radius * 0.2, radius * 0.38, cInner, cMid, Math.PI / 4);
+
+  // Spiral Rosebud Center
+  const coreR = radius * 0.26;
+  const cg = ctx.createRadialGradient(0, 0, 1, 0, 0, coreR);
+  cg.addColorStop(0, cHighlight);
+  cg.addColorStop(0.5, cInner);
+  cg.addColorStop(1, cBase);
+  ctx.fillStyle = cg;
+  ctx.beginPath();
+  ctx.arc(0, 0, coreR, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.strokeStyle = cHighlight;
+  ctx.lineWidth = 1.3;
+  ctx.beginPath();
+  for (let t = 0; t < Math.PI * 3.5; t += 0.25) {
+    const r = (coreR * 0.25) + (coreR * 0.7) * (t / (Math.PI * 3.5));
+    const px = Math.cos(t) * r;
+    const py = Math.sin(t) * r;
+    if (t === 0) ctx.moveTo(px, py);
+    else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+
+  // Golden Stamen Dots
+  ctx.fillStyle = cStamen;
+  for (let i = 0; i < 7; i++) {
+    const a = (i / 7) * Math.PI * 2;
+    const d = (i % 2 === 0) ? coreR * 0.55 : coreR * 0.3;
+    ctx.beginPath();
+    ctx.arc(Math.cos(a) * d, Math.sin(a) * d, 1.2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+// ── OFFSCREEN SPRITE CACHE (Pre-render once, blit at 60fps GPU speed) ──
+const bloomSpriteCache = {};
+
+function getBloomSprite(scheme, radius = 35) {
+  const key = scheme + '_' + Math.round(radius);
+  if (bloomSpriteCache[key]) return bloomSpriteCache[key];
+
+  const off = document.createElement('canvas');
+  const pad = Math.ceil(radius * 0.65);
+  const side = Math.ceil((radius + pad) * 2);
+  off.width = side;
+  off.height = side;
+  const octx = off.getContext('2d');
+
+  renderBloomDirect(octx, side / 2, side / 2, radius, 0, 1.0, scheme);
+
+  bloomSpriteCache[key] = off;
+  return off;
+}
+
+// ── DRAW CORNER FLORAL BOUQUETS (TOP & BOTTOM CORNERS OF CARD) ──
+function drawCardCornerFlorals() {
+  const topC = document.getElementById('card-top-florals');
+  if (topC) {
+    const w = topC.width = topC.clientWidth;
+    const h = topC.height = topC.clientHeight;
+    if (w > 0 && h > 0) {
+      const ctx = topC.getContext('2d');
+      ctx.clearRect(0, 0, w, h);
+
+      // Top-Left Corner Bouquet
+      renderBloomDirect(ctx, 32, 32, 34, 0.4, 1.0, 'wine');
+      renderBloomDirect(ctx, 74, 30, 22, -0.8, 1.0, 'blush');
+      renderBloomDirect(ctx, 30, 72, 20, 1.2, 1.0, 'champagne');
+
+      // Top-Right Corner Bouquet
+      renderBloomDirect(ctx, w - 32, 32, 34, -0.4, 1.0, 'wine');
+      renderBloomDirect(ctx, w - 74, 30, 22, 0.8, 1.0, 'blush');
+      renderBloomDirect(ctx, w - 30, 72, 20, -1.2, 1.0, 'champagne');
+    }
+  }
+
+  const botC = document.getElementById('card-bottom-florals');
+  if (botC) {
+    const w = botC.width = botC.clientWidth;
+    const h = botC.height = botC.clientHeight;
+    if (w > 0 && h > 0) {
+      const ctx = botC.getContext('2d');
+      ctx.clearRect(0, 0, w, h);
+
+      // Bottom-Left Corner Bouquet
+      renderBloomDirect(ctx, 32, h - 32, 34, 2.6, 1.0, 'wine');
+      renderBloomDirect(ctx, 74, h - 30, 22, -0.7, 1.0, 'blush');
+      renderBloomDirect(ctx, 30, h - 72, 20, 1.4, 1.0, 'champagne');
+
+      // Bottom-Right Corner Bouquet
+      renderBloomDirect(ctx, w - 32, h - 32, 34, -2.6, 1.0, 'wine');
+      renderBloomDirect(ctx, w - 74, h - 30, 22, 0.7, 1.0, 'blush');
+      renderBloomDirect(ctx, w - 30, h - 72, 20, -1.4, 1.0, 'champagne');
+    }
+  }
+}
+
+// ── DRAW FLORAL GARLANDS ON SECTION DIVIDERS ──
+function drawDividerFlorals() {
+  const dividerCanvases = document.querySelectorAll('.divider-floral-canvas');
+  dividerCanvases.forEach(c => {
+    const w = c.width = 130;
+    const h = c.height = 48;
+    const ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, w, h);
+
+    const cx = w / 2;
+    const cy = h / 2;
+
+    // Left companion bloom
+    renderBloomDirect(ctx, cx - 28, cy, 12, -0.4, 1.0, 'blush');
+    // Right companion bloom
+    renderBloomDirect(ctx, cx + 28, cy, 12, 0.4, 1.0, 'champagne');
+    // Main center blooming rose
+    renderBloomDirect(ctx, cx, cy - 1, 16, 0.15, 1.0, 'wine');
+  });
+}
+
+window.addEventListener('resize', () => {
+  drawCardCornerFlorals();
+  drawDividerFlorals();
+}, { passive: true });
+
 window.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
+  drawCardCornerFlorals();
+  drawDividerFlorals();
+  setTimeout(() => {
+    drawCardCornerFlorals();
+    drawDividerFlorals();
+  }, 300);
 });
 
-/* ── 5. SUBTLE AMBIENT CANVAS (CHAMPAGNE BUBBLES & SOFT PETALS) ── */
+/* ══════════════════════════════════════════════════════════════
+   ── 6. 60FPS AMBIENT CANVAS (DRIFTING BLOOMS, BUBBLES & PETALS) ──
+══════════════════════════════════════════════════════════════ */
 (function() {
   const canvas = document.getElementById('ambient-canvas');
   if (!canvas) return;
@@ -1569,7 +1728,48 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  // 1. Effervescent Champagne Micro-bubbles
+  // Pre-warm sprite cache for smooth GPU blitting
+  ['wine', 'blush', 'champagne'].forEach(sch => {
+    [22, 30, 36].forEach(r => getBloomSprite(sch, r));
+  });
+
+  // 1. Floating 3D Blooming Flowers (Uses fast cached offscreen bitmaps)
+  class FloatingBloom {
+    constructor(init = false) { this.reset(init); }
+    reset(init = false) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : -70;
+      this.radius = [22, 30, 36][Math.floor(Math.random() * 3)];
+      this.speedY = 0.26 + Math.random() * 0.28;
+      this.speedX = (Math.random() - 0.5) * 0.22;
+      this.angle = Math.random() * Math.PI * 2;
+      this.spin = (Math.random() - 0.5) * 0.003;
+      this.sway = Math.random() * Math.PI * 2;
+      this.swaySpeed = 0.008 + Math.random() * 0.01;
+      const schemes = ['wine', 'blush', 'champagne'];
+      this.scheme = schemes[Math.floor(Math.random() * schemes.length)];
+      this.alpha = 0.65 + Math.random() * 0.25;
+      this.sprite = getBloomSprite(this.scheme, this.radius);
+    }
+    update() {
+      this.y += this.speedY;
+      this.sway += this.swaySpeed;
+      this.x += this.speedX + Math.sin(this.sway) * 0.38;
+      this.angle += this.spin;
+      if (this.y > H + 70) this.reset();
+    }
+    draw() {
+      if (!this.sprite) return;
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.globalAlpha = this.alpha;
+      ctx.drawImage(this.sprite, -this.sprite.width / 2, -this.sprite.height / 2);
+      ctx.restore();
+    }
+  }
+
+  // 2. Effervescent Champagne Micro-bubbles
   class Bubble {
     constructor() { this.reset(true); }
     reset(init = false) {
@@ -1598,7 +1798,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 2. Velvet Burgundy Rose Petals
+  // 3. Velvet Burgundy Rose Petals
   class Petal {
     constructor() { this.reset(true); }
     reset(init = false) {
@@ -1632,13 +1832,15 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const bubbles = Array.from({ length: 24 }, () => new Bubble());
-  const petals = Array.from({ length: 14 }, () => new Petal());
+  const blooms = Array.from({ length: 5 }, () => new FloatingBloom(true));
+  const bubbles = Array.from({ length: 26 }, () => new Bubble());
+  const petals = Array.from({ length: 16 }, () => new Petal());
 
   function loop() {
     ctx.clearRect(0, 0, W, H);
     bubbles.forEach(b => { b.update(); b.draw(); });
     petals.forEach(p => { p.update(); p.draw(); });
+    blooms.forEach(bl => { bl.update(); bl.draw(); });
     requestAnimationFrame(loop);
   }
   loop();
