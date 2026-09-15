@@ -382,8 +382,8 @@
       }
     }
 
-    /* Inner Card Canvas for 3D Botanical Flowers ('Hoa Nổi') */
-    .card-floral-canvas {
+    /* Dynamic SVG Scalloped Wavy Border */
+    .wavy-frame-svg {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -392,8 +392,8 @@
       z-index: 1;
     }
 
-    /* Dynamic SVG Scalloped Wavy Border */
-    .wavy-frame-svg {
+    /* Inner Card Canvas for 3D Botanical Flowers ('Hoa Nổi') */
+    .card-floral-canvas {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -1201,13 +1201,13 @@
     ══════════════════════════════════════════ -->
     <div class="card-ivory-invitation" id="card-wavy-container" data-reveal>
       
-      <!-- Card 2 Floral Background Canvas ('Hoa Nổi') -->
-      <canvas id="card2-floral-canvas" class="card-floral-canvas"></canvas>
-
       <!-- Dynamic SVG Scalloped Wavy Border -->
       <svg class="wavy-frame-svg" id="wavy-svg-element">
         <path id="wavy-path-element" fill="none" stroke="#6B1724" stroke-width="2.2" />
       </svg>
+
+      <!-- Card 2 Floral Background Canvas ('Hoa Nổi' rendered above border) -->
+      <canvas id="card2-floral-canvas" class="card-floral-canvas"></canvas>
 
       <div class="card-content-relative">
         
@@ -1943,15 +1943,15 @@ function drawCardFlorals() {
     const h = c2.height = c2.clientHeight;
     if (w > 0 && h > 0) {
       ctx.clearRect(0, 0, w, h);
-      // Top-Right Corner Bouquet
-      renderBloomDirect(ctx, w - 24, 28, 38, -0.4, 0.92, 'wine');
-      renderBloomDirect(ctx, w - 70, 32, 25, 0.8, 0.88, 'blush');
-      renderBloomDirect(ctx, w - 32, 76, 22, -1.2, 0.85, 'champagne');
+      // Top-Right Corner Bouquet (Embossed 3D florals over wavy border)
+      renderBloomDirect(ctx, w - 24, 28, 38, -0.4, 1.0, 'wine');
+      renderBloomDirect(ctx, w - 70, 32, 25, 0.8, 1.0, 'blush');
+      renderBloomDirect(ctx, w - 32, 76, 22, -1.2, 1.0, 'champagne');
 
-      // Bottom-Left Corner Bouquet
-      renderBloomDirect(ctx, 28, h - 28, 38, 2.6, 0.92, 'wine');
-      renderBloomDirect(ctx, 74, h - 34, 25, -0.7, 0.88, 'blush');
-      renderBloomDirect(ctx, 34, h - 76, 22, 1.4, 0.85, 'champagne');
+      // Bottom-Left Corner Bouquet (Embossed 3D florals over wavy border)
+      renderBloomDirect(ctx, 28, h - 28, 38, 2.6, 1.0, 'wine');
+      renderBloomDirect(ctx, 74, h - 34, 25, -0.7, 1.0, 'blush');
+      renderBloomDirect(ctx, 34, h - 76, 22, 1.4, 1.0, 'champagne');
     }
   }
 
