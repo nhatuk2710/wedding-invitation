@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Drunk In Love)</title>
+  <title>Thiệp Cưới — Nhật Anh &amp; Khánh Huyền (Dark Floral Editorial)</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
@@ -14,12 +14,12 @@
     }
     html {
       scroll-behavior: smooth;
-      background: #f7f3ee;
+      background: #F4EFEB;
     }
     body {
       min-height: 100vh;
-      background: #f7f3ee;
-      color: #2b2b2b;
+      background: #F4EFEB;
+      color: #1C1A19;
       font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       -webkit-font-smoothing: antialiased;
@@ -28,7 +28,7 @@
     }
 
     /* ══════════════════════════════════════════
-       CANVAS AMBIENT: FLOATING BLOOMS, BUBBLES & PETALS
+       CANVAS AMBIENT: MINIMALIST BOTANICAL SEEDS & BUBBLES
     ══════════════════════════════════════════ */
     #ambient-canvas {
       position: fixed;
@@ -40,7 +40,7 @@
     }
 
     /* ══════════════════════════════════════════
-       FLOATING MUSIC BUTTON
+       FLOATING MUSIC BUTTON (DARK EDITORIAL)
     ══════════════════════════════════════════ */
     #music-btn {
       position: fixed;
@@ -50,10 +50,10 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      background: #6B1724;
-      border: 1.5px solid rgba(223, 183, 108, 0.6);
-      box-shadow: 0 4px 16px rgba(107, 23, 36, 0.35);
-      color: #ffffff;
+      background: #1C1A19;
+      border: 1.5px solid #C8BEB0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      color: #FAF8F5;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -62,7 +62,7 @@
     }
     #music-btn:hover {
       transform: scale(1.08);
-      background: #55111c;
+      background: #000000;
     }
     #music-btn.playing svg {
       animation: spinRecord 4s linear infinite;
@@ -72,13 +72,13 @@
     }
 
     /* ══════════════════════════════════════════
-       DRUNK IN LOVE RECTANGULAR COVER (HÌNH CHỮ NHẬT)
+       MATISSE DARK FLOWER INTRO COVER SCREEN
     ══════════════════════════════════════════ */
     #wine-intro-screen {
       position: fixed;
       inset: 0;
       z-index: 999;
-      background: radial-gradient(circle at 50% 40%, #3e0e15 0%, #1a0508 100%);
+      background: radial-gradient(circle at 50% 40%, #242220 0%, #121110 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -96,13 +96,13 @@
 
     #rect-cover-card {
       width: min(350px, 88vw);
-      height: min(490px, 124vw);
-      background: #6B1724;
-      border-radius: 8px;
-      border: 1.5px solid rgba(223, 183, 108, 0.45);
+      height: min(495px, 126vw);
+      background: #1C1A19;
+      border-radius: 4px;
+      border: 1.5px solid #C8BEB0;
       box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.65),
-        0 4px 16px rgba(0, 0, 0, 0.4);
+        0 25px 60px rgba(0, 0, 0, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.4);
       position: relative;
       margin-bottom: 1.8rem;
       transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -119,9 +119,8 @@
     #rect-cover-card::before {
       content: '';
       position: absolute;
-      inset: 8px;
-      border: 1px solid rgba(223, 183, 108, 0.4);
-      border-radius: 5px;
+      inset: 7px;
+      border: 0.75px solid rgba(200, 190, 176, 0.45);
       pointer-events: none;
     }
 
@@ -133,7 +132,7 @@
       justify-content: space-between;
       align-items: center;
       text-align: center;
-      color: #ffffff;
+      color: #FAF8F5;
       position: relative;
       z-index: 2;
     }
@@ -142,15 +141,16 @@
       font-family: 'Playfair Display', serif;
       font-size: 0.76rem;
       font-weight: 500;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(223, 183, 108, 0.95);
-      margin-bottom: 0.8rem;
+      color: #C8BEB0;
+      margin-bottom: 0.6rem;
     }
 
-    .rect-card-coupe-icon {
-      width: 76px;
-      height: 60px;
+    /* Matisse Botanical Graphic on Cover Card */
+    .rect-card-matisse-art {
+      width: 100px;
+      height: 85px;
       margin: 0 auto;
       display: block;
     }
@@ -159,21 +159,21 @@
       font-family: 'Alex Brush', cursive;
       font-size: clamp(2.3rem, 7.5vw, 2.9rem);
       line-height: 1.15;
-      color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      color: #FAF8F5;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
       margin-bottom: 0.35rem;
     }
 
     .rect-card-date {
       font-family: 'Playfair Display', serif;
       font-size: 0.88rem;
-      letter-spacing: 0.24em;
-      color: rgba(255, 255, 255, 0.88);
+      letter-spacing: 0.26em;
+      color: #C8BEB0;
     }
 
     .rect-card-guest-row {
       width: 100%;
-      border-top: 1px dashed rgba(223, 183, 108, 0.4);
+      border-top: 1px dashed rgba(200, 190, 176, 0.4);
       padding-top: 0.9rem;
       display: flex;
       align-items: center;
@@ -183,16 +183,16 @@
       letter-spacing: 0.14em;
     }
     .rect-guest-label {
-      color: rgba(223, 183, 108, 0.9);
+      color: #C8BEB0;
       font-weight: 500;
     }
     .rect-guest-val {
-      color: #ffffff;
+      color: #FFFFFF;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-style: italic;
       font-weight: 600;
-      border-bottom: 1px dotted rgba(255, 255, 255, 0.6);
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.7);
       padding: 0 0.3rem;
     }
 
@@ -201,10 +201,10 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.75rem 1.8rem;
-      background: #6B1724;
-      border: 1px solid rgba(223, 183, 108, 0.65);
+      background: #1C1A19;
+      border: 1px solid #C8BEB0;
       border-radius: 50px;
-      color: #ffffff;
+      color: #FAF8F5;
       font-family: 'Playfair Display', serif;
       font-size: 0.8rem;
       letter-spacing: 0.2em;
@@ -215,11 +215,11 @@
     }
     .wine-open-btn:hover {
       transform: scale(1.05);
-      background: #55111c;
+      background: #000000;
     }
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 8px 25px rgba(107, 23, 36, 0.4); }
-      50% { box-shadow: 0 8px 32px rgba(223, 183, 108, 0.45); }
+      0%, 100% { box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); }
+      50% { box-shadow: 0 8px 30px rgba(200, 190, 176, 0.4); }
     }
 
     /* ══════════════════════════════════════════
@@ -253,57 +253,52 @@
     }
 
     /* ══════════════════════════════════════════
-       UNIFIED CONTINUOUS INVITATION CARD (GẮN LIỀN MỘT KHỐI)
+       UNIFIED CONTINUOUS INVITATION CARD (MATISSE EDITORIAL)
     ══════════════════════════════════════════ */
     .unified-invitation-card {
-      background: #FAF7F2;
+      background: #FAF8F5;
       border-radius: 4px;
       box-shadow: 
-        0 24px 70px rgba(70, 15, 25, 0.13),
+        0 24px 70px rgba(28, 26, 25, 0.12),
         0 3px 12px rgba(0, 0, 0, 0.04);
       position: relative;
-      padding: 4rem 2.2rem 3.6rem;
+      padding: 4.2rem 2.2rem 3.8rem;
       box-sizing: border-box;
       width: 100%;
-      border: 1.5px solid #6B1724; /* Khung viền chỉ chính */
+      border: 1.5px solid #1C1A19; /* Khung viền chỉ chính Dark Noir */
       text-align: center;
       overflow: hidden;
     }
     @media (max-width: 480px) {
       .unified-invitation-card {
-        padding: 3.2rem 1.2rem 2.8rem;
+        padding: 3.4rem 1.2rem 2.8rem;
       }
     }
 
-    /* Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame) */
+    /* Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame Warm Sand) */
     .card-inner-frame {
       position: absolute;
       inset: 8px;
-      border: 0.75px solid rgba(107, 23, 36, 0.42);
+      border: 0.75px solid #C8BEB0;
       pointer-events: none;
       border-radius: 2px;
       z-index: 1;
     }
 
     /* ══════════════════════════════════════════
-       CANVAS HOA NỔI TRANG TRÍ (GÓC THIỆP & VẠCH PHÂN CÁCH)
+       MATISSE ABSTRACT FLORAL CORNER ACCENTS (SVG)
     ══════════════════════════════════════════ */
-    .card-corner-floral-canvas {
+    .matisse-corner {
       position: absolute;
-      left: 0;
-      right: 0;
-      width: 100%;
+      width: 78px;
+      height: 78px;
       pointer-events: none;
-      z-index: 3; /* Nằm trên viền chỉ khung */
+      z-index: 2;
     }
-    .card-corner-floral-canvas.top {
-      top: 0;
-      height: 125px;
-    }
-    .card-corner-floral-canvas.bottom {
-      bottom: 0;
-      height: 125px;
-    }
+    .corner-top-left { top: 11px; left: 11px; }
+    .corner-top-right { top: 11px; right: 11px; transform: scaleX(-1); }
+    .corner-bottom-left { bottom: 11px; left: 11px; transform: scaleY(-1); }
+    .corner-bottom-right { bottom: 11px; right: 11px; transform: scale(-1, -1); }
 
     /* Content Wrapper */
     .unified-card-content {
@@ -311,12 +306,12 @@
       z-index: 4;
     }
 
-    /* Minimalist Floral Garland Divider (Vạch Phân Cách Hoa Vẽ Bằng Canvas) */
+    /* Matisse Graphic Floral Divider (Vạch Ngăn Cách Hoa Trừu Tượng) */
     .floral-divider {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.8rem;
+      gap: 0.9rem;
       margin: 2.8rem auto;
       width: 100%;
       max-width: 380px;
@@ -324,11 +319,11 @@
     .fd-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(107, 23, 36, 0.35), transparent);
+      background: linear-gradient(90deg, transparent, rgba(28, 26, 25, 0.25), transparent);
     }
-    .divider-floral-canvas {
-      width: 130px;
-      height: 48px;
+    .matisse-divider-art {
+      width: 46px;
+      height: 46px;
       flex-shrink: 0;
       display: block;
     }
@@ -349,15 +344,15 @@
       margin-bottom: 1.8rem;
     }
     .section-badge-flower {
-      color: #6B1724;
+      color: #1C1A19;
     }
     .section-badge-title span {
       font-family: 'Playfair Display', serif;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
       position: relative;
       padding-bottom: 0.4rem;
     }
@@ -367,9 +362,9 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 30px;
+      width: 32px;
       height: 1.2px;
-      background: #6B1724;
+      background: #1C1A19;
     }
 
     /* ══════════════════════════════════════════
@@ -381,7 +376,7 @@
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
       margin-bottom: 1.6rem;
     }
 
@@ -398,7 +393,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
       line-height: 1.45;
       margin-bottom: 0.6rem;
     }
@@ -407,7 +402,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
       letter-spacing: 0.24em;
-      color: #6B1724;
+      color: #6E675E;
       margin-bottom: 1.8rem;
     }
 
@@ -416,8 +411,8 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 0.8rem;
       padding: 1.4rem 0;
-      border-top: 1px solid rgba(107, 23, 36, 0.18);
-      border-bottom: 1px solid rgba(107, 23, 36, 0.18);
+      border-top: 1px solid rgba(28, 26, 25, 0.16);
+      border-bottom: 1px solid rgba(28, 26, 25, 0.16);
       margin-top: 1.4rem;
     }
     .timeline-col {
@@ -430,7 +425,7 @@
       width: 34px;
       height: 34px;
       margin-bottom: 0.5rem;
-      color: #6B1724;
+      color: #1C1A19;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -440,7 +435,7 @@
       font-size: 0.95rem;
       font-weight: 600;
       letter-spacing: 0.08em;
-      color: #6B1724;
+      color: #1C1A19;
       margin-bottom: 0.2rem;
     }
     .timeline-lbl-val {
@@ -448,7 +443,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: 500;
-      color: #777777;
+      color: #7E766D;
     }
 
     /* ══════════════════════════════════════════
@@ -460,16 +455,16 @@
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #6E675E;
       margin-bottom: 0.4rem;
     }
 
     .ivory-guest-highlight {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(1.7rem, 5.5vw, 2.3rem);
+      font-size: clamp(1.75rem, 5.5vw, 2.35rem);
       font-weight: 600;
-      color: #6B1724;
+      color: #1C1A19;
       line-height: 1.2;
       margin-bottom: 1.2rem;
     }
@@ -479,7 +474,7 @@
       letter-spacing: 0.18em;
       line-height: 1.8;
       text-transform: uppercase;
-      color: #555555;
+      color: #6E675E;
       margin-bottom: 1.4rem;
     }
 
@@ -489,7 +484,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
       margin-bottom: 0.3rem;
     }
 
@@ -498,13 +493,13 @@
       letter-spacing: 0.22em;
       font-weight: 600;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #6E675E;
       margin-bottom: 0.3rem;
     }
 
     .ivory-venue-address {
       font-size: 0.76rem;
-      color: #666666;
+      color: #7E766D;
       line-height: 1.5;
       max-width: 340px;
       margin: 0 auto 1.6rem;
@@ -516,7 +511,7 @@
     .ivory-vao-luc {
       font-family: 'Alex Brush', cursive;
       font-size: 1.5rem;
-      color: #6B1724;
+      color: #6E675E;
       margin-bottom: 0.2rem;
     }
     .ivory-exact-date {
@@ -525,14 +520,14 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
       margin-bottom: 0.35rem;
     }
     .ivory-lunar-date {
       font-size: 0.72rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #777777;
+      color: #8A8177;
       margin-bottom: 0.6rem;
     }
     .ivory-reception-schedule {
@@ -540,13 +535,13 @@
       letter-spacing: 0.18em;
       font-weight: 600;
       text-transform: uppercase;
-      color: #6B1724;
+      color: #1C1A19;
     }
 
     .ivory-signoff-script {
       font-family: 'Alex Brush', cursive;
       font-size: clamp(1.8rem, 6vw, 2.4rem);
-      color: #6B1724;
+      color: #1C1A19;
       line-height: 1.1;
       margin-top: 1.6rem;
     }
@@ -577,9 +572,9 @@
       height: 114px;
       border-radius: 50%;
       padding: 3px;
-      border: 2px solid #6B1724;
-      background: #ffffff;
-      box-shadow: 0 6px 20px rgba(107, 23, 36, 0.15);
+      border: 2px solid #1C1A19;
+      background: #FAF8F5;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       margin-bottom: 0.8rem;
       overflow: hidden;
     }
@@ -589,7 +584,7 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(12%) contrast(105%);
+      filter: grayscale(20%) contrast(105%);
       transition: transform 0.4s ease;
     }
     .avatar-circle-ring:hover img {
@@ -601,47 +596,47 @@
       letter-spacing: 0.22em;
       text-transform: uppercase;
       font-weight: 600;
-      color: #6B1724;
+      color: #C8BEB0;
       margin-bottom: 0.25rem;
     }
     .avatar-name {
       font-family: 'Playfair Display', serif;
       font-size: 1.25rem;
       font-weight: 700;
-      color: #6B1724;
+      color: #1C1A19;
       margin-bottom: 0.8rem;
     }
     .avatar-parents-box {
       font-size: 0.74rem;
       line-height: 1.6;
       color: #555555;
-      background: #ffffff;
+      background: #FFFFFF;
       padding: 0.8rem 1rem;
       border-radius: 4px;
       width: 100%;
-      border: 1px solid rgba(107, 23, 36, 0.12);
+      border: 1px solid rgba(28, 26, 25, 0.12);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
     }
     .avatar-parents-box p strong {
-      color: #6B1724;
+      color: #1C1A19;
     }
 
     /* ══════════════════════════════════════════
-       SECTION 4: SAVE THE DATE (CALENDAR)
+       SECTION 4: SAVE THE DATE (MINIMALIST CALENDAR)
     ══════════════════════════════════════════ */
     .cal-inner-box {
       max-width: 320px;
       margin: 0 auto 1.4rem;
-      background: #ffffff;
-      border-radius: 6px;
-      border: 1px solid rgba(107, 23, 36, 0.18);
+      background: #FFFFFF;
+      border-radius: 4px;
+      border: 1px solid rgba(28, 26, 25, 0.18);
       overflow: hidden;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
     }
 
     .cal-header-bar {
-      background: #6B1724;
-      color: #ffffff;
+      background: #1C1A19;
+      color: #FAF8F5;
       padding: 0.8rem 1rem;
       text-align: center;
     }
@@ -649,13 +644,13 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.15rem;
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
     }
     .cal-header-sub {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      opacity: 0.85;
+      color: #C8BEB0;
       margin-top: 0.15rem;
     }
 
@@ -699,15 +694,15 @@
     .day-highlight-circle {
       width: 32px;
       height: 32px;
-      background: #6B1724;
-      color: #ffffff;
+      background: #1C1A19;
+      color: #FAF8F5;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 1.05rem;
-      box-shadow: 0 3px 10px rgba(107, 23, 36, 0.38);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
       position: relative;
     }
     .day-highlight-circle::after {
@@ -716,14 +711,14 @@
       top: -8px;
       right: -4px;
       font-size: 0.68rem;
-      color: #DFB76C;
+      color: #C8BEB0;
       text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
 
     .cal-footer-text {
       font-size: 0.76rem;
       letter-spacing: 0.12em;
-      color: #555555;
+      color: #6E675E;
       line-height: 1.6;
       margin-bottom: 1.2rem;
     }
@@ -733,21 +728,21 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.75rem 1.6rem;
-      background: #6B1724;
-      color: #ffffff;
+      background: #1C1A19;
+      color: #FAF8F5;
       border-radius: 50px;
       font-family: 'Playfair Display', serif;
       font-size: 0.76rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(107, 23, 36, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, background 0.3s ease;
-      border: 1px solid rgba(223, 183, 108, 0.4);
+      border: 1px solid #C8BEB0;
     }
     .save-the-date-btn:hover {
       transform: translateY(-2px);
-      background: #55111c;
+      background: #000000;
     }
 
     /* ══════════════════════════════════════════
@@ -757,14 +752,14 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.45rem;
       font-weight: 700;
-      color: #6B1724;
+      color: #1C1A19;
       text-transform: uppercase;
     }
     .venue-location-sub {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #666;
+      color: #6E675E;
       margin-top: 0.3rem;
     }
 
@@ -774,7 +769,7 @@
       border-radius: 4px;
       overflow: hidden;
       margin: 1.4rem 0;
-      border: 1px solid rgba(107, 23, 36, 0.18);
+      border: 1px solid rgba(28, 26, 25, 0.18);
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
     }
     .map-frame-box iframe {
@@ -788,21 +783,21 @@
       align-items: center;
       gap: 0.6rem;
       padding: 0.75rem 1.6rem;
-      background: #6B1724;
-      color: #ffffff;
+      background: #1C1A19;
+      color: #FAF8F5;
       border-radius: 50px;
       font-family: 'Playfair Display', serif;
       font-size: 0.76rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      box-shadow: 0 4px 14px rgba(107, 23, 36, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, background 0.3s ease;
-      border: 1px solid rgba(223, 183, 108, 0.4);
+      border: 1px solid #C8BEB0;
     }
     .venue-btn-link:hover {
       transform: translateY(-2px);
-      background: #55111c;
+      background: #000000;
     }
 
     /* ══════════════════════════════════════════
@@ -820,7 +815,7 @@
       overflow: hidden;
       aspect-ratio: 4/5;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(107, 23, 36, 0.15);
+      border: 1px solid rgba(28, 26, 25, 0.15);
     }
     .album-grid-item img {
       width: 100%;
@@ -847,8 +842,8 @@
     .footer-quote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: 1.12rem;
-      color: #6B1724;
+      font-size: 1.15rem;
+      color: #1C1A19;
       line-height: 1.6;
       max-width: 400px;
       margin: 0 auto 1.4rem;
@@ -858,13 +853,13 @@
       font-size: 0.72rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: #777777;
+      color: #7E766D;
       margin-bottom: 0.8rem;
     }
     .footer-script-names {
       font-family: 'Alex Brush', cursive;
-      font-size: 2.3rem;
-      color: #6B1724;
+      font-size: 2.4rem;
+      color: #1C1A19;
       line-height: 1;
     }
 
@@ -873,7 +868,7 @@
     ══════════════════════════════════════════ */
     [data-reveal] {
       opacity: 0;
-      transform: translateY(24px);
+      transform: translateY(22px);
       transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     [data-reveal].v {
@@ -884,7 +879,7 @@
 </head>
 <body>
 
-<!-- ═══════════════════════ AMBIENT CANVAS (BLOOMS, BUBBLES & PETALS) ═══════════════════════ -->
+<!-- ═══════════════════════ AMBIENT CANVAS (BOTANICAL SEEDS & BUBBLES) ═══════════════════════ -->
 <canvas id="ambient-canvas"></canvas>
 
 <!-- ═══════════════════════ FLOATING MUSIC BUTTON ═══════════════════════ -->
@@ -901,7 +896,7 @@
   <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-114421.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ═══════════════════════ DRUNK IN LOVE RECTANGULAR COVER (HÌNH CHỮ NHẬT) ═══════════════════════ -->
+<!-- ═══════════════════════ DARK FLOWER RECTANGULAR COVER (HÌNH CHỮ NHẬT) ═══════════════════════ -->
 <div id="wine-intro-screen" onclick="openWineEnvelope()">
   
   <div id="rect-cover-card">
@@ -910,16 +905,45 @@
       <div>
         <p class="rect-card-tag">WE'RE GETTING MARRIED</p>
         
-        <!-- Champagne Coupe Lineart -->
-        <svg class="rect-card-coupe-icon" viewBox="0 0 100 80" fill="none" stroke="#ffffff" stroke-width="1.6">
-          <ellipse cx="50" cy="20" rx="30" ry="10"/>
-          <path d="M 20 20 C 20 40, 80 40, 80 20"/>
-          <line x1="50" y1="36" x2="50" y2="68"/>
-          <ellipse cx="50" cy="68" rx="20" ry="5"/>
-          <!-- Ribbon Bow -->
-          <circle cx="50" cy="48" r="4" fill="#ffffff" stroke="#6B1724"/>
-          <path d="M 50 48 C 40 40, 32 50, 48 50 Z" fill="#ffffff" stroke="#6B1724"/>
-          <path d="M 50 48 C 60 40, 68 50, 52 50 Z" fill="#ffffff" stroke="#6B1724"/>
+        <!-- Matisse Graphic Botanical Centerpiece on Cover -->
+        <svg class="rect-card-matisse-art" viewBox="0 0 100 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tall Teardrop Leaf Branch on Right -->
+          <path d="M 82 78 Q 82 45 82 12" stroke="#FAF8F5" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M 82 22 Q 92 18 90 28 Q 84 27 82 22 Z" fill="#C8BEB0"/>
+          <path d="M 82 36 Q 72 32 74 42 Q 80 41 82 36 Z" fill="#FAF8F5"/>
+          <path d="M 82 50 Q 92 46 90 56 Q 84 55 82 50 Z" fill="#C8BEB0"/>
+          <path d="M 82 64 Q 72 60 74 70 Q 80 69 82 64 Z" fill="#FAF8F5"/>
+
+          <!-- Matisse Graphic Dandelion Seedhead -->
+          <circle cx="42" cy="38" r="18" fill="#C8BEB0"/>
+          <circle cx="42" cy="38" r="13" fill="#1C1A19"/>
+          <!-- Inner Dotted Ring -->
+          <circle cx="42" cy="30" r="1.4" fill="#FAF8F5"/>
+          <circle cx="48" cy="32" r="1.4" fill="#FAF8F5"/>
+          <circle cx="50" cy="38" r="1.4" fill="#FAF8F5"/>
+          <circle cx="48" cy="44" r="1.4" fill="#FAF8F5"/>
+          <circle cx="42" cy="46" r="1.4" fill="#FAF8F5"/>
+          <circle cx="36" cy="44" r="1.4" fill="#FAF8F5"/>
+          <circle cx="34" cy="38" r="1.4" fill="#FAF8F5"/>
+          <circle cx="36" cy="32" r="1.4" fill="#FAF8F5"/>
+
+          <!-- Radiating seed stalks -->
+          <path d="M 42 20 L 42 12" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="42" cy="11" r="1.8" fill="#C8BEB0"/>
+          <path d="M 55 25 L 61 18" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="62" cy="17" r="1.8" fill="#C8BEB0"/>
+          <path d="M 60 38 L 68 38" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="69" cy="38" r="1.8" fill="#C8BEB0"/>
+          <path d="M 29 25 L 23 18" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="22" cy="17" r="1.8" fill="#C8BEB0"/>
+          <path d="M 24 38 L 16 38" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="15" cy="38" r="1.8" fill="#C8BEB0"/>
+          <path d="M 27 51 L 20 57" stroke="#FAF8F5" stroke-width="1.3"/>
+          <circle cx="19" cy="58" r="1.8" fill="#C8BEB0"/>
+
+          <!-- Stem & Organic Cutout Leaf -->
+          <path d="M 42 56 Q 40 70 36 82" stroke="#FAF8F5" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M 12 78 C 12 60, 30 65, 36 78 Z" fill="#C8BEB0"/>
         </svg>
       </div>
 
@@ -951,16 +975,122 @@
   <div class="wedding-suite-container">
 
     <!-- ══════════════════════════════════════════
-         UNIFIED CONTINUOUS INVITATION CARD (LIỀN MẠCH 1 KHỐI)
+         UNIFIED CONTINUOUS INVITATION CARD (MATISSE EDITORIAL)
     ══════════════════════════════════════════ -->
     <div class="unified-invitation-card" id="main-invitation-card">
       
-      <!-- Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame) -->
+      <!-- Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame Warm Sand) -->
       <div class="card-inner-frame"></div>
 
-      <!-- ── CANVAS HOA NỔI TRANG TRÍ GÓC THIỆP TRÊN & DƯỚI ── -->
-      <canvas id="card-top-florals" class="card-corner-floral-canvas top"></canvas>
-      <canvas id="card-bottom-florals" class="card-corner-floral-canvas bottom"></canvas>
+      <!-- ── 4 GÓC THIỆP: HOẠ TIẾT MATISSE BOTANICAL ABSTRACT (SVG) ── -->
+      
+      <!-- Góc Trên Trái: Matisse Allium & Dandelion Botanical Composition -->
+      <svg class="matisse-corner corner-top-left" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stem with Teardrop Leaves -->
+        <path d="M 14 74 Q 14 38 14 10" stroke="#1C1A19" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M 14 20 Q 24 16 22 26 Q 16 25 14 20 Z" fill="#1C1A19"/>
+        <path d="M 14 34 Q 4 30 6 40 Q 12 39 14 34 Z" fill="#C8BEB0"/>
+        <path d="M 14 48 Q 24 44 22 54 Q 16 53 14 48 Z" fill="#1C1A19"/>
+        
+        <!-- Big Dandelion Seedhead -->
+        <circle cx="48" cy="34" r="18" fill="#1C1A19"/>
+        <circle cx="48" cy="34" r="12" fill="#FAF8F5"/>
+        <!-- Negative space dots -->
+        <circle cx="48" cy="27" r="1.3" fill="#1C1A19"/>
+        <circle cx="53" cy="29" r="1.3" fill="#1C1A19"/>
+        <circle cx="55" cy="34" r="1.3" fill="#1C1A19"/>
+        <circle cx="53" cy="39" r="1.3" fill="#1C1A19"/>
+        <circle cx="48" cy="41" r="1.3" fill="#1C1A19"/>
+        <circle cx="43" cy="39" r="1.3" fill="#1C1A19"/>
+        <circle cx="41" cy="34" r="1.3" fill="#1C1A19"/>
+        <circle cx="43" cy="29" r="1.3" fill="#1C1A19"/>
+
+        <!-- Spiky seed radiating tips -->
+        <path d="M 48 16 L 48 8" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="48" cy="7" r="1.6" fill="#C8BEB0"/>
+        <path d="M 61 21 L 67 14" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="68" cy="13" r="1.6" fill="#C8BEB0"/>
+        <path d="M 66 34 L 74 34" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="75" cy="34" r="1.6" fill="#C8BEB0"/>
+        <path d="M 35 21 L 29 14" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="28" cy="13" r="1.6" fill="#C8BEB0"/>
+
+        <!-- Smaller companion allium -->
+        <circle cx="64" cy="56" r="10" fill="#C8BEB0"/>
+        <circle cx="64" cy="56" r="6" fill="#FAF8F5"/>
+        <circle cx="64" cy="56" r="2" fill="#1C1A19"/>
+      </svg>
+
+      <!-- Góc Trên Phải: Matisse Starburst Aster & Cutout Foliage -->
+      <svg class="matisse-corner corner-top-right" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 14 74 Q 14 38 14 10" stroke="#1C1A19" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M 14 20 Q 24 16 22 26 Q 16 25 14 20 Z" fill="#1C1A19"/>
+        <path d="M 14 34 Q 4 30 6 40 Q 12 39 14 34 Z" fill="#C8BEB0"/>
+        <path d="M 14 48 Q 24 44 22 54 Q 16 53 14 48 Z" fill="#1C1A19"/>
+        
+        <circle cx="48" cy="34" r="18" fill="#1C1A19"/>
+        <circle cx="48" cy="34" r="12" fill="#FAF8F5"/>
+        <circle cx="48" cy="27" r="1.3" fill="#1C1A19"/>
+        <circle cx="53" cy="29" r="1.3" fill="#1C1A19"/>
+        <circle cx="55" cy="34" r="1.3" fill="#1C1A19"/>
+        <circle cx="53" cy="39" r="1.3" fill="#1C1A19"/>
+        <circle cx="48" cy="41" r="1.3" fill="#1C1A19"/>
+        <circle cx="43" cy="39" r="1.3" fill="#1C1A19"/>
+        <circle cx="41" cy="34" r="1.3" fill="#1C1A19"/>
+        <circle cx="43" cy="29" r="1.3" fill="#1C1A19"/>
+
+        <path d="M 48 16 L 48 8" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="48" cy="7" r="1.6" fill="#C8BEB0"/>
+        <path d="M 61 21 L 67 14" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="68" cy="13" r="1.6" fill="#C8BEB0"/>
+        <path d="M 66 34 L 74 34" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="75" cy="34" r="1.6" fill="#C8BEB0"/>
+        <path d="M 35 21 L 29 14" stroke="#1C1A19" stroke-width="1.3"/>
+        <circle cx="28" cy="13" r="1.6" fill="#C8BEB0"/>
+
+        <circle cx="64" cy="56" r="10" fill="#C8BEB0"/>
+        <circle cx="64" cy="56" r="6" fill="#FAF8F5"/>
+        <circle cx="64" cy="56" r="2" fill="#1C1A19"/>
+      </svg>
+
+      <!-- Góc Dưới Trái: Matisse Ribbed Poppy & Cutout Blossom -->
+      <svg class="matisse-corner corner-bottom-left" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Organic Ribbed Poppy in Sand & Noir -->
+        <g transform="translate(36, 36)">
+          <!-- Petal 1 -->
+          <path d="M 0 0 C -12 -18, -26 -12, -22 2 C -18 12, -6 6, 0 0 Z" fill="#1C1A19"/>
+          <path d="M 0 0 C -10 -14, -20 -8, -18 0" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <!-- Petal 2 -->
+          <path d="M 0 0 C -18 -6, -24 16, -6 22 C 4 18, 2 8, 0 0 Z" fill="#C8BEB0"/>
+          <path d="M 0 0 C -14 0, -18 12, -4 16" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <!-- Petal 3 -->
+          <path d="M 0 0 C 6 18, 22 22, 22 6 C 18 -4, 8 -2, 0 0 Z" fill="#1C1A19"/>
+          <path d="M 0 0 C 6 12, 16 14, 16 4" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <!-- Petal 4 -->
+          <path d="M 0 0 C 14 -12, 18 -26, 2 -24 C -8 -18, -4 -6, 0 0 Z" fill="#C8BEB0"/>
+          <path d="M 0 0 C 10 -8, 12 -18, 0 -18" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <!-- Center Eye -->
+          <circle cx="0" cy="0" r="4" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1.2"/>
+        </g>
+        <!-- Companion leaf -->
+        <path d="M 8 72 C 8 52, 28 58, 34 72 Z" fill="#1C1A19"/>
+      </svg>
+
+      <!-- Góc Dưới Phải: Matisse Starburst & Botanical Cutout -->
+      <svg class="matisse-corner corner-bottom-right" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(36, 36)">
+          <path d="M 0 0 C -12 -18, -26 -12, -22 2 C -18 12, -6 6, 0 0 Z" fill="#1C1A19"/>
+          <path d="M 0 0 C -10 -14, -20 -8, -18 0" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <path d="M 0 0 C -18 -6, -24 16, -6 22 C 4 18, 2 8, 0 0 Z" fill="#C8BEB0"/>
+          <path d="M 0 0 C -14 0, -18 12, -4 16" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <path d="M 0 0 C 6 18, 22 22, 22 6 C 18 -4, 8 -2, 0 0 Z" fill="#1C1A19"/>
+          <path d="M 0 0 C 6 12, 16 14, 16 4" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <path d="M 0 0 C 14 -12, 18 -26, 2 -24 C -8 -18, -4 -6, 0 0 Z" fill="#C8BEB0"/>
+          <path d="M 0 0 C 10 -8, 12 -18, 0 -18" stroke="#FAF8F5" stroke-width="0.8" opacity="0.7"/>
+          <circle cx="0" cy="0" r="4" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1.2"/>
+        </g>
+        <path d="M 8 72 C 8 52, 28 58, 34 72 Z" fill="#1C1A19"/>
+      </svg>
 
       <!-- Main Unified Content -->
       <div class="unified-card-content">
@@ -971,99 +1101,99 @@
         <section class="suite-section" data-reveal>
           <p class="section-top-tag">WE'RE GETTING MARRIED</p>
 
-          <!-- Center Graphic: 4-Tier Champagne Coupe Tower with Bow (Burgundy Lineart) -->
+          <!-- Center Graphic: 4-Tier Champagne Coupe Tower with Bow (Noir Lineart) -->
           <div class="champagne-tower-wrap">
             <svg viewBox="30 25 180 175" width="135" height="130" xmlns="http://www.w3.org/2000/svg">
               <!-- Tier 4 (4 glasses) -->
               <g>
-                <ellipse cx="54" cy="156" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 38 160 Q 54 163 70 160" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 35 156 C 35 168, 73 168, 73 156" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="54" y1="168" x2="54" y2="188" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="54" cy="188" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="54" cy="156" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 38 160 Q 54 163 70 160" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 35 156 C 35 168, 73 168, 73 156" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="54" y1="168" x2="54" y2="188" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="54" cy="188" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="98" cy="156" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 82 160 Q 98 163 114 160" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 79 156 C 79 168, 117 168, 117 156" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="98" y1="168" x2="98" y2="188" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="98" cy="188" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="98" cy="156" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 82 160 Q 98 163 114 160" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 79 156 C 79 168, 117 168, 117 156" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="98" y1="168" x2="98" y2="188" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="98" cy="188" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="142" cy="156" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 126 160 Q 142 163 158 160" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 123 156 C 123 168, 161 168, 161 156" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="142" y1="168" x2="142" y2="188" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="142" cy="188" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="142" cy="156" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 126 160 Q 142 163 158 160" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 123 156 C 123 168, 161 168, 161 156" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="142" y1="168" x2="142" y2="188" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="142" cy="188" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="186" cy="156" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 170 160 Q 186 163 202 160" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 167 156 C 167 168, 205 168, 205 156" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="186" y1="168" x2="186" y2="188" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="186" cy="188" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="186" cy="156" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 170 160 Q 186 163 202 160" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 167 156 C 167 168, 205 168, 205 156" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="186" y1="168" x2="186" y2="188" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="186" cy="188" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
 
               <!-- Tier 3 (3 glasses) -->
               <g>
-                <ellipse cx="76" cy="116" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 60 120 Q 76 123 92 120" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 57 116 C 57 128, 95 128, 95 116" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="76" y1="128" x2="76" y2="148" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="76" cy="148" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="76" cy="116" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 60 120 Q 76 123 92 120" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 57 116 C 57 128, 95 128, 95 116" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="76" y1="128" x2="76" y2="148" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="76" cy="148" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="120" cy="116" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 104 120 Q 120 123 136 120" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 101 116 C 101 128, 139 128, 139 116" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="120" y1="128" x2="120" y2="148" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="120" cy="148" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="120" cy="116" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 104 120 Q 120 123 136 120" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 101 116 C 101 128, 139 128, 139 116" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="120" y1="128" x2="120" y2="148" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="120" cy="148" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="164" cy="116" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 148 120 Q 164 123 180 120" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 145 116 C 145 128, 183 128, 183 116" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="164" y1="128" x2="164" y2="148" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="164" cy="148" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="164" cy="116" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 148 120 Q 164 123 180 120" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 145 116 C 145 128, 183 128, 183 116" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="164" y1="128" x2="164" y2="148" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="164" cy="148" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
 
               <!-- Tier 2 (2 glasses) -->
               <g>
-                <ellipse cx="98" cy="76" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 82 80 Q 98 83 114 80" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 79 76 C 79 88, 117 88, 117 76" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="98" y1="88" x2="98" y2="108" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="98" cy="108" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="98" cy="76" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 82 80 Q 98 83 114 80" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 79 76 C 79 88, 117 88, 117 76" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="98" y1="88" x2="98" y2="108" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="98" cy="108" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
               <g>
-                <ellipse cx="142" cy="76" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 126 80 Q 142 83 158 80" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 123 76 C 123 88, 161 88, 161 76" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="142" y1="88" x2="142" y2="108" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="142" cy="108" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="142" cy="76" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 126 80 Q 142 83 158 80" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 123 76 C 123 88, 161 88, 161 76" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="142" y1="88" x2="142" y2="108" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="142" cy="108" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
 
               <!-- Tier 1 (1 glass at top) -->
               <g>
-                <ellipse cx="120" cy="36" rx="19" ry="5.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <path d="M 104 40 Q 120 43 136 40" stroke="#6B1724" stroke-width="1" fill="none" opacity="0.6"/>
-                <path d="M 101 36 C 101 48, 139 48, 139 36" fill="none" stroke="#6B1724" stroke-width="1.4"/>
-                <line x1="120" y1="48" x2="120" y2="68" stroke="#6B1724" stroke-width="1.6"/>
-                <ellipse cx="120" cy="68" rx="13" ry="3.5" fill="none" stroke="#6B1724" stroke-width="1.4"/>
+                <ellipse cx="120" cy="36" rx="19" ry="5.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <path d="M 104 40 Q 120 43 136 40" stroke="#1C1A19" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M 101 36 C 101 48, 139 48, 139 36" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
+                <line x1="120" y1="48" x2="120" y2="68" stroke="#1C1A19" stroke-width="1.6"/>
+                <ellipse cx="120" cy="68" rx="13" ry="3.5" fill="none" stroke="#1C1A19" stroke-width="1.4"/>
               </g>
 
               <!-- Tied Ribbon Bow on Top Glass Stem -->
               <g transform="translate(120, 56)">
-                <path d="M 0 0 C -14 -12, -26 2, -4 4 Z" fill="#6B1724" stroke="#6B1724" stroke-width="1.2"/>
-                <path d="M 0 0 C 14 -12, 26 2, 4 4 Z" fill="#6B1724" stroke="#6B1724" stroke-width="1.2"/>
-                <circle cx="0" cy="1" r="3.5" fill="#FAF7F2" stroke="#6B1724" stroke-width="1.2"/>
-                <path d="M -2 3 Q -10 14, -18 22 Q -12 20, -5 15" fill="#6B1724" stroke="#6B1724" stroke-width="1.2"/>
-                <path d="M 2 3 Q 10 14, 18 22 Q 12 20, 5 15" fill="#6B1724" stroke="#6B1724" stroke-width="1.2"/>
+                <path d="M 0 0 C -14 -12, -26 2, -4 4 Z" fill="#1C1A19" stroke="#1C1A19" stroke-width="1.2"/>
+                <path d="M 0 0 C 14 -12, 26 2, 4 4 Z" fill="#1C1A19" stroke="#1C1A19" stroke-width="1.2"/>
+                <circle cx="0" cy="1" r="3.5" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1.2"/>
+                <path d="M -2 3 Q -10 14, -18 22 Q -12 20, -5 15" fill="#1C1A19" stroke="#1C1A19" stroke-width="1.2"/>
+                <path d="M 2 3 Q 10 14, 18 22 Q 12 20, 5 15" fill="#1C1A19" stroke="#1C1A19" stroke-width="1.2"/>
               </g>
             </svg>
           </div>
 
-          <!-- Couple Names in Clean Bold Serif -->
+          <!-- Couple Names in Clean Bold Editorial Serif -->
           <h2 class="card-couple-names-bold">
             NGUYỄN NGỌC NHẬT ANH<br>&amp;<br>NGUYỄN THỊ KHÁNH HUYỀN
           </h2>
@@ -1107,10 +1237,31 @@
           </div>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 1 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 1: ALLIUM SEEDHEAD ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="14" fill="#1C1A19"/>
+            <circle cx="22" cy="22" r="9" fill="#FAF8F5"/>
+            <!-- Dotted ring -->
+            <circle cx="22" cy="17" r="1.2" fill="#1C1A19"/>
+            <circle cx="26" cy="19" r="1.2" fill="#1C1A19"/>
+            <circle cx="27" cy="22" r="1.2" fill="#1C1A19"/>
+            <circle cx="26" cy="25" r="1.2" fill="#1C1A19"/>
+            <circle cx="22" cy="27" r="1.2" fill="#1C1A19"/>
+            <circle cx="18" cy="25" r="1.2" fill="#1C1A19"/>
+            <circle cx="17" cy="22" r="1.2" fill="#1C1A19"/>
+            <circle cx="18" cy="19" r="1.2" fill="#1C1A19"/>
+            <!-- Radiating dot tips -->
+            <circle cx="22" cy="4" r="1.6" fill="#C8BEB0"/>
+            <circle cx="35" cy="9" r="1.6" fill="#C8BEB0"/>
+            <circle cx="40" cy="22" r="1.6" fill="#C8BEB0"/>
+            <circle cx="35" cy="35" r="1.6" fill="#C8BEB0"/>
+            <circle cx="22" cy="40" r="1.6" fill="#C8BEB0"/>
+            <circle cx="9" cy="35" r="1.6" fill="#C8BEB0"/>
+            <circle cx="4" cy="22" r="1.6" fill="#C8BEB0"/>
+            <circle cx="9" cy="9" r="1.6" fill="#C8BEB0"/>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
@@ -1141,10 +1292,18 @@
           <p class="ivory-signoff-script">Rất hân hạnh được đón tiếp!</p>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 2 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 2: RIBBED POPPY ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(22, 22)">
+              <path d="M 0 0 C -8 -13, -18 -8, -15 2 C -12 9, -4 4, 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 C -13 -4, -16 12, -4 15 C 3 12, 1 5, 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 C 4 13, 15 15, 15 4 C 12 -3, 5 -1, 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 C 10 -8, 13 -18, 1 -16 C -5 -12, -3 -4, 0 0 Z" fill="#C8BEB0"/>
+              <circle cx="0" cy="0" r="3" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1"/>
+            </g>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
@@ -1153,11 +1312,11 @@
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
           <div class="section-badge-title">
-            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B1724" stroke-width="1.3">
-              <path d="M12 3C8 3 8 7 12 9C16 7 16 3 12 3Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 9V21"/>
-              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#6B1724" fill-opacity="0.15"/>
+            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="7" r="4" fill="#C8BEB0"/>
+              <path d="M12 11V21" stroke="#1C1A19" stroke-width="1.4"/>
+              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#1C1A19"/>
+              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#1C1A19"/>
             </svg>
             <span>The Happy Couple</span>
           </div>
@@ -1195,23 +1354,44 @@
           </div>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 3 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 3: STARBURST ASTER ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(22, 22)">
+              <!-- Radiating Starburst Petals (Matisse Panel 4 Style) -->
+              <path d="M 0 0 L 0 -17 L 1.5 0 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 6 -16 L 3 0 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 12 -12 L 4 -2 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 16 -6 L 4 -1 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 17 0 L 2 1.5 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 16 6 L 2 3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 12 12 L 1 4 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 6 16 L 0 3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 0 17 L -1.5 0 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -6 16 L -3 0 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -12 12 L -4 2 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -16 6 L -4 1 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -17 0 L -2 -1.5 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -16 -6 L -2 -3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -12 -12 L -1 -4 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -6 -16 L 0 -3 L 0 0 Z" fill="#C8BEB0"/>
+              <circle cx="0" cy="0" r="2.8" fill="#FAF8F5"/>
+            </g>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
         <!-- ══════════════════════════════════════════
-             4. SAVE THE DATE (EDITORIAL CALENDAR)
+             4. SAVE THE DATE (MINIMALIST CALENDAR)
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
           <div class="section-badge-title">
-            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B1724" stroke-width="1.3">
-              <path d="M12 3C8 3 8 7 12 9C16 7 16 3 12 3Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 9V21"/>
-              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#6B1724" fill-opacity="0.15"/>
+            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="7" r="4" fill="#C8BEB0"/>
+              <path d="M12 11V21" stroke="#1C1A19" stroke-width="1.4"/>
+              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#1C1A19"/>
+              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#1C1A19"/>
             </svg>
             <span>Save The Date</span>
           </div>
@@ -1294,10 +1474,29 @@
           </a>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 4 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 4: ALLIUM & SEED STALKS ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="14" fill="#C8BEB0"/>
+            <circle cx="22" cy="22" r="9" fill="#1C1A19"/>
+            <circle cx="22" cy="17" r="1.2" fill="#FAF8F5"/>
+            <circle cx="26" cy="19" r="1.2" fill="#FAF8F5"/>
+            <circle cx="27" cy="22" r="1.2" fill="#FAF8F5"/>
+            <circle cx="26" cy="25" r="1.2" fill="#FAF8F5"/>
+            <circle cx="22" cy="27" r="1.2" fill="#FAF8F5"/>
+            <circle cx="18" cy="25" r="1.2" fill="#FAF8F5"/>
+            <circle cx="17" cy="22" r="1.2" fill="#FAF8F5"/>
+            <circle cx="18" cy="19" r="1.2" fill="#FAF8F5"/>
+            <circle cx="22" cy="4" r="1.6" fill="#1C1A19"/>
+            <circle cx="35" cy="9" r="1.6" fill="#1C1A19"/>
+            <circle cx="40" cy="22" r="1.6" fill="#1C1A19"/>
+            <circle cx="35" cy="35" r="1.6" fill="#1C1A19"/>
+            <circle cx="22" cy="40" r="1.6" fill="#1C1A19"/>
+            <circle cx="9" cy="35" r="1.6" fill="#1C1A19"/>
+            <circle cx="4" cy="22" r="1.6" fill="#1C1A19"/>
+            <circle cx="9" cy="9" r="1.6" fill="#1C1A19"/>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
@@ -1306,11 +1505,11 @@
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
           <div class="section-badge-title">
-            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B1724" stroke-width="1.3">
-              <path d="M12 3C8 3 8 7 12 9C16 7 16 3 12 3Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 9V21"/>
-              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#6B1724" fill-opacity="0.15"/>
+            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="7" r="4" fill="#C8BEB0"/>
+              <path d="M12 11V21" stroke="#1C1A19" stroke-width="1.4"/>
+              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#1C1A19"/>
+              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#1C1A19"/>
             </svg>
             <span>Wedding Venue</span>
           </div>
@@ -1332,10 +1531,30 @@
           </a>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 5 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 5: STARBURST ASTER ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(22, 22)">
+              <path d="M 0 0 L 0 -17 L 1.5 0 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 6 -16 L 3 0 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 12 -12 L 4 -2 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 16 -6 L 4 -1 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 17 0 L 2 1.5 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 16 6 L 2 3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 12 12 L 1 4 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L 6 16 L 0 3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L 0 17 L -1.5 0 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -6 16 L -3 0 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -12 12 L -4 2 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -16 6 L -4 1 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -17 0 L -2 -1.5 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -16 -6 L -2 -3 L 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 L -12 -12 L -1 -4 L 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 L -6 -16 L 0 -3 L 0 0 Z" fill="#C8BEB0"/>
+              <circle cx="0" cy="0" r="2.8" fill="#FAF8F5"/>
+            </g>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
@@ -1344,11 +1563,11 @@
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
           <div class="section-badge-title">
-            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6B1724" stroke-width="1.3">
-              <path d="M12 3C8 3 8 7 12 9C16 7 16 3 12 3Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 9V21"/>
-              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#6B1724" fill-opacity="0.15"/>
-              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#6B1724" fill-opacity="0.15"/>
+            <svg class="section-badge-flower" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <circle cx="12" cy="7" r="4" fill="#C8BEB0"/>
+              <path d="M12 11V21" stroke="#1C1A19" stroke-width="1.4"/>
+              <path d="M12 15C9 13 7 14 8 16C10 17 12 15 12 15Z" fill="#1C1A19"/>
+              <path d="M12 13C15 11 17 12 16 14C14 15 12 13 12 13Z" fill="#1C1A19"/>
             </svg>
             <span>Wedding Album</span>
           </div>
@@ -1361,9 +1580,9 @@
               <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
             </div>
             <div class="album-grid-item full-col">
-              <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#f4ede4; color:#6B1724; padding:1.5rem; text-align:center;">
-                <p style="font-family:'Alex Brush',cursive; font-size:2rem; color:#6B1724;">Drunk In Love</p>
-                <p style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:#777; margin-top:0.3rem;">
+              <div style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#EAE4DC; color:#1C1A19; padding:1.5rem; text-align:center; border-radius:4px;">
+                <p style="font-family:'Alex Brush',cursive; font-size:2.2rem; color:#1C1A19;">Drunk In Love</p>
+                <p style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6E675E; margin-top:0.3rem;">
                   "Khoảnh khắc ngọt ngào là khi ta tìm thấy nhau"
                 </p>
               </div>
@@ -1371,10 +1590,18 @@
           </div>
         </section>
 
-        <!-- ── FLORAL GARLAND DIVIDER 6 ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 6: RIBBED POPPY ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <canvas class="divider-floral-canvas"></canvas>
+          <svg class="matisse-divider-art" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(22, 22)">
+              <path d="M 0 0 C -8 -13, -18 -8, -15 2 C -12 9, -4 4, 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 C -13 -4, -16 12, -4 15 C 3 12, 1 5, 0 0 Z" fill="#C8BEB0"/>
+              <path d="M 0 0 C 4 13, 15 15, 15 4 C 12 -3, 5 -1, 0 0 Z" fill="#1C1A19"/>
+              <path d="M 0 0 C 10 -8, 13 -18, 1 -16 C -5 -12, -3 -4, 0 0 Z" fill="#C8BEB0"/>
+              <circle cx="0" cy="0" r="3" fill="#FAF8F5" stroke="#1C1A19" stroke-width="1"/>
+            </g>
+          </svg>
           <span class="fd-line"></span>
         </div>
 
@@ -1396,7 +1623,7 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     SCRIPTS: URL PARAMS, ENVELOPE OPEN, CANVAS FLORALS
+     SCRIPTS: URL PARAMS, ENVELOPE OPEN, AMBIENT BOTANICALS
 ══════════════════════════════════════════ -->
 <script>
 /* ── 1. URL Parameter Extraction (?to=...) ── */
@@ -1427,8 +1654,6 @@ function openWineEnvelope() {
     introScreen.classList.add('hidden-screen');
     document.getElementById('invitation').classList.add('visible');
     initScrollReveal();
-    drawCardCornerFlorals();
-    drawDividerFlorals();
   }, 950);
 
   setTimeout(() => {
@@ -1489,231 +1714,12 @@ function initScrollReveal() {
   document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
 }
 
-/* ══════════════════════════════════════════════════════════════
-   ── 5. MASTER CANVAS FLORAL ENGINE (3D BLOOMS & CORNER BOUQUETS) ──
-══════════════════════════════════════════════════════════════ */
-
-// Master function to render a 3D blooming rose ('Hoa Nổi')
-function renderBloomDirect(ctx, x, y, radius, angle, alpha, scheme = 'wine') {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(angle);
-  ctx.globalAlpha = alpha;
-
-  // 3D Drop Shadow for 'Hoa Nổi' (Embossed depth)
-  ctx.shadowColor = 'rgba(50, 10, 20, 0.32)';
-  ctx.shadowBlur = radius * 0.4;
-  ctx.shadowOffsetY = radius * 0.18;
-
-  // Botanical Leaves behind bloom
-  ctx.save();
-  ctx.shadowColor = 'transparent';
-  const leafAngles = [-0.65, 1.75, 3.3];
-  leafAngles.forEach((ang) => {
-    ctx.save();
-    ctx.rotate(ang);
-    ctx.translate(radius * 0.82, 0);
-    ctx.rotate(0.25);
-    const lg = ctx.createLinearGradient(0, 0, radius * 0.75, 0);
-    lg.addColorStop(0, '#384635');
-    lg.addColorStop(0.5, '#4E614A');
-    lg.addColorStop(1, '#687F63');
-    ctx.fillStyle = lg;
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.quadraticCurveTo(radius * 0.35, -radius * 0.25, radius * 0.75, 0);
-    ctx.quadraticCurveTo(radius * 0.35, radius * 0.25, 0, 0);
-    ctx.fill();
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.lineTo(radius * 0.65, 0);
-    ctx.stroke();
-    ctx.restore();
-  });
-  ctx.restore();
-
-  // Color definitions
-  let cBase, cOuter, cMid, cInner, cHighlight, cStamen;
-  if (scheme === 'blush') {
-    cBase = '#6B1B29'; cOuter = '#B34A5D'; cMid = '#D26E80'; cInner = '#E890A0'; cHighlight = '#FCE0E5'; cStamen = '#DFB76C';
-  } else if (scheme === 'champagne') {
-    cBase = '#5A1722'; cOuter = '#8C2B3C'; cMid = '#BA7A65'; cInner = '#DEC0AE'; cHighlight = '#FFF4EC'; cStamen = '#DFB76C';
-  } else {
-    cBase = '#3E0B13'; cOuter = '#6B1724'; cMid = '#852030'; cInner = '#A32C3F'; cHighlight = '#C84D62'; cStamen = '#DFB76C';
-  }
-
-  function drawLayer(count, dist, size, color, baseColor, rotOffset) {
-    const step = (Math.PI * 2) / count;
-    for (let i = 0; i < count; i++) {
-      const a = rotOffset + i * step;
-      ctx.save();
-      ctx.rotate(a);
-      ctx.translate(dist, 0);
-
-      const grad = ctx.createRadialGradient(size * 0.3, 0, 1, 0, 0, size);
-      grad.addColorStop(0, color);
-      grad.addColorStop(0.65, color);
-      grad.addColorStop(1, baseColor);
-
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.moveTo(0, -size * 0.32);
-      ctx.bezierCurveTo(size * 0.4, -size * 0.72, size * 0.9, -size * 0.45, size, 0);
-      ctx.bezierCurveTo(size * 0.9, size * 0.45, size * 0.4, size * 0.72, 0, size * 0.32);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.16)';
-      ctx.lineWidth = 0.8;
-      ctx.stroke();
-      ctx.restore();
-    }
-  }
-
-  // Petals
-  drawLayer(7, radius * 0.4, radius * 0.62, cOuter, cBase, 0);
-  drawLayer(6, radius * 0.3, radius * 0.5, cMid, cOuter, Math.PI / 6);
-  drawLayer(5, radius * 0.2, radius * 0.38, cInner, cMid, Math.PI / 4);
-
-  // Spiral Rosebud Center
-  const coreR = radius * 0.26;
-  const cg = ctx.createRadialGradient(0, 0, 1, 0, 0, coreR);
-  cg.addColorStop(0, cHighlight);
-  cg.addColorStop(0.5, cInner);
-  cg.addColorStop(1, cBase);
-  ctx.fillStyle = cg;
-  ctx.beginPath();
-  ctx.arc(0, 0, coreR, 0, Math.PI * 2);
-  ctx.fill();
-
-  ctx.strokeStyle = cHighlight;
-  ctx.lineWidth = 1.3;
-  ctx.beginPath();
-  for (let t = 0; t < Math.PI * 3.5; t += 0.25) {
-    const r = (coreR * 0.25) + (coreR * 0.7) * (t / (Math.PI * 3.5));
-    const px = Math.cos(t) * r;
-    const py = Math.sin(t) * r;
-    if (t === 0) ctx.moveTo(px, py);
-    else ctx.lineTo(px, py);
-  }
-  ctx.stroke();
-
-  // Golden Stamen Dots
-  ctx.fillStyle = cStamen;
-  for (let i = 0; i < 7; i++) {
-    const a = (i / 7) * Math.PI * 2;
-    const d = (i % 2 === 0) ? coreR * 0.55 : coreR * 0.3;
-    ctx.beginPath();
-    ctx.arc(Math.cos(a) * d, Math.sin(a) * d, 1.2, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  ctx.restore();
-}
-
-// ── OFFSCREEN SPRITE CACHE (Pre-render once, blit at 60fps GPU speed) ──
-const bloomSpriteCache = {};
-
-function getBloomSprite(scheme, radius = 35) {
-  const key = scheme + '_' + Math.round(radius);
-  if (bloomSpriteCache[key]) return bloomSpriteCache[key];
-
-  const off = document.createElement('canvas');
-  const pad = Math.ceil(radius * 0.65);
-  const side = Math.ceil((radius + pad) * 2);
-  off.width = side;
-  off.height = side;
-  const octx = off.getContext('2d');
-
-  renderBloomDirect(octx, side / 2, side / 2, radius, 0, 1.0, scheme);
-
-  bloomSpriteCache[key] = off;
-  return off;
-}
-
-// ── DRAW CORNER FLORAL BOUQUETS (TOP & BOTTOM CORNERS OF CARD) ──
-function drawCardCornerFlorals() {
-  const topC = document.getElementById('card-top-florals');
-  if (topC) {
-    const w = topC.width = topC.clientWidth;
-    const h = topC.height = topC.clientHeight;
-    if (w > 0 && h > 0) {
-      const ctx = topC.getContext('2d');
-      ctx.clearRect(0, 0, w, h);
-
-      // Top-Left Corner Bouquet
-      renderBloomDirect(ctx, 32, 32, 34, 0.4, 1.0, 'wine');
-      renderBloomDirect(ctx, 74, 30, 22, -0.8, 1.0, 'blush');
-      renderBloomDirect(ctx, 30, 72, 20, 1.2, 1.0, 'champagne');
-
-      // Top-Right Corner Bouquet
-      renderBloomDirect(ctx, w - 32, 32, 34, -0.4, 1.0, 'wine');
-      renderBloomDirect(ctx, w - 74, 30, 22, 0.8, 1.0, 'blush');
-      renderBloomDirect(ctx, w - 30, 72, 20, -1.2, 1.0, 'champagne');
-    }
-  }
-
-  const botC = document.getElementById('card-bottom-florals');
-  if (botC) {
-    const w = botC.width = botC.clientWidth;
-    const h = botC.height = botC.clientHeight;
-    if (w > 0 && h > 0) {
-      const ctx = botC.getContext('2d');
-      ctx.clearRect(0, 0, w, h);
-
-      // Bottom-Left Corner Bouquet
-      renderBloomDirect(ctx, 32, h - 32, 34, 2.6, 1.0, 'wine');
-      renderBloomDirect(ctx, 74, h - 30, 22, -0.7, 1.0, 'blush');
-      renderBloomDirect(ctx, 30, h - 72, 20, 1.4, 1.0, 'champagne');
-
-      // Bottom-Right Corner Bouquet
-      renderBloomDirect(ctx, w - 32, h - 32, 34, -2.6, 1.0, 'wine');
-      renderBloomDirect(ctx, w - 74, h - 30, 22, 0.7, 1.0, 'blush');
-      renderBloomDirect(ctx, w - 30, h - 72, 20, -1.4, 1.0, 'champagne');
-    }
-  }
-}
-
-// ── DRAW FLORAL GARLANDS ON SECTION DIVIDERS ──
-function drawDividerFlorals() {
-  const dividerCanvases = document.querySelectorAll('.divider-floral-canvas');
-  dividerCanvases.forEach(c => {
-    const w = c.width = 130;
-    const h = c.height = 48;
-    const ctx = c.getContext('2d');
-    ctx.clearRect(0, 0, w, h);
-
-    const cx = w / 2;
-    const cy = h / 2;
-
-    // Left companion bloom
-    renderBloomDirect(ctx, cx - 28, cy, 12, -0.4, 1.0, 'blush');
-    // Right companion bloom
-    renderBloomDirect(ctx, cx + 28, cy, 12, 0.4, 1.0, 'champagne');
-    // Main center blooming rose
-    renderBloomDirect(ctx, cx, cy - 1, 16, 0.15, 1.0, 'wine');
-  });
-}
-
-window.addEventListener('resize', () => {
-  drawCardCornerFlorals();
-  drawDividerFlorals();
-}, { passive: true });
-
 window.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
-  drawCardCornerFlorals();
-  drawDividerFlorals();
-  setTimeout(() => {
-    drawCardCornerFlorals();
-    drawDividerFlorals();
-  }, 300);
 });
 
 /* ══════════════════════════════════════════════════════════════
-   ── 6. 60FPS AMBIENT CANVAS (DRIFTING BLOOMS, BUBBLES & PETALS) ──
+   ── 5. 60FPS AMBIENT CANVAS (BOTANICAL SEEDS & MINIMALIST BUBBLES) ──
 ══════════════════════════════════════════════════════════════ */
 (function() {
   const canvas = document.getElementById('ambient-canvas');
@@ -1728,88 +1734,18 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  // Pre-warm sprite cache for smooth GPU blitting
-  ['wine', 'blush', 'champagne'].forEach(sch => {
-    [22, 30, 36].forEach(r => getBloomSprite(sch, r));
-  });
-
-  // 1. Floating 3D Blooming Flowers (Uses fast cached offscreen bitmaps)
-  class FloatingBloom {
-    constructor(init = false) { this.reset(init); }
-    reset(init = false) {
-      this.x = Math.random() * W;
-      this.y = init ? Math.random() * H : -70;
-      this.radius = [22, 30, 36][Math.floor(Math.random() * 3)];
-      this.speedY = 0.26 + Math.random() * 0.28;
-      this.speedX = (Math.random() - 0.5) * 0.22;
-      this.angle = Math.random() * Math.PI * 2;
-      this.spin = (Math.random() - 0.5) * 0.003;
-      this.sway = Math.random() * Math.PI * 2;
-      this.swaySpeed = 0.008 + Math.random() * 0.01;
-      const schemes = ['wine', 'blush', 'champagne'];
-      this.scheme = schemes[Math.floor(Math.random() * schemes.length)];
-      this.alpha = 0.65 + Math.random() * 0.25;
-      this.sprite = getBloomSprite(this.scheme, this.radius);
-    }
-    update() {
-      this.y += this.speedY;
-      this.sway += this.swaySpeed;
-      this.x += this.speedX + Math.sin(this.sway) * 0.38;
-      this.angle += this.spin;
-      if (this.y > H + 70) this.reset();
-    }
-    draw() {
-      if (!this.sprite) return;
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.angle);
-      ctx.globalAlpha = this.alpha;
-      ctx.drawImage(this.sprite, -this.sprite.width / 2, -this.sprite.height / 2);
-      ctx.restore();
-    }
-  }
-
-  // 2. Effervescent Champagne Micro-bubbles
-  class Bubble {
+  // 1. Drifting Dandelion / Botanical Seed Pods
+  class BotanicalSeed {
     constructor() { this.reset(true); }
     reset(init = false) {
       this.x = Math.random() * W;
-      this.y = init ? Math.random() * H : H + 10;
-      this.radius = 1.2 + Math.random() * 2.2;
-      this.speedY = 0.4 + Math.random() * 0.8;
-      this.speedX = (Math.random() - 0.5) * 0.25;
-      this.alpha = 0.15 + Math.random() * 0.3;
-      this.wobble = Math.random() * Math.PI * 2;
-    }
-    update() {
-      this.y -= this.speedY;
-      this.wobble += 0.03;
-      this.x += this.speedX + Math.sin(this.wobble) * 0.25;
-      if (this.y < -10) this.reset();
-    }
-    draw() {
-      ctx.save();
-      ctx.globalAlpha = this.alpha;
-      ctx.fillStyle = '#DFB76C';
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    }
-  }
-
-  // 3. Velvet Burgundy Rose Petals
-  class Petal {
-    constructor() { this.reset(true); }
-    reset(init = false) {
-      this.x = Math.random() * W;
-      this.y = init ? Math.random() * H : -20;
-      this.size = 4 + Math.random() * 5;
-      this.speedY = 0.35 + Math.random() * 0.5;
+      this.y = init ? Math.random() * H : -30;
+      this.size = 2.5 + Math.random() * 3.5;
+      this.speedY = 0.3 + Math.random() * 0.45;
       this.speedX = (Math.random() - 0.5) * 0.35;
       this.angle = Math.random() * Math.PI * 2;
       this.spin = (Math.random() - 0.5) * 0.015;
-      this.alpha = 0.12 + Math.random() * 0.18;
+      this.alpha = 0.18 + Math.random() * 0.22;
       this.sway = Math.random() * Math.PI * 2;
     }
     update() {
@@ -1817,30 +1753,65 @@ window.addEventListener('DOMContentLoaded', () => {
       this.sway += 0.012;
       this.x += this.speedX + Math.sin(this.sway) * 0.35;
       this.angle += this.spin;
-      if (this.y > H + 20) this.reset();
+      if (this.y > H + 30) this.reset();
     }
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.angle);
       ctx.globalAlpha = this.alpha;
-      ctx.fillStyle = '#6B1724';
+      ctx.fillStyle = '#1C1A19';
+      // Seed head
       ctx.beginPath();
-      ctx.ellipse(0, 0, this.size * 0.5, this.size, 0, 0, Math.PI * 2);
+      ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+      // Fine tail
+      ctx.strokeStyle = '#8A8177';
+      ctx.lineWidth = 0.8;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -this.size * 2.8);
+      ctx.stroke();
+      ctx.restore();
+    }
+  }
+
+  // 2. Soft Warm Sand Micro-bubbles
+  class Bubble {
+    constructor() { this.reset(true); }
+    reset(init = false) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 10;
+      this.radius = 1.0 + Math.random() * 2.0;
+      this.speedY = 0.35 + Math.random() * 0.65;
+      this.speedX = (Math.random() - 0.5) * 0.2;
+      this.alpha = 0.15 + Math.random() * 0.25;
+      this.wobble = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.y -= this.speedY;
+      this.wobble += 0.025;
+      this.x += this.speedX + Math.sin(this.wobble) * 0.2;
+      if (this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = '#C8BEB0';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
   }
 
-  const blooms = Array.from({ length: 5 }, () => new FloatingBloom(true));
-  const bubbles = Array.from({ length: 26 }, () => new Bubble());
-  const petals = Array.from({ length: 16 }, () => new Petal());
+  const seeds = Array.from({ length: 18 }, () => new BotanicalSeed());
+  const bubbles = Array.from({ length: 22 }, () => new Bubble());
 
   function loop() {
     ctx.clearRect(0, 0, W, H);
     bubbles.forEach(b => { b.update(); b.draw(); });
-    petals.forEach(p => { p.update(); p.draw(); });
-    blooms.forEach(bl => { bl.update(); bl.draw(); });
+    seeds.forEach(s => { s.update(); s.draw(); });
     requestAnimationFrame(loop);
   }
   loop();
