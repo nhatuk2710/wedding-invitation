@@ -98,13 +98,14 @@
     #env-stage {
       position: relative;
       width: min(340px, 86vw);
-      height: min(460px, 118vw);
+      height: min(440px, 112vw);
       perspective: 1200px;
+      margin-top: 50px;
       margin-bottom: 1.6rem;
       transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Envelope Shell (Pointed House Silhouette) */
+    /* Envelope Shell */
     .env-shell {
       position: absolute;
       inset: 0;
@@ -112,41 +113,25 @@
       height: 100%;
     }
 
-    /* Back Wall with Vertical Striped Liner (Image 1 Right) */
-    .env-back {
+    /* Flat Back Wall of Pocket (Never sticks up!) */
+    .env-back-wall {
       position: absolute;
       inset: 0;
-      background: #6B1724;
-      clip-path: polygon(50% 0%, 100% 24%, 100% 100%, 0% 100%, 0% 24%);
+      background: #56111c;
+      border-radius: 4px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
     }
-    .env-striped-liner {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      background: repeating-linear-gradient(
-        90deg,
-        #6B1724 0,
-        #6B1724 10px,
-        #ffffff 10px,
-        #ffffff 20px
-      );
-      clip-path: polygon(50% 0%, 100% 24%, 100% 100%, 0% 100%, 0% 24%);
-      opacity: 0.95;
-    }
 
-    /* Card Inside Envelope (Sliding Out on Open) */
+    /* Card Inside Envelope (Tucked inside, slides UP on open) */
     .env-card-inside {
       position: absolute;
-      top: 26%;
+      top: 12%;
       left: 6%;
       right: 6%;
-      height: 70%;
+      height: 78%;
       background: #FAF7F2;
       border-radius: 4px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       padding: 1.4rem 1.2rem;
       display: flex;
       flex-direction: column;
@@ -155,7 +140,7 @@
       text-align: center;
       z-index: 2;
       border: 1px solid #d4c5b3;
-      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .env-card-inside .card-mini-coupe {
       width: 50px;
@@ -189,12 +174,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 64%;
+      height: 72%;
       background: #6B1724;
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
-      box-shadow: 0 -4px 18px rgba(0,0,0,0.25);
-      z-index: 3;
+      box-shadow: 0 -3px 15px rgba(0,0,0,0.25);
+      z-index: 4;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -203,9 +188,9 @@
       /* Top crescent notch cutout */
       clip-path: polygon(
         0% 0%, 
-        calc(50% - 28px) 0%, 
-        50% 12px, 
-        calc(50% + 28px) 0%, 
+        calc(50% - 30px) 0%, 
+        50% 14px, 
+        calc(50% + 30px) 0%, 
         100% 0%, 
         100% 100%, 
         0% 100%
@@ -265,32 +250,88 @@
       text-overflow: ellipsis;
     }
 
-    /* Pointed Top Flap (Folds DOWN when closed, Flips UP when opened) */
-    .env-top-flap {
+    /* ── 3D FLAP HINGE (STARTS FOLDED DOWN, ROTATES 180deg UP ON OPEN) ── */
+    .env-flap-hinge {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 38%;
-      background: #5c1320;
-      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      height: 165px;
       transform-origin: top center;
-      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 4;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10;
+    }
+
+    .flap-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* Front side of Flap (Points DOWN when closed) */
+    .flap-front {
+      background: #6B1724;
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 6px;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));
+    }
+
+    .flap-wax-seal {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #f3d790, #b88628, #7a5510);
+      border: 1.5px solid #dfb76c;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #432b00;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      transform: translateY(16px);
+      cursor: pointer;
+    }
+
+    /* Back side of Flap (Revealed pointing UP with striped liner on open) */
+    .flap-back {
+      background: #6B1724;
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      transform: rotateX(180deg);
+      padding: 6px 8px 8px;
+      box-sizing: border-box;
+    }
+
+    .flap-striped-liner {
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+      background: repeating-linear-gradient(
+        90deg,
+        #6B1724 0,
+        #6B1724 10px,
+        #ffffff 10px,
+        #ffffff 20px
+      );
     }
 
     /* Open Action Animations */
-    #wine-intro-screen.opening .env-top-flap {
+    #wine-intro-screen.opening .env-flap-hinge {
       transform: rotateX(180deg);
-      opacity: 0.15;
     }
     #wine-intro-screen.opening .env-card-inside {
-      transform: translateY(-90px) scale(1.04);
-      z-index: 5;
+      transform: translateY(-100px) scale(1.04);
+      z-index: 12;
     }
     #wine-intro-screen.opening #env-stage {
-      transform: translateY(40px) scale(0.96);
+      transform: translateY(30px) scale(0.97);
     }
 
     /* Open Button */
@@ -1074,12 +1115,10 @@
     <!-- Envelope Shell -->
     <div class="env-shell">
       
-      <!-- Back Wall with Striped Lining (Image 1 Right) -->
-      <div class="env-back">
-        <div class="env-striped-liner"></div>
-      </div>
+      <!-- Flat Back Wall (Never sticks up!) -->
+      <div class="env-back-wall"></div>
 
-      <!-- Peeking / Sliding Card Inside -->
+      <!-- Sliding Card Inside Pocket -->
       <div class="env-card-inside">
         <!-- Mini Champagne Coupe lineart -->
         <svg class="card-mini-coupe" viewBox="0 0 100 80" fill="none" stroke="#6B1724" stroke-width="1.6">
@@ -1114,8 +1153,19 @@
 
       </div>
 
-      <!-- Top Flap (Folds open when tapped) -->
-      <div class="env-top-flap"></div>
+      <!-- 3D Flap Hinge: Folds DOWN when closed, Flips UP with striped liner when opened -->
+      <div class="env-flap-hinge">
+        <!-- Front: Burgundy with Wax Seal (Points DOWN) -->
+        <div class="flap-face flap-front">
+          <div class="flap-wax-seal">
+            <span>NH</span>
+          </div>
+        </div>
+        <!-- Back: Striped Liner (Points UP when flipped) -->
+        <div class="flap-face flap-back">
+          <div class="flap-striped-liner"></div>
+        </div>
+      </div>
 
     </div>
 
