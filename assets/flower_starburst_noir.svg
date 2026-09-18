@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <circle cx="150" cy="150" r="24" fill="#1C1A19" />
+  <g fill="#1C1A19">
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(0.0 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(16.4 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(32.7 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(49.1 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(65.5 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(81.8 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(98.2 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(114.5 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(130.9 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(147.3 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(163.6 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(180.0 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(196.4 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(212.7 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(229.1 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(245.5 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(261.8 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(278.2 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(294.5 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(310.9 150 150)" />
+    <ellipse cx="150" cy="82.5" rx="8.5" ry="67.5" transform="rotate(327.3 150 150)" />
+    <ellipse cx="150" cy="91.0" rx="7.0" ry="59.0" transform="rotate(343.6 150 150)" />
+  </g>
+</svg>

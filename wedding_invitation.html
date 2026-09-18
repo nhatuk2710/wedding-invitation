@@ -147,25 +147,21 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Exact Matisse Artwork on Cover Card */
+    /* Clean Standalone Matisse Artwork on Cover Card */
     .rect-card-artwork-wrap {
-      width: 130px;
-      height: 130px;
-      background: #FAF8F5;
-      border-radius: 4px;
-      padding: 8px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+      width: 90px;
+      height: 90px;
+      margin: 0.6rem auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0.4rem auto;
-      border: 1px solid #C8BEB0;
     }
-    .rect-card-artwork-img {
+    .rect-card-artwork-svg {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: block;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.4));
     }
 
     .rect-card-names-script {
@@ -301,69 +297,91 @@
     }
 
     /* ══════════════════════════════════════════
-       HOẠ TIẾT HOA CHUẨN MẪU KOZY.PLACE ĐÍNH BÊN CẠNH THIỆP (SIZE LỚN)
+       TINH HOA ĐỒ HOẠ MATISSE (STANDALONE VECTOR BOTANICALS)
     ══════════════════════════════════════════ */
-    .matisse-side-attach {
+    /* Corner Flourishes (Inside Decorative Frame) */
+    .card-corner-motif {
       position: absolute;
       pointer-events: none;
-      z-index: 5;
+      z-index: 3;
       object-fit: contain;
-      filter: drop-shadow(0 6px 18px rgba(28, 26, 25, 0.14));
+      opacity: 0.82;
       transition: transform 0.4s ease;
     }
-    .side-top-right {
-      top: 35px;
-      right: -32px;
-      width: 155px;
-      transform: rotate(4deg);
+    .corner-tl {
+      top: 14px;
+      left: 14px;
+      width: 28px;
+      height: auto;
+      transform: rotate(-20deg);
     }
-    .side-mid-left {
-      top: 540px;
-      left: -32px;
-      width: 148px;
-      transform: rotate(-5deg);
+    .corner-tr {
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: auto;
+      transform: scaleX(-1) rotate(-20deg);
     }
-    .side-mid-right {
-      top: 1100px;
-      right: -30px;
-      width: 145px;
-      transform: rotate(3deg);
+    .corner-bl {
+      bottom: 14px;
+      left: 14px;
+      width: 32px;
+      height: auto;
+      opacity: 0.75;
     }
-    .side-bottom-left {
-      bottom: 85px;
-      left: -30px;
-      width: 152px;
-      transform: rotate(-4deg);
+    .corner-br {
+      bottom: 14px;
+      right: 14px;
+      width: 32px;
+      height: auto;
+      opacity: 0.75;
+    }
+
+    /* Header Botanical Crest above Announcement */
+    .header-botanical-crest {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin: 0.2rem auto 1rem auto;
+      width: 100%;
+    }
+    .crest-leaf-l {
+      width: 22px;
+      height: auto;
+      transform: rotate(-32deg);
+      opacity: 0.75;
+    }
+    .crest-leaf-r {
+      width: 22px;
+      height: auto;
+      transform: scaleX(-1) rotate(-32deg);
+      opacity: 0.75;
+    }
+    .crest-center-poppy {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(28, 26, 25, 0.12));
     }
 
     @media (max-width: 520px) {
-      .side-top-right {
-        top: 25px;
-        right: -16px;
-        width: 115px;
-        opacity: 0.94;
+      .corner-tl, .corner-tr {
+        top: 10px;
+        width: 22px;
       }
-      .side-mid-left {
-        top: 510px;
-        left: -16px;
-        width: 110px;
-        opacity: 0.94;
+      .corner-tl { left: 10px; }
+      .corner-tr { right: 10px; }
+      .corner-bl, .corner-br {
+        bottom: 10px;
+        width: 26px;
       }
-      .side-mid-right {
-        top: 1060px;
-        right: -16px;
-        width: 110px;
-        opacity: 0.94;
-      }
-      .side-bottom-left {
-        bottom: 65px;
-        left: -16px;
-        width: 115px;
-        opacity: 0.94;
-      }
+      .corner-bl { left: 10px; }
+      .corner-br { right: 10px; }
+      .crest-center-poppy { width: 38px; height: 38px; }
+      .crest-leaf-l, .crest-leaf-r { width: 18px; }
     }
 
-    /* Content Wrapper */
     .unified-card-content {
       position: relative;
       z-index: 4;
@@ -384,9 +402,9 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(28, 26, 25, 0.28), transparent);
     }
-    .matisse-divider-img {
-      width: 50px;
-      height: 50px;
+    .matisse-divider-svg {
+      width: 36px;
+      height: 36px;
       flex-shrink: 0;
       object-fit: contain;
       display: block;
@@ -904,6 +922,15 @@
       gap: 0.8rem;
     }
 
+    .album-feature-img {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      display: block;
+    }
     .album-matisse-feature {
       width: min(220px, 60vw);
       border-radius: 3px;
@@ -984,9 +1011,9 @@
       <div>
         <p class="rect-card-tag">WE'RE GETTING MARRIED</p>
         
-        <!-- Exact Matisse Dandelion Artwork on Cover Card -->
+        <!-- Standalone Matisse Botanical Emblem on Cover Card -->
         <div class="rect-card-artwork-wrap">
-          <img src="assets/matisse_dandelion_transparent.png" class="rect-card-artwork-img" alt="Matisse Dandelion &amp; Foliage" />
+          <img src="assets/flower_dandelion_sand.svg" class="rect-card-artwork-svg" alt="Matisse Dandelion Emblem" />
         </div>
       </div>
 
@@ -1025,18 +1052,11 @@
       <!-- Khung Viền Chỉ Đôi Bên Trong (Inner Hairline Frame Warm Sand) -->
       <div class="card-inner-frame"></div>
 
-      <!-- ── CÁC HOẠ TIẾT HOA CHUẨN MẪU KOZY.PLACE ĐÍNH CẠNH THIỆP (SIZE LỚN) ── -->
-      <!-- 1. Top-Right: Exact Matisse Dandelion & Leaf Stalk -->
-      <img src="assets/matisse_dandelion_transparent.png" class="matisse-side-attach side-top-right" alt="Matisse Dandelion" />
-
-      <!-- 2. Mid-Left: Exact Matisse Ribbed Poppies -->
-      <img src="assets/matisse_poppy_transparent.png" class="matisse-side-attach side-mid-left" alt="Matisse Poppies" />
-
-      <!-- 3. Mid-Right: Exact Matisse Starburst Asters -->
-      <img src="assets/matisse_starburst_transparent.png" class="matisse-side-attach side-mid-right" alt="Matisse Starburst Asters" />
-
-      <!-- 4. Bottom-Left: Exact Matisse Dandelion Composition -->
-      <img src="assets/matisse_dandelion_transparent.png" class="matisse-side-attach side-bottom-left" alt="Matisse Botanical" />
+      <!-- ── HOẠ TIẾT HOA MATISSE ĐỘC LẬP TINH XẢO Ở 4 GÓC KHUNG THIỆP ── -->
+      <img src="assets/flower_leaf_stalk_noir.svg" class="card-corner-motif corner-tl" alt="Botanical Corner Accent" />
+      <img src="assets/flower_leaf_stalk_noir.svg" class="card-corner-motif corner-tr" alt="Botanical Corner Accent" />
+      <img src="assets/flower_poppy_sand.svg" class="card-corner-motif corner-bl" alt="Poppy Corner Accent" />
+      <img src="assets/flower_dandelion_sand.svg" class="card-corner-motif corner-br" alt="Dandelion Corner Accent" />
 
       <!-- Main Unified Content -->
       <div class="unified-card-content">
@@ -1045,6 +1065,12 @@
              1. ANNOUNCEMENT & CHAMPAGNE TOWER & TIMELINE
         ══════════════════════════════════════════ -->
         <section class="suite-section" data-reveal>
+          <!-- Elegant Botanical Crest -->
+          <div class="header-botanical-crest">
+            <img src="assets/flower_leaf_stalk_noir.svg" class="crest-leaf-l" alt="Botanical Leaf" />
+            <img src="assets/flower_poppy_noir.svg" class="crest-center-poppy" alt="Matisse Poppy" />
+            <img src="assets/flower_leaf_stalk_noir.svg" class="crest-leaf-r" alt="Botanical Leaf" />
+          </div>
           <p class="section-top-tag">WE'RE GETTING MARRIED</p>
 
           <!-- Center Graphic: 4-Tier Champagne Coupe Tower with Bow (Noir Lineart) -->
@@ -1183,10 +1209,10 @@
           </div>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 1: DANDELION ARTWORK ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 1: POPPY ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_dandelion_transparent.png" class="matisse-divider-img" alt="Matisse Dandelion" />
+          <img src="assets/flower_poppy_noir.svg" class="matisse-divider-svg" alt="Matisse Poppy" />
           <span class="fd-line"></span>
         </div>
 
@@ -1217,10 +1243,10 @@
           <p class="ivory-signoff-script">Rất hân hạnh được đón tiếp!</p>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 2: RIBBED POPPY ARTWORK ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 2: DANDELION ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_poppy_transparent.png" class="matisse-divider-img" alt="Matisse Poppy" />
+          <img src="assets/flower_dandelion_noir.svg" class="matisse-divider-svg" alt="Matisse Dandelion" />
           <span class="fd-line"></span>
         </div>
 
@@ -1271,10 +1297,10 @@
           </div>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 3: STARBURST ASTER ARTWORK ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 3: STARBURST ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_starburst_transparent.png" class="matisse-divider-img" alt="Matisse Starburst" />
+          <img src="assets/flower_starburst_noir.svg" class="matisse-divider-svg" alt="Matisse Starburst" />
           <span class="fd-line"></span>
         </div>
 
@@ -1370,10 +1396,10 @@
           </a>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 4: DANDELION & SEEDS ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 4: ALLIUM SPRAY ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_dandelion_transparent.png" class="matisse-divider-img" alt="Matisse Dandelion" />
+          <img src="assets/flower_allium_spray_noir.svg" class="matisse-divider-svg" alt="Matisse Allium Spray" />
           <span class="fd-line"></span>
         </div>
 
@@ -1408,10 +1434,10 @@
           </a>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 5: POPPY ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 5: POPPY SAND ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_poppy_transparent.png" class="matisse-divider-img" alt="Matisse Poppy" />
+          <img src="assets/flower_poppy_sand.svg" class="matisse-divider-svg" alt="Matisse Poppy Sand" />
           <span class="fd-line"></span>
         </div>
 
@@ -1437,11 +1463,10 @@
               <img src="bride.jpg" alt="Cô dâu Khánh Huyền" />
             </div>
             <div class="album-grid-item full-col">
-              <!-- Exact Matisse Full Grid Art Piece -->
-              <img src="assets/matisse_full_grid.png" class="album-matisse-feature" alt="Dark Flower Botanical Composition" />
-              <div>
-                <p style="font-family:'Alex Brush',cursive; font-size:2.2rem; color:#1C1A19;">Drunk In Love</p>
-                <p style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6E675E; margin-top:0.2rem;">
+              <img src="drunk_in_love.jpg" class="album-feature-img" alt="Nhật Anh &amp; Khánh Huyền - Drunk In Love" />
+              <div style="margin-top: 0.8rem;">
+                <p style="font-family:'Alex Brush',cursive; font-size:2.4rem; color:#1C1A19; line-height:1.1;">Drunk In Love</p>
+                <p style="font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#6E675E; margin-top:0.3rem;">
                   "Khoảnh khắc ngọt ngào là khi ta tìm thấy nhau"
                 </p>
               </div>
@@ -1449,10 +1474,10 @@
           </div>
         </section>
 
-        <!-- ── EXACT MATISSE FLORAL DIVIDER 6: STARBURST ── -->
+        <!-- ── MATISSE FLORAL DIVIDER 6: STARBURST SAND ── -->
         <div class="floral-divider">
           <span class="fd-line"></span>
-          <img src="assets/matisse_starburst_transparent.png" class="matisse-divider-img" alt="Matisse Starburst" />
+          <img src="assets/flower_starburst_sand.svg" class="matisse-divider-svg" alt="Matisse Starburst Sand" />
           <span class="fd-line"></span>
         </div>
 
